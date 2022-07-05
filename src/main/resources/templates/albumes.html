@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.98.0">
-    <title>Album example · Bootstrap v5.2</title>
+    <title>Album</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
@@ -88,19 +88,18 @@
         <img class="mt-1"  th:src="@{/images/roshka.jpg}" alt="" width="40" height="40" style="border-radius: 30px; float: left;"/>
         <strong>Roshkagram</strong>
       </a>
-      <div class="btn-group">
-        <button type="button" class="btn btn-outline-light me-2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Action
-        </button>
+      <div class="dropdown">
+        <button class="btn btn-outline-light me-2 dropdown-toggle" type="button" data-toggle="dropdown">Filtros
+          <span class="caret"></span></button>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Filtro 1</a>
+          <a class="dropdown-item" href="#">Filtro 2</a>
+          <a class="dropdown-item" href="#">Filtro 3</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Separated link</a>
-        </div>
+          <a class="dropdown-item" href="#">
+            <img class="mt-1"  th:src="@{/images/apagado.png}" alt="" width="20" height="20" style="border-radius: 30px; float: left;"/>Desconectarse
+          </a>
       </div>
-    </div>
   </div>
 </header>
 
