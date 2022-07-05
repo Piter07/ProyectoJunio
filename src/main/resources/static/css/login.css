@@ -189,3 +189,21 @@ a:hover{
 .btn:hover{
 	background-position: right;
 }
+
+form{
+	width: 100%;
+}
+
+#checkboxx{
+	display: block;
+	text-align: left;
+	text-decoration: none;
+	color: #999;
+	font-family: 'Poppins', sans-serif;
+	font-size: 1rem;
+	transition: .3s;
+}
+#terminos{
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}

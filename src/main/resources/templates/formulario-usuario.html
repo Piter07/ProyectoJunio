@@ -1,100 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-
-    <meta charset="UTF-8">
-    <title>Formulario Usuario</title>
-    <meta charset="utf-8">
+    <title>Registrarse</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
-<!--    inicio de lo que creo que es parte del header-->
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-
-        .b-example-divider {
-            height: 3rem;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
-            border-width: 1px 0;
-            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-        }
-
-        .b-example-vr {
-            flex-shrink: 0;
-            width: 1.5rem;
-            height: 100vh;
-        }
-
-        .bi {
-            vertical-align: -.125em;
-            fill: currentColor;
-        }
-
-        .nav-scroller {
-            position: relative;
-            z-index: 2;
-            height: 2.75rem;
-            overflow-y: hidden;
-        }
-
-        .nav-scroller .nav {
-            display: flex;
-            flex-wrap: nowrap;
-            padding-bottom: 1rem;
-            margin-top: -1px;
-            overflow-x: auto;
-            text-align: center;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
-        }
-    </style>
-<!--    fin de lo que creo que es parte del header-->
-
+    <!--	<link rel="stylesheet" href="css/login.css">-->
+    <link th:href="@{/css/login.css}" rel = "stylesheet">
 </head>
 <body>
-    <header  class="p-3 mb-2 bg-primary text-white" style="background-color: #1d75bc !important;">
-        <img class="mb-2"  th:src="@{/images/roshka.jpg}" alt="" width="40" height="40" style="border-radius: 30px; float: left;"/>
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-
-            </a>
-
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            </ul>
-
-            <div class="text-end">
-                <a href="/login"><button type="button" class="btn btn-outline-light me-2" >Iniciar Sesión</button></a>
-                <button type="button" class="btn btn-warning" style="background-color: #FFFFFF !important; border-color : #000000 !important; ">Resgístrate</button>
+<div class="container">
+    <div class="container-right col-sm-12 col-md-6 col-lg-4 col-xl-4 bg-light p-3 text-dark bg-opacity-50">
+        <a href="/"><i class="fa fa-angle-left fa-lg"></i></a>
+        <form action="index.html">
+            <img src="images/roshka-icon.jpeg">
+            <h1 class="title">Roshkagram</h1>
+            <div class="input-div one">
+                <div class="i">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="div">
+                    <h5>Email</h5>
+                    <input type="text" class="input">
+                </div>
             </div>
-        </div>
-    </header>
-
-    <footer class="footer mt-auto py-3 bg-light">
-        <div class="container">
-            <!--        <span class="text-muted">Place sticky footer content here.</span>-->
-            <!-- Copyright -->
-            <div class="text-center p-3">
-          <span id="copyright">
-          © 2022 Copyright: Bootcampers - PROMO MÁQUINA.
-          </span>
+            <div class="input-div pass">
+                <div class="i">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="div">
+                    <h5>Contraseña</h5>
+                    <input type="password" class="input">
+                </div>
             </div>
-            <!-- Copyright -->
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+            <div class="input-div pass">
+                <div class="i">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="div">
+                    <h5>Confirmar Contraseña</h5>
+                    <input type="password" class="input">
+                </div>
+            </div>
+            <div class="input-div pass">
+                <div class="i">
+                    <i class="fas fa-address-card"></i>
+                </div>
+                <div class="div">
+                    <h5>Nombre</h5>
+                    <input type="text" class="input">
+                </div>
+            </div>
+            <div class="input-div pass">
+                <div class="i">
+                    <i class="far fa-address-card"></i>
+                </div>
+                <div class="div">
+                    <h5>Apellido</h5>
+                    <input type="text" class="input">
+                </div>
+            </div>
+            <div class="i" id="terminos">
+                <div class="form-check" id="checkboxx">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Acepto los terminos.
+                    </label>
+                </div>
+            </div>
+            <input type="submit" class="btn" value="Registrarse">
+        </form>
+    </div>
+</div>
+<!--<footer class="footer mt-auto py-3">-->
+<!--    <div class="container">-->
+<!--        &lt;!&ndash;        <span class="text-muted">Place sticky footer content here.</span>&ndash;&gt;-->
+<!--        &lt;!&ndash; Copyright &ndash;&gt;-->
+<!--        <div class="text-center p-3">-->
+<!--              <span id="copyright">-->
+<!--              © 2022 Copyright: Bootcampers - PROMO MÁQUINA.-->
+<!--              </span>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Copyright &ndash;&gt;-->
+<!--    </div>-->
+<!--</footer>-->
+<script type="text/javascript" src="js/login.js"></script>
 </body>
 </html>
