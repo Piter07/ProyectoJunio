@@ -12,4 +12,9 @@ public class AlbumsController {
         // retorna el nombre de la vista
         return "album";
     }
+
+    @GetMapping("/album-fotos")
+    public String albumFoto(){
+        return "album-fotos";
+    }
 }
