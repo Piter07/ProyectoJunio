@@ -1,0 +1,18 @@
+footer{
+    text-align: center;
+    position: fixed;
+    height: 50px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+    display: flex;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+}
+
+#copyright{
+    padding:3rem;
+    color: black;
+}
