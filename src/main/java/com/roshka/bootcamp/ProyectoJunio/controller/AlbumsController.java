@@ -12,4 +12,5 @@ public class AlbumsController {
         // retorna el nombre de la vista
         return "album";
     }
+
 }
