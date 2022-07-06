@@ -13,4 +13,8 @@ public class AlbumsController {
         return "albumes";
     }
 
+    @GetMapping("/album-fotos")
+    public String albumFoto(){
+        return "album-fotos";
+    }
 }
