@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.98.0">
+    <link rel="icon" type="img/x-icon" href="/img/roshkaicon.ico">
     <link rel="stylesheet" href="css/albumes.css">
     <title>Album</title>
 
@@ -95,7 +96,7 @@
     <div class="navbar navbar-dark bg-dark shadow-sm" style="background-color: #1d75bc !important;">
         <div class="container">
 
-            <a href="#" class="navbar-brand d-flex align-items-center">
+            <a href="/" class="navbar-brand d-flex align-items-center">
                 <img class="mt-1" th:src="@{/img/roshka.jpg}" alt="" width="40" height="40"
                      style="border-radius: 30px; float: left;"/>
                 <strong>Roshkagram</strong>
@@ -127,22 +128,10 @@
         <div class="container">
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div id="album1" class="col-sm" onclick="abrirAlbum(this.id);">
-                    <!-- El id va a ser igual al id de la foto en la Base de datos -->
-                    <!--<div class="card shadow-sm" style="border: transparent;">
-                        <img class="mb-1" th:src="@{/images/foto.jpeg}" style="border-radius: 5px ;"/>
-                        <div class="card-body">
-                            <p class="card-text">Descripcion Generica 1</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted"> 05/07/2022</small>
-                                <small class="text-muted">9 mins</small>
-                            </div>
-                        </div>
-                    </div>-->
+                <div id="album1" class="col-sm" >
                     <div class="col post-container">
                         <div class="post-row">
                             <div class="user-profile">
-
                                 <div>
                                     <p>
                                         Bootcamp Java 2022 Junio
@@ -259,17 +248,6 @@
     </div>
 
 </main>
-
-<footer class="text-muted py-5">
-    <div class="container">
-        <p class="float-end mb-1">
-            <a href="#">Back to top</a>
-        </p>
-        <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a
-                href="../getting-started/introduction/">getting started guide</a>.</p>
-    </div>
-</footer>
 <script type="text/javascript" src="js/main.js"></script>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
