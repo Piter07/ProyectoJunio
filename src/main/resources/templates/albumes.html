@@ -73,6 +73,7 @@
     background: #f1f1f1;
   }
 
+
     </style>
 
 
@@ -99,12 +100,11 @@
                      style="border-radius: 30px; float: left;"/>
                 <strong>Roshkagram</strong>
             </a>
-            <form role="search" data-dashlane-rid="24ac0fc943d24590" data-form-type="">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-dashlane-rid="18043201b68b8312" data-form-type="">
-            </form>
             <div class="dropdown">
-                <button class="btn btn-outline-light me-2 dropdown-toggle" type="button" data-toggle="dropdown">Filtros
-                    <span class="caret"></span></button>
+                <button class="btn btn-outline-light me-2" type="button" data-toggle="dropdown">
+                    <span class="caret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+</svg></span></button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#">Filtro 1</a>
                     <a class="dropdown-item" href="#">Filtro 2</a>
@@ -127,7 +127,8 @@
         <div class="container">
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div id = "album1" class="col"  onclick="abrirAlbum(this.id);"> <!-- El id va a ser igual al id de la foto en la Base de datos -->
+                <div id="album1" class="col-sm" onclick="abrirAlbum(this.id);">
+                    <!-- El id va a ser igual al id de la foto en la Base de datos -->
                     <!--<div class="card shadow-sm" style="border: transparent;">
                         <img class="mb-1" th:src="@{/images/foto.jpeg}" style="border-radius: 5px ;"/>
                         <div class="card-body">
@@ -138,112 +139,123 @@
                             </div>
                         </div>
                     </div>-->
-                  <div class="col post-container">
-                      <div class="post-row">
-                          <div class="user-profile">
-                              <img src="/img/roshka-icon.jpeg">
-                              <div>
-                                  <p>Oscar Gonzalez</p>
-                                  <span>Junio 24 2021, 13:40 pm</span>
-                              </div>
-                          </div>
-                      </div>
-                      <p class="post-text">
-                          Bootcamp Java 2022 Junio
-                          <img src="/img/foto.jpeg" class="post-img">
-                      </p>
-                  </div>
-                </div>
-                <div id = "album2" class="col"  onclick="abrirAlbum(this.id);">
                     <div class="col post-container">
                         <div class="post-row">
                             <div class="user-profile">
-                                <img src="/img/roshka-icon.jpeg">
+
                                 <div>
-                                    <p>Oscar Gonzalez</p>
+                                    <p>
+                                        Bootcamp Java 2022 Junio
+                                    </p>
                                     <span>Junio 24 2021, 13:40 pm</span>
                                 </div>
                             </div>
                         </div>
-                        <p class="post-text">
-                            Bootcamp Java 2022 Junio
+                        <p>
+                            Oscar Gonzalez
                             <img src="/img/foto.jpeg" class="post-img">
                         </p>
                     </div>
                 </div>
-                <div id = "album3" class="col"  onclick="abrirAlbum(this.id);">
+                <div id="album2" class="col-sm" onclick="abrirAlbum(this.id);">
                     <div class="col post-container">
                         <div class="post-row">
                             <div class="user-profile">
-                                <img src="/img/roshka-icon.jpeg">
+
                                 <div>
-                                    <p>Oscar Gonzalez</p>
+                                    <p>
+                                        Bootcamp Java 2022 Junio
+                                    </p>
                                     <span>Junio 24 2021, 13:40 pm</span>
                                 </div>
                             </div>
                         </div>
-                        <p class="post-text">
-                            Bootcamp Java 2022 Junio
+                        <p>
+                            Oscar Gonzalez
                             <img src="/img/foto.jpeg" class="post-img">
                         </p>
                     </div>
                 </div>
-                <div id = "album4" class="col"  onclick="abrirAlbum(this.id);">
+                <div id="album3" class="col-sm" onclick="abrirAlbum(this.id);">
                     <div class="col post-container">
                         <div class="post-row">
                             <div class="user-profile">
-                                <img src="/img/roshka-icon.jpeg">
+
                                 <div>
-                                    <p>Oscar Gonzalez</p>
+                                    <p>
+                                        Bootcamp Java 2022 Junio
+                                    </p>
                                     <span>Junio 24 2021, 13:40 pm</span>
                                 </div>
                             </div>
                         </div>
-                        <p class="post-text">
-                            Bootcamp Java 2022 Junio
+                        <p>
+                            Oscar Gonzalez
                             <img src="/img/foto.jpeg" class="post-img">
                         </p>
                     </div>
                 </div>
-                <div id = "album5" class="col"  onclick="abrirAlbum(this.id);">
+                <div id="album4" class="col-sm" onclick="abrirAlbum(this.id);">
                     <div class="col post-container">
                         <div class="post-row">
                             <div class="user-profile">
-                                <img src="/img/roshka-icon.jpeg">
+
                                 <div>
-                                    <p>Oscar Gonzalez</p>
+                                    <p>
+                                        Bootcamp Java 2022 Junio
+                                    </p>
                                     <span>Junio 24 2021, 13:40 pm</span>
                                 </div>
                             </div>
                         </div>
-                        <p class="post-text">
-                            Bootcamp Java 2022 Junio
+                        <p>
+                            Oscar Gonzalez
                             <img src="/img/foto.jpeg" class="post-img">
                         </p>
                     </div>
                 </div>
-                <div id = "album6" class="col"  onclick="abrirAlbum(this.id);">
+                <div id="album5" class="col-sm" onclick="abrirAlbum(this.id);">
                     <div class="col post-container">
                         <div class="post-row">
                             <div class="user-profile">
-                                <img src="/img/roshka-icon.jpeg">
+
                                 <div>
-                                    <p>Oscar Gonzalez</p>
+                                    <p>
+                                        Bootcamp Java 2022 Junio
+                                    </p>
                                     <span>Junio 24 2021, 13:40 pm</span>
                                 </div>
                             </div>
                         </div>
-                        <p class="post-text">
-                            Bootcamp Java 2022 Junio
+                        <p>
+                            Oscar Gonzalez
                             <img src="/img/foto.jpeg" class="post-img">
                         </p>
                     </div>
                 </div>
+                <div id="album6" class="col-sm" onclick="abrirAlbum(this.id);">
+                    <div class="col post-container">
+                        <div class="post-row">
+                            <div class="user-profile">
+
+                                <div>
+                                    <p>
+                                        Bootcamp Java 2022 Junio
+                                    </p>
+                                    <span>Junio 24 2021, 13:40 pm</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p>
+                            Oscar Gonzalez
+                            <img src="/img/foto.jpeg" class="post-img">
+                        </p>
+                    </div>
+                </div>
+
+
             </div>
-
-
         </div>
-    </div>
     </div>
 
 </main>

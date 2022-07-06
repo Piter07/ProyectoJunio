@@ -3,6 +3,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between; /* hace colocar los elementos a los costados con espacios entre ellos */
+
+}
+
+.post-container{
+   border: 2px solid #F0F0F0;
+   border-radius: 10px;
+   margin-right: 10px;
+   padding: 10px;
+
 }
 
 .user-profile {
@@ -18,8 +27,9 @@
 
 .user-profile p {
     margin-bottom: -5px;
+    font-size: 16px;
     font-weight: 500;
-    color: #626262;
+    font-weight: bold;
 }
 
 .user-profile small {
@@ -27,8 +37,8 @@
 }
 
 .user-profile span {
-    font-size: 13px;
-    color: #9a9a9a;
+    font-size: 14px;
+    color: #626262;
 }
 
 .post-img {
@@ -36,4 +46,50 @@
     border-radius: 4px;
     margin-bottom: 5px;
     margin-top: 10px;
+
+}
+
+.mobile-container {
+  max-width: 480px;
+  margin: auto;
+  background-color: #555;
+  height: 500px;
+  color: white;
+  border-radius: 10px;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  position: relative;
+}
+
+.topnav #myLinks {
+  display: none;
+}
+
+.topnav a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+.topnav a.icon {
+  background: black;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.active {
+  background-color: #04AA6D;
+  color: white;
 }
