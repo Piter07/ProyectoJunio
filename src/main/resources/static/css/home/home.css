@@ -1,0 +1,89 @@
+.contenedorPrincipal{
+    
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;;
+    
+}
+.contenedorUno{
+    
+     
+    width: 45%;
+    height:auto;
+    height: 35rem;
+    position: relative;
+   
+  
+}
+.contenedorDos{
+    padding: 3rem;    
+    width: 55%;
+    height:auto;
+      
+
+}
+.images{
+    padding-top: 1rem;
+    width: 100%;
+    height: 100%;   
+    position: absolute; 
+       
+}
+
+h1{
+    color:#1d75bc;
+    font-family: fantasy;
+    line-height: 2;
+}
+h2{
+    font-family: "Consolas", monospace;
+    color:#1d75bc;
+    font-size: 1.3rem;
+    line-height:2;
+   
+}
+h3{
+    color:#1d75bc;
+    font-family: fantasy;
+    font-size: 2rem;
+    line-height:2;
+ }
+.h4{
+    font-size: 1.1rem;
+    color:#1d75bc;
+    font-family: "arial", serif;
+    line-height: 1.5;
+   
+}
+.rectangle {
+    position: fixed;
+    margin-top: 3rem;
+    height: 1rem;
+    width: 6rem;
+    background-color: #1d75bc;
+  }
+  .rectangle2 {
+    position: fixed;
+    margin-top: 3rem;
+    height: 0.8rem;
+    width: 5rem;
+    background-color: #1d75bc;
+    margin-left: 11rem;
+  }
+  .rectangle3 {
+    position: fixed;
+    margin-top: 3rem;
+    height: 0.6rem;
+    width: 3.5rem;
+    background-color: #1d75bc;
+    margin-left: 21rem;
+  }
+  .rectangle4 {
+    position: fixed;
+    margin-top: 3rem;
+    height: 0.4rem;
+    width: 1.5rem;
+    background-color: #1d75bc;
+    margin-left: 30rem;
+  }
