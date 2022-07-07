@@ -66,8 +66,8 @@
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <a class="link" href="/album-fotos" onMouseover="this.style.color='black'">
                     <div th:each="album : ${albumes}">
+                        <a class="link" href="/album-fotos" onMouseover="this.style.color='black'">
                         <div id="${album.id_album}" class="col-sm">
                             <div class="col post-container">
                                 <div class="post-row">
@@ -79,14 +79,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p th:text="${album.id_usuario}">
-                                    <img src="" class="post-img">
-                                </p>
+                                <p th:text="${album.id_usuario}"></p>
+                                    <img th:src="@{/img/foto.jpeg}" class="post-img">
+
                             </div>
                         </div>
+                        </a>
                     </div>
-                </a>
-
             </div>
         </div>
     </div>
