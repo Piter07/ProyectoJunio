@@ -3,29 +3,40 @@ html, body{
     height:100%;
     margin: 0;
   }
-.contenedoPrincipal{    
-    display: flex;
+.contenedoPrincipal{       
     background: rgba(7, 7, 7);
     width: 100%;
     height: 100%;
+    display: flex;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 .container2{
     background: yellow;
-    width: 60%;
-    margin-left: 2rem;
+    width: 70%;   
     display: flex;
+    height: auto;
 }
 .coontainer3{
     background: white;
-    width: 30%;
+    width: 35%;
     padding-left:  1rem;
     padding-right: 1rem;
     padding-top: 1rem;
+    height: auto;
+    
    
 }
 .imagenes{
     max-width: 100%;
     max-height: 100%;
+}
+.imagenPerfil{
+    border-radius: 30px; 
+    float: left;
+    margin-right: 0.5rem;
+    width:20%;
+    height:25%;
 }
 
 .cajaComentario{
@@ -36,14 +47,8 @@ html, body{
     padding-right: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.1rem;  
-    border-radius:7px;
-         
+    border-radius:7px;       
     
-}
-.cajaPerfil{    
-    width: 18%;
-    
-   
 }
 
 h2{
@@ -60,25 +65,26 @@ p{
 }
 .reacciones{
     display: flex;
-    letter-spacing: 5px;
+    letter-spacing: 5%;
     margin-top: 1rem;
 
 }
 .pComentario{
     letter-spacing: 0px;
-    margin-left: 1rem;
-    font-size:0.9rem;
+    margin-left: 0.5rem;
+    font-size:100%;
 
 }
 .nombe{
     margin-top: 0.5rem;
     margin-left: 1rem;
+    font-weight: bold;
 }
 
 .cajaScroll{
 padding-right: 0.5rem;
 overflow: scroll;
-height: 24rem;
+height: 60%;
 }
 .titulo{
     font-size: 1.3rem;
@@ -86,32 +92,140 @@ height: 24rem;
 .descripcion{
     font-size: 1rem;
 }
-.iconoAnterior{
-
+.iconoSiguiente{
     
     font-size:48px;
-    color:rgb(65, 10, 216);
-    margin-left: 0.5rem;
-    
+    color: rgb(247, 236, 236);
+    margin-left: 51rem;
+    position: absolute;   
+    margin-top: 8rem; 
     
 }
 
 .iconoAnterior:hover{
-    color: rgb(247, 236, 236);
+    color: rgb(24, 22, 22);
     
 }
 .iconoSiguiente:hover{
-    color: rgb(247, 236, 236);
+    color: rgb(8, 8, 8);
     
 }
 
-.iconoSiguiente{
-    float: right; 
-    color:rgb(65, 10, 216);
-    font-size:48px; 
-    margin-left: 1.5rem;  
+.iconoAnterior{
+    color: rgb(247, 236, 236);
+    font-size:48px;    
+    position: absolute; 
+    margin-left: 1.5rem;
+    margin-top: 8rem; 
      
 }
 .iconoDireccion{
     margin-top: 20%;
 }
+.iconoEmogi{
+
+    font-size:2rem;
+   
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .container2{
+        background: yellow;
+        width: 100%;   
+        height: auto;
+                
+    }
+
+    .coontainer3{
+        background: white;
+        width: 100%;  
+        height: auto;
+        
+              
+    }
+
+  .imagenes{       
+    width: 100%;
+    height:100%;
+    }
+
+    .contenedoPrincipal{    
+    
+    background: #ffffff;
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    }
+
+    .imagenPerfil{
+        border-radius: 30px; 
+        float: left;
+        margin-right: 0.5rem;
+        width:3%;
+        height:3%;
+    }
+
+    .cajaScroll{
+        padding-right: 0.5rem;    
+        width:100%;           
+        overflow: scroll;
+        height: 6rem;
+        }
+
+    .titulo{
+            font-size: 1rem;
+        }
+    .descripcion{
+            font-size: 0.7rem;
+        }
+    .cajaComentario{
+            margin-top: 0.5rem; 
+            background:rgb(223, 222, 222); 
+           
+        }
+
+    .iconoSiguiente{    
+        
+         margin-left: 40rem;
+        
+         margin-top: 2rem; 
+            
+        }
+    .iconoAnterior{ 
+        
+                     
+      margin-top: 2rem; 
+               
+     }
+
+     h2{
+        margin: 0;
+        font-size: 12px;
+    }
+    p{
+        margin: 0;
+        font-size: 10px;
+    }
+
+    .reacciones{
+
+     
+    letter-spacing:10px;
+    margin-top: 0.2rem;
+        
+
+    }
+    .iconoEmogi{
+
+        font-size:1.5rem;
+       
+    }
+.form-control{
+    row: 1px;
+}
+ }
