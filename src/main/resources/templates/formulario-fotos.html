@@ -5,56 +5,86 @@
         <meta charset="UTF-8">
         <title>Agregar Fotos</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link th:href="@{/css/formulario_fotos.css}" rel = "stylesheet">
         <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+        <link th:href="@{/css/formulario_fotos.css}" rel = "stylesheet">
     </head>
 
-    <header>
-        <div class="navbar navbar-dark bg-dark shadow-sm" style="background-color: #1d75bc !important;">
-            <div class="container">
-
-                <a href="#" class="navbar-brand d-flex align-items-center">
-                    <img class="mt-1" th:src="@{/img/roshka.jpg}" alt="" width="40" height="40"
-                         style="border-radius: 30px; float: left;"/>
-                    <strong>Roshkagram</strong>
-                </a>
-                <div class="dropdown">
-                    <button class="btn btn-outline-light me-2 dropdown-toggle" type="button" data-toggle="dropdown">Filtros
-                        <span class="caret"></span></button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Filtro 1</a>
-                        <a class="dropdown-item" href="#">Filtro 2</a>
-                        <a class="dropdown-item" href="#">Filtro 3</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">
-                            <img class="mt-1" th:src="@{/images/apagado.png}" alt="" width="20" height="20"
-                                 style="border-radius: 30px; float: left;"/>Desconectarse
-                        </a>
-                    </div>
-                </div>
+    <header  class="p-3 mb-2 bg-primary text-white no-margin-top" style="background-color: #1d75bc !important;">
+        <img class="mb-2"  th:src="@{/img/roshka.jpg}" alt="" width="40" height="40" style="border-radius: 30px; float: left;"/>
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            </a>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            </ul>
+            <div class="text-end">
+                <a href="/login"><button type="button" class="btn btn-outline-light me-2" >Login</button></a>
+                <button type="button" class="btn btn-warning" style="background-color: #FFFFFF !important; border-color : #000000 !important; ">Sign-up</button>
             </div>
         </div>
     </header>
 
+
     <body>
-        <div class="container border border-2 border-primary" id="contenedor-principal">
-<!--            <input type="file" accept=".pdf,.jpg,.png, .jpge" multiple  id="archivos"/>-->
-            <form action="/target" class="dropzone" id="my-dropzone">
 
-            </form>
-
-        </div>
-
+<!--        <div class="container border border-2 border-primary shadow-lg p-3 mb-5 bg-body rounded" id="contenedor-principal">-->
+<!--        </div>-->
+            <div class="container" id="contenedor-principal">
+                <form action="" class="" method="post">
+                    <div class="dropzone">
+                        <div class="dz-default dz-message">
+                            <button class="dz-button" type="button"><img src="img/upload.png" alt=""></button>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <button type="button" id="send">Enviar</button>
+                    </div>
+                </form>
+            </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
         <script>
             // Note that the name "myDropzone" is the camelized
             // id of the form.
-            Dropzone.options.myDropzone = {
-                // Configuration options go here
-            };
-        </script>
+            let arrImages = [];
+            Dropzone.autoDiscover = false;
+            let myDropzone = new Dropzone('.dropzone', {
+                url:'/FormFotos',
+                maxFilesize:2,
+                // maxFiles:3,
+                acceptedFiles:'image/jpeg, image/png',
+                addRemoveLinks:true,
+                dictRemoveFile:'Quitar'
+            })
+            myDropzone.on('addedfile', file => {
+                console.log(file);
+                arrImages.push(file);
+            })
+            myDropzone.on('removedfile', file => {
+                let i = arrImages.indexOf(file);
+                arrImages.splice(i, 1);
+            })
 
+            document.getElementById('send').addEventListener('click', () => {
+                let not = [];
+                for(let i=0; i<arrImages.length; i++) {
+                    let imgData = new FormData();
+                    imgData.append('file', arrImages[i]);
+
+                    fetch('upload.php', {
+                        method:'POST',
+                        body:imgData
+                    }).then(res => res.json()).then(data => {
+                        not.push(data);
+                    });
+                }
+
+                if (!not.includes('fail')) {
+                    alert('Guardado');
+                } else {
+                    alert('Error');
+                }
+            })
+        </script>
 
     </body>
 
