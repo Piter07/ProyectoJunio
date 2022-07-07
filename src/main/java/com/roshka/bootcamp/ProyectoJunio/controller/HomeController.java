@@ -19,4 +19,16 @@ public class HomeController {
         return "login";
 
     }
+    @GetMapping("/vista_imagen")
+    public String vista_imagen() {
+        // retorna el nombre de la vista
+        return "vista_imagen";
+
+    }
+    @GetMapping("/vista")
+    public String vista() {
+        // retorna el nombre de la vista
+        return "vista";
+
+    }
 }
