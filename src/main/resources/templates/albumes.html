@@ -40,8 +40,10 @@
             </a>
             <div class="dropdown">
                 <button class="btn btn-outline-light me-2" type="button" data-toggle="dropdown">
-                    <span class="caret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                    <span class="caret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
+  <path fill-rule="evenodd"
+        d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
 </svg></span></button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#">Filtro 1</a>
@@ -64,26 +66,25 @@
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-                <a class="link" href="/album-fotos"  onMouseover="this.style.color='black'">
-                    <div th:each="album : ${albumes}" id="" class="col-sm" >
-                    <div class="col post-container">
-                        <div class="post-row">
-                            <div class="user-profile">
-                                <div>
-                                    <p>
-                                        Bootcamp Java 2022 Junio
-                                    </p>
-                                    <span>Junio 24 2021, 13:40 pm</span>
+                <a class="link" href="/album-fotos" onMouseover="this.style.color='black'">
+                    <div th:each="album : ${albumes}">
+                        <div id="${album.id_album}" class="col-sm">
+                            <div class="col post-container">
+                                <div class="post-row">
+                                    <div class="user-profile">
+                                        <div>
+                                            <p th:text="${album.titulo}">
+                                            </p>
+                                            <span th:text="${album.fechaEvento}"></span>
+                                        </div>
+                                    </div>
                                 </div>
+                                <p th:text="${album.id_usuario}">
+                                    <img src="" class="post-img">
+                                </p>
                             </div>
                         </div>
-                        <p>
-                            Oscar Gonzalez
-                            <img src="/img/foto.jpeg" class="post-img">
-                        </p>
                     </div>
-                </div>
                 </a>
 
             </div>

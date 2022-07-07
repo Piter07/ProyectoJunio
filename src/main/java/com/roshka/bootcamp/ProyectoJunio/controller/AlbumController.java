@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+@Controller
 public class AlbumController {
 
     private AlbumService albumService;
@@ -32,7 +33,7 @@ public class AlbumController {
         return "album-fotos";
     }
 
-    @GetMapping("/album/")
+    @GetMapping("/album")
     public String getAlbum(Model model) throws Exception {
         List<Album> albumes = albumService.list();
         model.addAttribute("albumes", albumes);
