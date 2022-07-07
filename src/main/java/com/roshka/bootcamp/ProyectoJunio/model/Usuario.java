@@ -33,7 +33,10 @@ public class Usuario {
     @Column(name = "apellido")
     private String apellido;
 
+    @Column(name="estado")
+
     private String email;
     private String password;
     private Long idRol;
+    private String estado;
 }
