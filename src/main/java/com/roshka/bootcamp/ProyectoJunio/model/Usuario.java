@@ -34,9 +34,10 @@ public class Usuario {
     private String apellido;
 
     @Column(name="estado")
+    private String estado;
 
     private String email;
     private String password;
     private Long idRol;
-    private String estado;
+
 }
