@@ -1,0 +1,117 @@
+
+html, body{
+    height:100%;
+    margin: 0;
+  }
+.contenedoPrincipal{    
+    display: flex;
+    background: rgba(7, 7, 7);
+    width: 100%;
+    height: 100%;
+}
+.container2{
+    background: yellow;
+    width: 60%;
+    margin-left: 2rem;
+    display: flex;
+}
+.coontainer3{
+    background: white;
+    width: 30%;
+    padding-left:  1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+   
+}
+.imagenes{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.cajaComentario{
+    width: 100%;
+    margin-top: 1rem; 
+    background:rgb(223, 222, 222); 
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.1rem;  
+    border-radius:7px;
+         
+    
+}
+.cajaPerfil{    
+    width: 18%;
+    
+   
+}
+
+h2{
+    font-size: 16px;
+}
+p{
+    font-size: 12px;
+}
+.form-group{
+    margin-top: 1rem;
+    position:sticky;
+    line-height: 2;
+
+}
+.reacciones{
+    display: flex;
+    letter-spacing: 5px;
+    margin-top: 1rem;
+
+}
+.pComentario{
+    letter-spacing: 0px;
+    margin-left: 1rem;
+    font-size:0.9rem;
+
+}
+.nombe{
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+}
+
+.cajaScroll{
+padding-right: 0.5rem;
+overflow: scroll;
+height: 24rem;
+}
+.titulo{
+    font-size: 1.3rem;
+}
+.descripcion{
+    font-size: 1rem;
+}
+.iconoAnterior{
+
+    
+    font-size:48px;
+    color:rgb(65, 10, 216);
+    margin-left: 0.5rem;
+    
+    
+}
+
+.iconoAnterior:hover{
+    color: rgb(247, 236, 236);
+    
+}
+.iconoSiguiente:hover{
+    color: rgb(247, 236, 236);
+    
+}
+
+.iconoSiguiente{
+    float: right; 
+    color:rgb(65, 10, 216);
+    font-size:48px; 
+    margin-left: 1.5rem;  
+     
+}
+.iconoDireccion{
+    margin-top: 20%;
+}
