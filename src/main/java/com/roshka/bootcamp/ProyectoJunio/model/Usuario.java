@@ -3,19 +3,10 @@ package com.roshka.bootcamp.ProyectoJunio.model;
 import lombok.Data;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -36,8 +27,13 @@ public class Usuario {
     @Column(name="estado")
     private String estado;
 
-    private String email;
-    private String password;
-    private Long idRol;
+    @Column(name = "correo")
+    private String correo;
+
+    @Column(name = "clave")
+    private String clave;
+
+    @OneToMany(mappedBy = "usuario")
+    private Set<Rol> roles = new HashSet<>();
 
 }

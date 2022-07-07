@@ -2,11 +2,9 @@ package com.roshka.bootcamp.ProyectoJunio.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -18,4 +16,9 @@ public class Rol {
     private Long id;
     private String nombre;
 
+    @ManyToOne
+    private Usuario usuario;
+
+    @OneToMany(mappedBy = "rol")
+    private Set<Permiso> permisos = new HashSet<>();
 }
