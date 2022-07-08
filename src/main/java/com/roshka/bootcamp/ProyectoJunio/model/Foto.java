@@ -14,9 +14,14 @@ public class Foto {
     private Long id_foto;
     private String ruta;
     private String descripcion;
+
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "album_id", referencedColumnName = "id_album")
     private Album album;
+
+    @OneToMany(mappedBy = "foto")
+    private Set<Comentario> comentarios = new HashSet<>();
+
     @OneToMany(mappedBy = "foto")
     private Set<ReaccionFoto> reacciones = new HashSet<>();
 }

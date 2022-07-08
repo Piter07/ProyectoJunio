@@ -2,10 +2,9 @@ package com.roshka.bootcamp.ProyectoJunio.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Data
 @Entity
@@ -15,6 +14,15 @@ public class Comentario {
     private Long id_comentario;
     private String descripcion;
     private Date fechaPublicacion;
-    private Long id_usuario;
-    private Long id_foto;
+
+    @ManyToOne
+    @JoinColumn(name = "foto_id", referencedColumnName = "id_foto")
+    private Foto foto;
+
+    @OneToOne(mappedBy = "comentario")
+    private Usuario usuario;
+
+    @OneToMany(mappedBy = "comentario")
+    private Set<ReaccionComentario> reaciones;
+
 }
