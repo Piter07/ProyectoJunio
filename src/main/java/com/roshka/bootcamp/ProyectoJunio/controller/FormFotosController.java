@@ -12,6 +12,7 @@ public class FormFotosController {
     }
     @PostMapping("/FormFotos")
     public String postFormFotos(){
+        System.out.println("hola estamos en post");
         return "formulario-fotos";
     }
 }
