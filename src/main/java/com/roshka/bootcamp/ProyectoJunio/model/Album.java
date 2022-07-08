@@ -2,10 +2,7 @@ package com.roshka.bootcamp.ProyectoJunio.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +19,10 @@ public class Album {
     private Date fechaCreacion;
     private Date fechaUltMod;
     private Date fechaEvento;
-    private Long id_usuario;
+
+    @OneToOne(mappedBy = "album")
+    private Usuario usuario;
+
     @OneToMany(mappedBy = "album")
     private Set<Foto> fotos = new HashSet<>();
 }

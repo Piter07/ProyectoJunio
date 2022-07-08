@@ -16,7 +16,7 @@ public class Comentario {
     private Date fechaPublicacion;
 
     @ManyToOne
-    @JoinColumn(name = "foto_id")
+    @JoinColumn(name = "foto_id", referencedColumnName = "id_foto")
     private Foto foto;
 
     @OneToOne(mappedBy = "comentario")

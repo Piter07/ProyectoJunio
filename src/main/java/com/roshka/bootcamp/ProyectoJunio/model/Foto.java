@@ -16,7 +16,7 @@ public class Foto {
     private String descripcion;
 
     @ManyToOne
-    @JoinColumn(name = "album_id")
+    @JoinColumn(name = "album_id", referencedColumnName = "id_album")
     private Album album;
 
     @OneToMany(mappedBy = "foto")

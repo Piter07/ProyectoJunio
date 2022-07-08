@@ -12,10 +12,10 @@ import java.util.Set;
 public class Permiso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_permiso;
     private String nombre;
 
     @ManyToOne
-    @JoinColumn(name = "rol_id")
+    @JoinColumn(name = "rol_id", referencedColumnName = "id_rol")
     private Rol rol;
 }

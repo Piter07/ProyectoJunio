@@ -12,11 +12,11 @@ import java.util.Set;
 public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_rol;
     private String nombre;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
     private Usuario usuario;
 
     @OneToMany(mappedBy = "rol")

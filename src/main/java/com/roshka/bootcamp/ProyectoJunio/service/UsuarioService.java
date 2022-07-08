@@ -9,7 +9,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,8 +17,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class UsuarioService implements UserDetailsService {
+public class UsuarioService implements UsuarioServiceInterface {
 
+    @Autowired
     private UsuarioRepository usuarioRepository;
 
     @Autowired
@@ -30,6 +30,7 @@ public class UsuarioService implements UserDetailsService {
         this.usuarioRepository = usuarioRepository;
     }
 
+    @Override
     public Usuario guardar(UsuarioRegistroDTO registroDTO) {
         // se encripta la constraseña
         String clave = passwordEncoder.encode(registroDTO.getClave());
@@ -65,7 +66,7 @@ public class UsuarioService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario usuario = usuarioRepository.findByEmail(username);
+        Usuario usuario = usuarioRepository.findByCorreo(username);
 
         if(usuario == null) {
             throw new UsernameNotFoundException("Usuario o password invalidos");
@@ -74,6 +75,7 @@ public class UsuarioService implements UserDetailsService {
         return new User(usuario.getCorreo(), usuario.getClave(), mapearAutoridadesRoles(usuario.getRoles()));
     }
 
+    @Override
     public List<Usuario> listarUsuarios() {
         return usuarioRepository.findAll();
     }

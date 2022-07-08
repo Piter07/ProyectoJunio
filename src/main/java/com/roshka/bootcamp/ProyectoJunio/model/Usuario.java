@@ -2,7 +2,6 @@ package com.roshka.bootcamp.ProyectoJunio.model;
 
 import lombok.Data;
 
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,7 +14,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_usuario;
 
     @Column(name = "nombre")
     private String nombre;
@@ -46,5 +45,9 @@ public class Usuario {
     /* un comentario pertenece a un usuario */
     @OneToOne
     private Comentario comentario;
+
+    /* un album pertenece a un usuario */
+    @OneToOne
+    private Album album;
 
 }
