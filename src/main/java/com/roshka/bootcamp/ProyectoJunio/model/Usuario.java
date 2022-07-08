@@ -42,7 +42,7 @@ public class Usuario {
     @Column(name = "clave")
     private String clave;
     
-    @OneToMany (mappedBy = "foto")
+    @ManyToMany (mappedBy = "foto")
     private Long idRol;
 
 }
