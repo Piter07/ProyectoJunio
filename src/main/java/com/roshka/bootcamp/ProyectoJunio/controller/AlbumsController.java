@@ -7,11 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AlbumsController {
     // maneja el request para la ruta base
-    @GetMapping("/album")
-    public String home() {
-        // retorna el nombre de la vista
-        return "album";
-    }
 
     @GetMapping("/album-fotos")
     public String albumFoto(){

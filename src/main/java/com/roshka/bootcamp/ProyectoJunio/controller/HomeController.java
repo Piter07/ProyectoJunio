@@ -19,4 +19,10 @@ public class HomeController {
         return "login";
 
     }
+    @GetMapping("/registro")
+    public String registro() {
+        // retorna el nombre de la vista
+        return "formulario-usuario";
+
+    }
 }
