@@ -36,8 +36,13 @@ public class Usuario {
     @Column(name="estado")
     private String estado;
 
-    private String email;
-    private String password;
+    @Column(name = "correo")
+    private String correo;
+
+    @Column(name = "clave")
+    private String clave;
+    
+    @OneToMany (mappedBy = "foto")
     private Long idRol;
 
 }
