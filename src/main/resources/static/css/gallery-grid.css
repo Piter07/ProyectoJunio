@@ -9,6 +9,7 @@
     min-height: 100vh;
     border-radius: 20px;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.06);
+    text-align: center;
 }
 
 .gallery-container h1 {
@@ -31,6 +32,7 @@
 }
 
 .tz-gallery .lightbox img {
+    max-height: 300px;
     width: 100%;
     margin-bottom: 30px;
     transition: 0.2s ease-in-out;
@@ -56,9 +58,11 @@
     body {
         padding: 0;
     }
-
     .container.gallery-container {
         border-radius: 0;
     }
 }
-
+.posicion{
+    position:relative;
+    z-index:1;
+}

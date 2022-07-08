@@ -1,7 +1,7 @@
 package com.roshka.bootcamp.ProyectoJunio.controller;
 
 
-import com.roshka.bootcamp.ProyectoJunio.model.Album;
+import com.roshka.bootcamp.ProyectoJunio.repository.model.Album;
 import com.roshka.bootcamp.ProyectoJunio.service.AlbumService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,5 +37,11 @@ public class AlbumController {
         List<Album> albumes = albumService.list();
         model.addAttribute("albumes", albumes);
         return "albumes";
+    }
+
+    @GetMapping("/album-fotos")
+    public String albumFoto(){
+
+        return "album-fotos";
     }
 }
