@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
     <link th:href="@{/headers.css}" rel = "stylesheet">
-    <link  th:href="@{/css/gallery-grid.css}" rel="stylesheet">
+    <link th:href="@{/css/gallery-grid.css}" rel="stylesheet">
 </head>
 <style>
   .bd-placeholder-img {
@@ -85,7 +85,7 @@
         <div class="tz-gallery">
             <div class="row">
                 <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" th:href="@{/images/1.jpg}">
+                    <a class="lightbox" href="/imagen">
                         <img th:src="@{/images/1.jpg}" alt="imagen">
                     </a>
                 </div>
