@@ -9,7 +9,6 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "rol")
-
 public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +16,7 @@ public class Rol {
     private String nombre;
 
     @ManyToOne
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
     @OneToMany(mappedBy = "rol")

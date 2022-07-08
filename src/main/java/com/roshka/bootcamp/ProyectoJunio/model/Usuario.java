@@ -10,8 +10,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "usuarios", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
-
+@Table(name = "usuario", uniqueConstraints = @UniqueConstraint(columnNames = "correo"))
 public class Usuario {
 
     @Id
@@ -35,5 +34,17 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario")
     private Set<Rol> roles = new HashSet<>();
+
+    /* Relaciona que a un usuario le pertenece una reaccion de una foto */
+    @OneToOne
+    private ReaccionFoto reaccionFoto;
+
+    /* Relaciona que a un usuario le pertenece una reaccion de un comentario */
+    @OneToOne
+    private ReaccionComentario reaccionComentario;
+
+    /* un comentario pertenece a un usuario */
+    @OneToOne
+    private Comentario comentario;
 
 }
