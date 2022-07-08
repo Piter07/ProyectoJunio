@@ -33,6 +33,14 @@ body {
     min-height: 100vh; /* These two lines are counted as one :-)       */
 }
 
+.containerfoto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 70vh; /* These two lines are counted as one :-)       */
+}
+
 .container-left{
     display: flex;
     border-radius: 10px;
@@ -163,8 +171,22 @@ a{
 	font-size: 0.9rem;
 	transition: .3s;
 }
+#b{
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	color: #999;
+	font-size: 0.9rem;
+	transition: .3s;
+}
+#span_cuenta{
+	color: black;
+}
 
 a:hover{
+	color: #3878d3;
+}
+#b:hover{
 	color: #3878d3;
 }
 
@@ -188,4 +210,22 @@ a:hover{
 
 .btn:hover{
 	background-position: right;
+}
+
+form{
+	width: 100%;
+}
+
+#checkboxx{
+	display: block;
+	text-align: left;
+	text-decoration: none;
+	color: #999;
+	font-family: 'Poppins', sans-serif;
+	font-size: 1rem;
+	transition: .3s;
+}
+#terminos{
+	margin-top: 2rem;
+	margin-bottom: 2rem;
 }
