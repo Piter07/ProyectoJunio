@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,5 +37,11 @@ public class AlbumController {
         List<Album> albumes = albumService.list();
         model.addAttribute("albumes", albumes);
         return "albumes";
+    }
+
+    @GetMapping("/album-fotos")
+    public String albumFoto(){
+
+        return "album-fotos";
     }
 }

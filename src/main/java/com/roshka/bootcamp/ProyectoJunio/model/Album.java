@@ -3,9 +3,8 @@ package com.roshka.bootcamp.ProyectoJunio.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.*;
 
 @Data
 @Entity
