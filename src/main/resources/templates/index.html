@@ -15,23 +15,23 @@
 
     <link th:href="@{/headers.css}" rel = "stylesheet">
 
-    <header  class="p-3 mb-2 bg-primary text-white" style="background-color: #1d75bc !important;">
-        <img class="mb-2"  th:src="@{/img/roshka.jpg}" alt="" width="40" height="40" style="border-radius: 30px; float: left;"/>
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
-                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+<header style="position: sticky;  top: 0; ">
+    <div class="navbar navbar-dark bg-dark shadow-sm" style="background-color: #1d75bc !important;">
+        <div class="container">
 
-                </a>
-
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                </ul>
-
-                <div class="text-end">
-                    <a href="/login"><button type="button" class="btn btn-outline-light me-2" >Login</button></a>
-                    <a href="/registro"><button type="button" class="btn btn-warning" style="background-color: #FFFFFF !important; ">Sign-up</button></a>
-                </div>
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <img class="mt-1" th:src="@{/img/roshka.jpg}" alt="" width="40" height="40"
+                     style="border-radius: 30px; margin-right: 3px !important; "/>
+                <strong>Roshkagram</strong>
+            </a>
+            <div class="text-end">
+                <a href="/login"><button type="button" class="btn btn-outline-light me-2" >Login</button></a>
+                <a href="/registro"><button type="button" class="btn btn-warning" style="background-color: #FFFFFF !important; ">Sign-up</button></a>
             </div>
-    </header>
+        </div>
+    </div>
+</header>
 <body>
 
    <div class="contenedorPrincipal">
