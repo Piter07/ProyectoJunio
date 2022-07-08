@@ -68,7 +68,7 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div th:each="album : ${albumes}">
                         <a class="link" href="/album-fotos" onMouseover="this.style.color='black'">
-                        <div id="${album.id_album}" class="col-sm">
+                        <div th:id="${album.id_album}"  class="col-sm">
                             <div class="col post-container">
                                 <div class="post-row">
                                     <div class="user-profile">
@@ -80,7 +80,7 @@
                                     </div>
                                 </div>
                                 <p th:text="${album.id_usuario}"></p>
-                                    <img th:src="@{/img/foto.jpeg}" class="post-img">
+                                    <img th:src="${album.fotos.get(0).ruta}" class="post-img">
 
                             </div>
                         </div>
