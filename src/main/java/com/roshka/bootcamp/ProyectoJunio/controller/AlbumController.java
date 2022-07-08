@@ -2,7 +2,6 @@ package com.roshka.bootcamp.ProyectoJunio.controller;
 
 
 import com.roshka.bootcamp.ProyectoJunio.model.Album;
-import com.roshka.bootcamp.ProyectoJunio.model.Foto;
 import com.roshka.bootcamp.ProyectoJunio.service.AlbumService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
