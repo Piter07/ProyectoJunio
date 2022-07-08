@@ -39,4 +39,10 @@ public class AlbumController {
         model.addAttribute("albumes", albumes);
         return "albumes";
     }
+
+    @GetMapping("/album-fotos")
+    public String albumFoto(){
+
+        return "album-fotos";
+    }
 }
