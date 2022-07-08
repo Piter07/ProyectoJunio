@@ -19,7 +19,8 @@ public class Comentario {
     @JoinColumn(name = "foto_id", referencedColumnName = "id_foto")
     private Foto foto;
 
-    @OneToOne(mappedBy = "comentario")
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
     @OneToMany(mappedBy = "comentario")

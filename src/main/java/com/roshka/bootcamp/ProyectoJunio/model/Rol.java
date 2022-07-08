@@ -19,6 +19,6 @@ public class Rol {
     @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "rol")
+    @ManyToMany(mappedBy = "roles")
     private Set<Permiso> permisos = new HashSet<>();
 }
