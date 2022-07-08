@@ -27,7 +27,7 @@ public class AlbumController {
             model.addAttribute("titulo", album.get().getTitulo());
             model.addAttribute("descripcion", album.get().getDescripcion());
             model.addAttribute("fechaEvento", album.get().getFechaEvento());
-            model.addAttribute("usuario", album.get().getId_usuario());
+            model.addAttribute("usuario", album.get().getUsuario().getId_usuario());
         }
         return "album-fotos";
     }
