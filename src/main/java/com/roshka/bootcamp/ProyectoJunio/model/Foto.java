@@ -2,9 +2,9 @@ package com.roshka.bootcamp.ProyectoJunio.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -14,5 +14,9 @@ public class Foto {
     private Long id_foto;
     private String ruta;
     private String descripcion;
-    private Long id_album;
+    @ManyToOne
+    @JoinColumn
+    private Album album;
+    @OneToMany(mappedBy = "foto")
+    private Set<ReaccionFoto> reacciones = new HashSet<>();
 }
