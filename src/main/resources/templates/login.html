@@ -16,7 +16,7 @@
 	<div class="container">
         <div class="container-right col-sm-12 col-md-6 col-lg-4 col-xl-4 bg-light p-3 text-dark bg-opacity-50">
 			<a href="/"><i class="fa fa-angle-left fa-lg"></i></a>
-            <form action="/album">
+            <form th:action="@{/login}" method="post">
 				<img src="img/roshka-icon.jpeg">
 				<h1 class="title">Roshkagram</h1>
            		<div class="input-div one">
@@ -25,7 +25,7 @@
            		   </div>
            		   <div class="div">
            		   		<h5>Correo</h5>
-           		   		<input type="text" class="input">
+           		   		<input type="text" class="input" name="correo">
            		   </div>
            		</div>
            		<div class="input-div pass">
@@ -34,7 +34,7 @@
            		   </div>
            		   <div class="div">
            		    	<h5>Contraseña</h5>
-           		    	<input type="password" class="input">
+           		    	<input type="password" class="input" name="clave">
             	   </div>
             	</div>
 				<br>

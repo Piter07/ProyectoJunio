@@ -20,6 +20,6 @@ public class ReaccionFoto implements Serializable {
     @JoinColumn(name = "reaccion_id", referencedColumnName = "id_reaccion")
     private Reaccion reaccion;
 
-    // todo: Agregar la relacion del usuario cuando se cree en la rama
-    private Long id_usuario;
+    @OneToOne(mappedBy = "reaccionFoto")
+    private Usuario usuario;
 }
