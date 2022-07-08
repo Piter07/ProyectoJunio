@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/home/home_head.css">
     <link  th:href="@{/css/gallery-grid.css}" rel="stylesheet">
 </head>
-<header style="position: sticky;  top: 0; ">
+<header style="position: sticky;  top: 0; " class="posicion">
     <div class="navbar navbar-dark bg-dark shadow-sm" style="background-color: #1d75bc !important;">
         <div class="container">
 
@@ -47,21 +47,21 @@
     <div class="container gallery-container">
         <h1>Nombre Evento</h1>
         <p class="page-description text-center">Descripción</p>
-        <div class="tz-gallery">
+        <div class="tz-gallery"><!-- tz-gallery -->
             <div class="row">
                 <div class="col-sm-6 col-md-4">
                     <a class="lightbox" th:href="@{/images/1.jpg}">
-                        <img th:src="@{/img/1.jpg}" alt="imagen">
+                        <img class="img-thumbnail" th:src="@{/img/1.jpg}" alt="imagen">
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <a class="lightbox" th:href="@{/img/2.jpg}">
-                        <img th:src="@{/img/2.jpg}" alt="imagen">
+                        <img class="img-thumbnail" th:src="@{/img/2.jpg}" alt="imagen">
                     </a>
                 </div>
-                <div class="col-sm-12 col-md-4">
+                <div class="col-sm-6 col-md-4">
                     <a class="lightbox" th:href="@{/img/3.jpg}">
-                        <img th:src="@{/img/3.jpg}" alt="imagen">
+                        <img class="img-thumbnail" th:src="@{/img/3.jpg}" alt="imagen">
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-4">
@@ -70,8 +70,8 @@
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" th:href="@{/img/1.jpg}">
-                        <img th:src="@{/img/1.jpg}" alt="imagen">
+                    <a class="lightbox" th:href="@{/img/5.jpg}">
+                        <img th:src="@{/img/5.jpg}" alt="imagen">
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-4">
