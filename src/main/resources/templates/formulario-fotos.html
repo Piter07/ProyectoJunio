@@ -7,6 +7,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
         <link th:href="@{/css/formulario_fotos.css}" rel = "stylesheet">
+        <link th:href="@{/css/estilos_select.css}" rel = "stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
 
@@ -29,7 +30,7 @@
 <!--        </div>-->
             <div class="container rounded" id="super_principal">
                 <div class="container" id="contenedor-principal">
-                    <form action="" class="">
+                    <form action="" class="" enctype="multipart/form-data">
                         <div class="row shadow-lg p-1 mb-2 bg-body rounded " id="contededorAlbum">
                             <div class="col-12 mb-2" id="album_contenido">
 
@@ -53,25 +54,86 @@
                                         <textarea class="form-control" id="descripcion" rows="3" required></textarea>
                                     </div>
                                 </div>
-                                <div class="row" id="all_categorias">
-                                    <div class="col-1">
-                                        <span><strong>Categorias: </strong></span>
-                                    </div>
-                                    <div class="col-2 m3-2">
-                                        <div class="content-select">
-                                            <select class="form-select" name="categorias" id="categorias_999">
-                                                <option selected></option>
-                                                <option value="categoria_1" id="categoria_1">Categoria 1</option>
-                                                <option value="categoria_2" id="categoria_2">Categoria 2</option>
-                                                <option value="categoria_3" id="categoria_3">Categoria 3</option>
-                                                <option value="categoria_4" id="categoria_4">Categoria 4</option>
-                                                <option value="categoria_5" id="categoria_5">Categoria 5</option>
-                                                <option value="categoria_6" id="categoria_6">Categoria 6</option>
-                                                <option value="categoria_7" id="categoria_7">Categoria 7</option>
-                                            </select>
+<!--                                <div class="row" id="all_categorias">-->
+<!--                                    <div class="col-1">-->
+<!--                                        <span><strong>Categorias: </strong></span>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-2 m3-2">-->
+<!--                                        <div class="content-select">-->
+<!--                                            <select class="form-select" name="categorias" id="categorias_999">-->
+<!--                                                <option selected></option>-->
+<!--                                                <option value="categoria_1" id="categoria_1">Categoria 1</option>-->
+<!--                                                <option value="categoria_2" id="categoria_2">Categoria 2</option>-->
+<!--                                                <option value="categoria_3" id="categoria_3">Categoria 3</option>-->
+<!--                                                <option value="categoria_4" id="categoria_4">Categoria 4</option>-->
+<!--                                                <option value="categoria_5" id="categoria_5">Categoria 5</option>-->
+<!--                                                <option value="categoria_6" id="categoria_6">Categoria 6</option>-->
+<!--                                                <option value="categoria_7" id="categoria_7">Categoria 7</option>-->
+<!--                                            </select>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                inicio de un experimento select-->
+                                <div class="selectbox">
+                                    <div class="select" id="select">
+                                        <div class="contenido-select">
+                                            <span class="titulo">Categoria</span>
+<!--                                            <p class="descripcion">Lorem ipsum dolor sit.</p>-->
                                         </div>
+                                        <i class="fas fa-angle-down"></i>
+                                    </div>
+
+                                    <div class="opciones" id="opciones">
+                                        <a href="#" class="opcion">
+                                            <div class="contenido-opcion">
+<!--                                                <img src="img/mexico.png" alt="">-->
+                                                <div class="textos">
+                                                    <span class="titulo">Categoria 1</span>
+<!--                                                    <p class="descripcion">Lorem ipsum dolor sit.</p>-->
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="opcion">
+                                            <div class="contenido-opcion">
+<!--                                                <img src="img/spain.png" alt="">-->
+                                                <div class="textos">
+                                                    <span class="titulo">Categoria 2</span>
+<!--                                                    <p class="descripcion">Consectetur adipiscing elit.</p>-->
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="opcion">
+                                            <div class="contenido-opcion">
+<!--                                                <img src="img/colombia.png" alt="">-->
+                                                <div class="textos">
+                                                    <span class="titulo">Categoria 3</span>
+<!--                                                    <p class="descripcion">Suspendisse eleifend venenatis.</p>-->
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="opcion">
+                                            <div class="contenido-opcion">
+<!--                                                <img src="img/argentina.png" alt="">-->
+                                                <div class="textos">
+                                                    <span class="titulo">Categoria 4</span>
+<!--                                                    <p class="descripcion">Sed posuere laoreet dui.</p>-->
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="opcion">
+                                            <div class="contenido-opcion">
+<!--                                                <img src="img/chile.png" alt="">-->
+                                                <div class="textos">
+                                                    <span class="titulo">Categoria 5</span>
+<!--                                                    <p class="descripcion">Dignissim hendrerit odio rhoncus.</p>-->
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
+
+                                <input type="hidden" name="pais" id="inputSelect" value="">
+<!--                                fin de un experimento select-->
                             </div>
                         </div>
                         <div class="dropzone shadow-lg p-1 mb-2 bg-body rounded" id="drop">
@@ -96,7 +158,7 @@
             let myDropzone = new Dropzone('.dropzone', {
                 url:'/FormFotos',
                 maxFilesize:2,
-                acceptedFiles:'image/jpeg, image/png',
+                acceptedFiles:'image/jpeg, image/png, image/jpg',
                 addRemoveLinks:true,
                 dictRemoveFile:'Quitar',
                 autoProcessQueue:false
@@ -126,13 +188,13 @@
                 }
 
                 if (!not.includes('fail')) {
-                    alert('Guardado');
+                    alert('Fotos Guardados con éxito');
                 } else {
-                    alert('Error');
+                    alert('Ha ocurrido algun error, vuelva a intentarlo');
                 }
             })
         </script>
-
+        <script type="text/javascript" src="js/select.js"></script>
     </body>
 
 </html>

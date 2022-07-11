@@ -1,0 +1,151 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f4f4f7;
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 0;
+}
+
+.selectbox {
+    width: 15%;
+    /*margin: auto;*/
+    position: relative;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*align-content: center;*/
+    /*text-align: center;*/
+}
+
+.select {
+    background: #fff;
+    width: 100%;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, .16);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    /*justify-content: space-between;*/
+    justify-content:center;
+    align-items: center;
+    transition: .2s ease all;
+    margin-bottom: 15px;
+    padding: 5px;
+    position: relative;
+    z-index: 200;
+    /*border: 2px solid transparent;*/
+    border: 2px solid #213f8f;
+/*    */
+/*    align-items: center;*/
+/*    align-content: center;*/
+/*    text-align: center;*/
+}
+
+.select.active,
+.select:hover {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, .16);
+    border: 2px solid #213f8f;
+}
+
+.select.active:before {
+    content: "";
+    display: block;
+    height: 0;
+    width: 0;
+    border-top: 10px solid #213f8f;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    bottom: -20px;
+    left: calc(50% - 10px);
+}
+
+.select i {
+    font-size: 14px;
+    margin-left: 5px;
+    color: #213f8f;
+}
+
+.titulo {
+    margin-bottom: 5px;
+    color: #000;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.descripcion {
+    font-size: 18px;
+    color: #434343;
+}
+
+.opciones {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,.16);
+    max-height: 400px;
+    overflow: auto;
+    z-index: 100;
+    width: 100%;
+    display: none;
+    justify-content:center;
+}
+
+.opciones.active {
+    display: block;
+    animation: fadeIn .3s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        transform: translateY(-200px) scale(.5);
+    }
+    to {
+        transform: translateY(0) scale(1);
+    }
+}
+
+.contenido-opcion {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    transition: .2s ease all;
+    justify-content:center;
+}
+
+.opciones .contenido-opcion {
+    padding: 5px;
+}
+
+/*.contenido-opcion img {*/
+/*    width: 60px;*/
+/*    height: 60px;*/
+/*    margin-right: 30px;*/
+/*}*/
+
+.opciones .contenido-opcion:hover {
+    background: #213F8F;
+}
+
+.opciones .contenido-opcion:hover .titulo,
+.opciones .contenido-opcion:hover .descripcion {
+    color: #fff;
+}
+
+@media screen and (max-width: 800px){
+    .selectbox {
+        width: 100%;
+    }
+}
