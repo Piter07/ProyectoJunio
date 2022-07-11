@@ -9,7 +9,7 @@ document.querySelectorAll('#opciones > .opcion').forEach((opcion) => {
         contenidoSelect.innerHTML = e.currentTarget.innerHTML;
         select.classList.toggle('active');
         opciones.classList.toggle('active');
-        hiddenInput.value = e.currentTarget.querySelector('.titulo').innerText;
+        hiddenInput.value = e.currentTarget.querySelector('.valor').innerText;
     });
 });
 
