@@ -15,11 +15,4 @@ public class AlbumsController {
         this.albumService = albumService;
     }
 
-    // maneja el request para la ruta base
-
-    @GetMapping("/album-fotos")
-    public String albumFoto(){
-        return "album-fotos";
-    }
-
 }

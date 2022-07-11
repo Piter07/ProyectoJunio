@@ -54,14 +54,17 @@
             <p class="page-description text-center">Descripción</p>
             <div class="tz-gallery"><!-- tz-gallery -->
                 <div class="row">
-                    <div class="col-sm-6 col-md-4">
-                        <a class="lightbox" th:href="@{/images/1.jpg}">
-                            <img class="img-thumbnail" th:src="@{/img/1.jpg}" alt="imagen">
-                        </a>
+                    <!--  -->
+                    <div th:each="album : ${albumes}">
+                        <div class="col-sm-6 col-md-4">
+                            <a class="lightbox" th:href="@{/images/1.jpg}">
+                                <img class="img-thumbnail" th:src="${album.fotos.get(${})}" alt="imagen">
+                            </a>
+                        </div>
                     </div>
                     <div class="col-sm-6 col-md-4">
                         <a class="lightbox" th:href="@{/img/2.jpg}">
-                            <img class="img-thumbnail" th:src="@{/img/2.jpg}" alt="imagen">
+                            <img class="img-thumbnail" th:src="${album.fotos.get(${})}" alt="imagen">
                         </a>
                     </div>
                     <div class="col-sm-6 col-md-4">
