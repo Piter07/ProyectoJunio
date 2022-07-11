@@ -1,5 +1,6 @@
 package com.roshka.bootcamp.ProyectoJunio.service;
 
+import com.roshka.bootcamp.ProyectoJunio.model.Album;
 import com.roshka.bootcamp.ProyectoJunio.model.Foto;
 import com.roshka.bootcamp.ProyectoJunio.repository.FotoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,10 @@ public class FotoService {
     @Autowired
     private FotoRepository fotoRepository;
 
-    public List<Foto> list() {
-        return fotoRepository.findAll();
+    public List<Foto> getFotos(Long idAlbum) {
+        Album album = new Album();
+        album.setId_album(idAlbum);
+        return fotoRepository.findAllByAlbum(album);
     }
 
     public Optional<Foto> findById(Long id) {
