@@ -30,7 +30,7 @@
 <!--        </div>-->
             <div class="container rounded" id="super_principal">
                 <div class="container" id="contenedor-principal">
-                    <form action="" class="" enctype="multipart/form-data">
+                    <form action="/creacion-album" method="post" class="" enctype="multipart/form-data">
                         <div class="row shadow-lg p-1 mb-2 bg-body rounded " id="contededorAlbum">
                             <div class="col-12 mb-2" id="album_contenido">
 
@@ -41,7 +41,7 @@
                                         </h3><hr>
                                     </label>
                                     <div class="col-4">
-                                        <input type="text" class="form-control h3" id="nombre_album" required/>
+                                        <input type="text" class="form-control h3" id="nombre_album" name="titulo" required/>
                                     </div>
 
                                 </div>
@@ -51,7 +51,7 @@
                                         <label for="descripcion" class="form-label">
                                             <strong class="align-middle">Descripcion: </strong>
                                         </label>
-                                        <textarea class="form-control" id="descripcion" rows="3" required></textarea>
+                                        <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
                                     </div>
                                 </div>
 <!--                                <div class="row" id="all_categorias">-->
@@ -89,6 +89,7 @@
 <!--                                                <img src="img/mexico.png" alt="">-->
                                                 <div class="textos">
                                                     <span class="titulo">Categoria 1</span>
+                                                    <span class="valor">1</span>
 <!--                                                    <p class="descripcion">Lorem ipsum dolor sit.</p>-->
                                                 </div>
                                             </div>
@@ -98,6 +99,7 @@
 <!--                                                <img src="img/spain.png" alt="">-->
                                                 <div class="textos">
                                                     <span class="titulo">Categoria 2</span>
+                                                    <span class="valor">2</span>
 <!--                                                    <p class="descripcion">Consectetur adipiscing elit.</p>-->
                                                 </div>
                                             </div>
@@ -107,32 +109,15 @@
 <!--                                                <img src="img/colombia.png" alt="">-->
                                                 <div class="textos">
                                                     <span class="titulo">Categoria 3</span>
+                                                    <span class="valor">3</span>
 <!--                                                    <p class="descripcion">Suspendisse eleifend venenatis.</p>-->
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="opcion">
-                                            <div class="contenido-opcion">
-<!--                                                <img src="img/argentina.png" alt="">-->
-                                                <div class="textos">
-                                                    <span class="titulo">Categoria 4</span>
-<!--                                                    <p class="descripcion">Sed posuere laoreet dui.</p>-->
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="opcion">
-                                            <div class="contenido-opcion">
-<!--                                                <img src="img/chile.png" alt="">-->
-                                                <div class="textos">
-                                                    <span class="titulo">Categoria 5</span>
-<!--                                                    <p class="descripcion">Dignissim hendrerit odio rhoncus.</p>-->
                                                 </div>
                                             </div>
                                         </a>
                                     </div>
                                 </div>
 
-                                <input type="hidden" name="pais" id="inputSelect" value="">
+                                <input type="hidden" name="idCategoria" id="inputSelect"  value="">
 <!--                                fin de un experimento select-->
                             </div>
                         </div>
@@ -175,19 +160,19 @@
             })
 
             document.getElementById('send').addEventListener('click', () => {
-                let not = [];
+                let respuesta = [];
                 for(let i=0; i<arrImages.length; i++) {
                     let imgData = new FormData();
                     imgData.append('file', arrImages[i]);
-                    fetch('FormFotos', {
+                    fetch('creacion-album', {
                         method:'POST',
                         body:imgData
-                    }).then(res => res.json()).then(data => {
-                        not.push(data);
+                    }).then(data => {
+                        respuesta.push(data);
                     });
                 }
 
-                if (!not.includes('fail')) {
+                if (!respuesta.includes('fail')) {
                     alert('Fotos Guardados con éxito');
                 } else {
                     alert('Ha ocurrido algun error, vuelva a intentarlo');

@@ -182,6 +182,10 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
 .content-select select::-ms-expand {
     display: none;
 }
+
+.valor {
+   display: none;
+}
 /*img{*/
 /*    width:220px;*/
 /*    height:220px;*/
