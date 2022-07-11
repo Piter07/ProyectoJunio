@@ -1,0 +1,193 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.content-input input,
+.content-select select{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+#super_principal{
+    border:2px outset blue;
+    /*padding: 1rem;*/
+    margin: 3rem auto;
+}
+#contenedor-principal{
+    /*padding: 2rem;*/
+    margin: 2rem auto;
+    height: auto;
+}
+#contededorAlbum{
+    border:2px outset blue;
+    margin: 2rem auto;
+    height: auto;
+    margin-bottom: 1rem;
+}
+#album_contenido{
+    padding: 2rem;
+}
+hr {
+    background-color: white;
+    border-top: 3px dashed blue;
+}
+
+/*aqui empieza la configuracion para el formulario de fotos con dropzone*/
+.dropzone {
+    border:2px outset blue;
+    margin-bottom:30px;
+    margin-top: 2rem;
+}
+
+.button {
+    text-align:center;
+}
+
+#send {
+    background-color:#1d75bc;
+    color:#fff;
+    border:1px outset;
+    padding:10px;
+    transition:.3s;
+    border-radius:7px;
+    cursor:pointer;
+    margin-top: 2rem;
+}
+/*  */
+#send:active {
+    background-color:blue;
+    /*color:darkred;*/
+}
+#send:hover {
+    background-color: #2AC176;
+}
+.dz-remove {
+    /*display: flex;*/
+    color:lightskyblue;
+    text-decoration:none;
+    padding: 2px;
+    margin: 2px;
+    align-self: center;
+    position: absolute;
+    top: -25px;
+    left: 40px;
+    z-index:50;
+
+    margin-top: 5px;
+}
+.dropzone .dz-preview .dz-remove{
+    /*display: flex;*/
+    align-self: center;
+    position: absolute;
+    top: -25px;
+    left: 40px;
+    z-index:50;
+    padding: 2px;
+    margin: 2px auto;
+
+    margin-top: 5px;
+}
+#all_categorias{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+#categorias_999{
+    text-align: center;
+}
+#categoria_1{
+    color: #d63384;
+}
+#categoria_2{
+    color: chocolate;
+}
+#categoria_3{
+    color: saddlebrown;
+}
+#categoria_4{
+    color: #3878d3;
+}
+#categoria_5{
+    color: blueviolet;
+}
+#categoria_6{
+    color: green;
+}
+
+#drop{
+    margin: 2rem auto;
+    height: auto;
+    padding: 2rem;
+}
+
+.content-select{
+    max-width: 250px;
+    position: relative;
+}
+
+.content-select select{
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    padding: 7px 10px;
+    height: 42px;
+    outline: 0;
+    border: 0;
+    border-radius: 0;
+    background: white;
+    color: #7b7b7b;
+    font-size: 1em;
+    color: red;
+    font-family:
+            'Quicksand', sans-serif;
+    border:2px solid rgba(0,0,0,0.2);
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.25s ease;
+}
+
+.content-select select:hover{
+    background: white;
+}
+
+/*
+Creamos la fecha que aparece a la izquierda del select.
+Realmente este elemento es un cuadrado que sólo tienen
+dos bordes con color y que giramos con transform: rotate(-45deg);
+*/
+.content-select i{
+    position: absolute;
+    right: 20px;
+    top: calc(50% - 13px);
+    width: 16px;
+    height: 16px;
+    display: block;
+    border-left:4px solid #2AC176;
+    border-bottom:4px solid #2AC176;
+    transform: rotate(-45deg); /* Giramos el cuadrado */
+    transition: all 0.25s ease;
+}
+
+.content-select:hover i{
+    margin-top: 3px;
+}
+
+/* Eliminamos la fecha que por defecto aparece en el desplegable */
+.content-select select::-ms-expand {
+    display: none;
+}
+/*img{*/
+/*    width:220px;*/
+/*    height:220px;*/
+/*}*/
+/*div.dz-preview.dz-image-preview {*/
+/*    height:150px;*/
+/*    width:150px;*/
+/*}*/
+/*aqui termina la configuracion para el formulario de fotos con dropzone*/
