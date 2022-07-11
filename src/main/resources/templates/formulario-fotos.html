@@ -39,7 +39,7 @@
                 <div class="container" id="contenedor-principal">
                     <form action="#" th:action="@{/creacion-album}"  method="post" class="" enctype="multipart/form-data">
                         <div class="row shadow-lg p-1 mb-2 bg-body rounded " id="contededorAlbum">
-                            <div class="col-12 mb-2" id="album_contenido">
+                            <div class="col-12" id="album_contenido">
 
                                 <div class="mb-3">
                                     <label for="nombre_album" class="form-label">
@@ -47,18 +47,25 @@
                                             Titulo del album
                                         </h3><hr>
                                     </label>
-                                    <div class="col-4">
+                                    <div class="col-llx-5 col-sm-8 col-md-5">
                                         <input type="text" class="form-control h3" id="nombre_album" name="titulo" required/>
                                     </div>
 
                                 </div>
-
-                                <div class="col-6">
+                                <div class="col-llx-4 col-sm-10 col-md-7">
                                     <div class="mb-3">
                                         <label for="descripcion" class="form-label">
                                             <strong class="align-middle">Descripcion: </strong>
                                         </label>
                                         <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-llx-3 col-sm-3 col-md-3 mb-3 padre">
+                                    <div class="hijo1">
+                                        <strong id="fecha_evento" for="fecha">Fecha Evento: </strong>
+                                    </div>
+                                    <div class="hijo2">
+                                        <input class="from-control text-center" type="datetime-local" id="fecha"/>
                                     </div>
                                 </div>
 <!--                                <div class="row" id="all_categorias">-->
@@ -81,7 +88,7 @@
 <!--                                    </div>-->
 <!--                                </div>-->
 <!--                                inicio de un experimento select-->
-                                <div class="selectbox">
+                                <div class="selectbox col-llx-3 col-sm-3 col-md-3">
                                     <div class="select" id="select">
                                         <div class="contenido-select">
                                             <span class="titulo">Categoria</span>
@@ -121,12 +128,8 @@
                                         </a>
                                     </div>
                                 </div>
-
                                 <input type="hidden" name="idCategoria" id="inputSelect"  value="">
                             </div>
-                        </div>
-                        <div class="container" id="contenedor_calendario">
-                            <input calss="from-control" type="datetime-local" placeholder="Fecha Evento"/>
                         </div>
                         <div class="dropzone shadow-lg p-1 mb-2 bg-body rounded" id="drop">
                             <div class="dz-default dz-message">

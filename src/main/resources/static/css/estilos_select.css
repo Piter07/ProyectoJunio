@@ -21,18 +21,21 @@ a {
 }
 
 .selectbox {
-    width: 15%;
+    /*width: 15%;*/
+    width: 200px;
     /*margin: auto;*/
     position: relative;
     /*display: flex;*/
     /*align-items: center;*/
     /*align-content: center;*/
     /*text-align: center;*/
+    margin-top: 5px;
 }
 
 .select {
     background: #fff;
-    width: 100%;
+    /*width: 100%;*/
+    width: 200px;
     box-shadow: 0px 0px 0px rgba(0, 0, 0, .16);
     border-radius: 10px;
     cursor: pointer;
@@ -41,12 +44,13 @@ a {
     justify-content:center;
     align-items: center;
     transition: .2s ease all;
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;*/
     padding: 5px;
     position: relative;
     z-index: 200;
     /*border: 2px solid transparent;*/
     border: 2px solid #213f8f;
+    /*min-width: 100px;*/
 /*    */
 /*    align-items: center;*/
 /*    align-content: center;*/

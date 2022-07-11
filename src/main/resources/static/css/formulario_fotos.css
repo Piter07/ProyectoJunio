@@ -186,12 +186,23 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
 .valor {
    display: none;
 }
-/*img{*/
-/*    width:220px;*/
-/*    height:220px;*/
-/*}*/
-/*div.dz-preview.dz-image-preview {*/
-/*    height:150px;*/
-/*    width:150px;*/
-/*}*/
+
+.padre{
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: center;
+}
+.hijo1,.hijo2{
+    width: 150px;
+}
+#fecha_evento{
+    width: 150px;
+    white-space: nowrap;
+}
+#fecha{
+    width: 150px;
+    margin-left: 10px;
+}
+
 /*aqui termina la configuracion para el formulario de fotos con dropzone*/
