@@ -79,8 +79,10 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <p th:text="${album.usuario.getNombre()}"></p>
-                                    <img th:src="${album.fotos.get(0).ruta}" class="img-fluid">
+                                <img th:src="${album.fotos.stream().findFirst().get().ruta}" class="img-fluid">
+
 
                             </div>
                         </div>

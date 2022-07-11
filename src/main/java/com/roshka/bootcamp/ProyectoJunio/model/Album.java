@@ -1,12 +1,15 @@
 package com.roshka.bootcamp.ProyectoJunio.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 import java.util.*;
 
-@Data
+@Getter
+@Setter
 @Entity
 public class Album {
     @Id
@@ -25,5 +28,5 @@ public class Album {
 
 
     @OneToMany(mappedBy = "album")
-    private List<Foto> fotos = new ArrayList<Foto>();
+    private Set<Foto> fotos = new HashSet<Foto>();
 }
