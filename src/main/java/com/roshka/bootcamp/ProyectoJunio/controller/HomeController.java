@@ -25,4 +25,10 @@ public class HomeController {
         return "formulario-usuario";
 
     }
+    @GetMapping("/vista")
+    public String vista() {
+        // retorna el nombre de la vista
+        return "vista";
+
+    }
 }
