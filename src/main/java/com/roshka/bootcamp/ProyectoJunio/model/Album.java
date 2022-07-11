@@ -3,6 +3,7 @@ package com.roshka.bootcamp.ProyectoJunio.model;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -18,6 +19,9 @@ public class Album {
     private String titulo;
     private String descripcion;
     private Long id_categoria;
+    @Column(nullable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
     private Date fechaCreacion;
     private Date fechaUltMod;
     private Date fechaEvento;
