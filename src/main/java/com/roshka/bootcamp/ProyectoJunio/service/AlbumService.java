@@ -29,6 +29,7 @@ public class AlbumService implements AlbumServiceInterface {
         album.setDescripcion(albumDTO.getDescripcion());
         album.setFechaEvento(new Date());
         album.setId_categoria(albumDTO.getIdCategoria());
+        album.setFechaCreacion(new Date());
 //        album.setUsuario();
         return albumRepository.save(album);
     }

@@ -30,7 +30,7 @@
 <!--        </div>-->
             <div class="container rounded" id="super_principal">
                 <div class="container" id="contenedor-principal">
-                    <form action="/creacion-album" method="post" class="" enctype="multipart/form-data">
+                    <form action="#" th:action="@{/creacion-album}"  method="post" class="" enctype="multipart/form-data">
                         <div class="row shadow-lg p-1 mb-2 bg-body rounded " id="contededorAlbum">
                             <div class="col-12 mb-2" id="album_contenido">
 
@@ -106,11 +106,9 @@
                                         </a>
                                         <a href="#" class="opcion">
                                             <div class="contenido-opcion">
-<!--                                                <img src="img/colombia.png" alt="">-->
                                                 <div class="textos">
                                                     <span class="titulo">Categoria 3</span>
                                                     <span class="valor">3</span>
-<!--                                                    <p class="descripcion">Suspendisse eleifend venenatis.</p>-->
                                                 </div>
                                             </div>
                                         </a>
@@ -118,7 +116,6 @@
                                 </div>
 
                                 <input type="hidden" name="idCategoria" id="inputSelect"  value="">
-<!--                                fin de un experimento select-->
                             </div>
                         </div>
                         <div class="dropzone shadow-lg p-1 mb-2 bg-body rounded" id="drop">
@@ -127,7 +124,7 @@
                             </div>
                         </div>
                         <div class="button">
-                            <button type="button" id="send">Crear Album</button>
+                            <button type="submit" id="send">Crear Album</button>
                         </div>
                     </form>
                 </div>
@@ -159,7 +156,7 @@
                 arrImages.splice(i, 1);
             })
 
-            document.getElementById('send').addEventListener('click', () => {
+            /*document.getElementById('send').addEventListener('click', () => {
                 let respuesta = [];
                 for(let i=0; i<arrImages.length; i++) {
                     let imgData = new FormData();
@@ -177,7 +174,7 @@
                 } else {
                     alert('Ha ocurrido algun error, vuelva a intentarlo');
                 }
-            })
+            })*/
         </script>
         <script type="text/javascript" src="js/select.js"></script>
     </body>

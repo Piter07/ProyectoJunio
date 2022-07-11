@@ -10,5 +10,6 @@ public class AlbumDTO {
     private String descripcion;
     private Long idCategoria;
     private Date fechaEvento;
+    private Date fechaCreacion;
 //    private Long idUsuario;
 }

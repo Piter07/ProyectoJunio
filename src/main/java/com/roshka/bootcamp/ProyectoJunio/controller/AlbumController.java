@@ -1,12 +1,15 @@
 package com.roshka.bootcamp.ProyectoJunio.controller;
 
 
+import com.roshka.bootcamp.ProyectoJunio.controller.dto.AlbumDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Album;
 import com.roshka.bootcamp.ProyectoJunio.service.AlbumService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -43,5 +46,16 @@ public class AlbumController {
     public String albumFoto(){
 
         return "album-fotos";
+    }
+
+    //retorna la pagina del formulario album y recibe las imagenes al subir las fotos
+    @GetMapping("/creacion-album")
+    public String getFormFotos(){
+        return "formulario-fotos";
+    }
+    @PostMapping("/creacion-album")
+    public String postFormFotos(@ModelAttribute("album") AlbumDTO albumDTO){
+        albumService.guardar(albumDTO);
+        return "formulario-fotos";
     }
 }
