@@ -46,8 +46,8 @@ public class Usuario {
     @OneToOne
     private Comentario comentario;
 
-    /* un album pertenece a un usuario */
-    @OneToOne
-    private Album album;
+    /* Un usuario puede tener varios albums */
+    @OneToMany(mappedBy = "usuario")
+    private Set<Album> albums = new HashSet<>();
 
 }

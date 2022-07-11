@@ -19,7 +19,8 @@ public class Album {
     private Date fechaUltMod;
     private Date fechaEvento;
 
-    @OneToOne(mappedBy = "album")
+    @OneToOne()
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
     @OneToMany(mappedBy = "album")
