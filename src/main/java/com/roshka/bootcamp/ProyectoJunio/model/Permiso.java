@@ -15,7 +15,9 @@ public class Permiso {
     private Long id_permiso;
     private String nombre;
 
-    @ManyToOne
-    @JoinColumn(name = "rol_id", referencedColumnName = "id_rol")
-    private Rol rol;
+    @ManyToMany
+    @JoinTable(name = "rol_permiso",
+            joinColumns = @JoinColumn(name = "permiso_id"),
+            inverseJoinColumns = @JoinColumn(name = "rol_id"))
+    private Set<Rol> roles = new HashSet<>();
 }
