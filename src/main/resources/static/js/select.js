@@ -1,3 +1,4 @@
+//js para el select
 const select = document.querySelector('#select');
 const opciones = document.querySelector('#opciones');
 const contenidoSelect = document.querySelector('#select .contenido-select');
@@ -17,3 +18,4 @@ select.addEventListener('click', () => {
     select.classList.toggle('active');
     opciones.classList.toggle('active');
 });
+//js para el calendario
