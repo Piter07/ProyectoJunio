@@ -44,6 +44,30 @@
                     </div>
                 </div>
             </div>
+            <div th:if=${param.err001}>
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                    <div>
+                        El correo debe ser @roshka.com
+                    </div>
+                </div>
+            </div>
+            <div th:if=${param.err002}>
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                    <div>
+                        No coinciden las contraseñas
+                    </div>
+                </div>
+            </div>
+            <div th:if=${param.err003}>
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                    <div>
+                        El correo ya está registrado
+                    </div>
+                </div>
+            </div>
 
             <div class="input-div one">
                 <div class="i">
