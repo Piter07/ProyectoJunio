@@ -95,6 +95,10 @@ public class UsuarioService implements UsuarioServiceInterface {
         return usuarioRepository.findAll();
     }
 
+    public boolean existeUsuario(String email) {
+        return usuarioRepository.findByEmail(email) != null;
+    }
+
     private Collection<? extends GrantedAuthority> mapearAutoridadesRoles(Collection<Rol> roles) {
         /* Mapea cada rol en 'roles' para que Spring security reconozca como un rol en el sistema */
         //List<Permiso> flat = roles.stream().flatMap(List::stream).collect(Collectors.toList());
