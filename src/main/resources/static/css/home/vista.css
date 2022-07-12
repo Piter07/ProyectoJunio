@@ -16,17 +16,18 @@ html, body{
 /* contenedor grande */
 .container{
     height :100vh;
+    /*background:black;*/
 
 }
 
-.container2{
-    /*background: yellow;*/
-    width: 70%;   
+/*.container2{
+    /*background: yellow;
+    width: 10%;
     display: flex;
     height: auto;
     float: right;
 
-}
+}*/
 .coontainer3{
     background: white;
     width: 35%;
@@ -241,7 +242,11 @@ height: 60%;
 }
  }
  /*relacion tamaño aspecto img*/
-.img-wrap {
-    height = auto;
-    weight = auto;
+img{
+    max-height: 90vh;
+    width=auto;
+}
+
+.carousel-item{
+    /*background:black;*/
 }

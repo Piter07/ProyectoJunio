@@ -28,143 +28,77 @@
     <link rel="icon" type="img/x-icon" href="/img/roshkaicon.ico">
     <!-- fondo de pantalla -->
     <link th:href="@{/css/login.css}" rel="stylesheet">
+
+    <!-- config de carrusel -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
 
 <div class="container"> <!--contenedor principal-->
+    <div class="row"></div>
 
-    <div class=" container2 "> <!--contenedor de imagen-->
-            <!--<div class="row">-->
-            <!--<div class="col">-->
-            <img alt="" class="responsive" th:src="@{/img/verti (2).jpeg}">
-            <!--
-            <div class="img-wrap vh-99 vw-99  ">
-                <img alt="" class="responsive" th:src="@{/img/horizontal (1).jpeg}">
-            </div>
-            -->
-    </div>
-
-    <div> <!--contenedor comentarios-->
-        <div class="  ">
-            <div class="reacciones  ">
-                <a href=""> <i class="fa fa-frown-o iconoEmogi" style="color:red"></i></a>
-                <a href=""> <i class="fa fa-heart iconoEmogi" style="color:red"></i></a>
-                <a href=""><i class="fa fa-thumbs-o-up iconoEmogi" style="color:rgb(106, 13, 228)"></i></a>
-                <a href=""><i class="fa fa-smile-o iconoEmogi" style="color:#000000"></i></a>
-                <a href=""><p class="pComentario" style="color:#000000"><b>Comentarios(3) </b></p></a>
-            </div>
-            <div>
-                <label for="comment">Comentar:</label>
-                <textarea class="form-control" rows="2" id="comment"></textarea>
-            </div>
-
-            <div class="cajaComentario  ">
-                <img class="imagenPerfil" th:src="@{/img/roshka.jpg}" alt="" width="25" height="25"/>
-                <h2 class="nombe"> Juan Carlos de los Santos </h2>
-                <hr>
-                <p> El documento pasa al Ejecutivo para su promulgación o veto.</p>
-            </div>
-            <div class="cajaComentario  ">
-                <img class="imagenPerfil" th:src="@{/img/roshka.jpg}" alt="" width="25" height="25"/>
-                <h2 class="nombe"> Juan Carlos de los Santos </h2>
-                <hr>
-                <p> El documento pasa al Ejecutivo para su promulgación o veto.</p>
+        <div class="container">
+            <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/img/foto.jpeg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/horizontal (2).jpeg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/1.jpg" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </div>
-    </div>
+            <div class=" container2 "> <!--contenedor de imagen-->
 
+            </div> <!--contenedor de imagen-->
 
+            <div> <!--contenedor comentarios-->
+                <div class="  ">
+                    <div class="reacciones  ">
+                        <a href=""> <i class="fa fa-frown-o iconoEmogi" style="color:red"></i></a>
+                        <a href=""> <i class="fa fa-heart iconoEmogi" style="color:red"></i></a>
+                        <a href=""><i class="fa fa-thumbs-o-up iconoEmogi" style="color:rgb(106, 13, 228)"></i></a>
+                        <a href=""><i class="fa fa-smile-o iconoEmogi" style="color:#000000"></i></a>
+                        <a href=""><p class="pComentario" style="color:#000000"><b>Comentarios(3) </b></p></a>
+                    </div>
+                    <div>
+                        <label for="comment">Comentar:</label>
+                        <textarea class="form-control" rows="2" id="comment"></textarea>
+                    </div>
 
+                    <div class="cajaComentario  ">
+                        <img class="imagenPerfil" th:src="@{/img/roshka.jpg}" alt="" width="25" height="25"/> <!-- imagen usuario -->
+                        <h4 class="nombe"> Juan Carlos de los Santos </h4> <!-- nombre usuario -->
+                        <hr color="blue">
+                        <p> El documento pasa al Ejecutivo para su promulgación o veto.</p> <!-- comentario usuario -->
+                    </div>
+                    <div class="cajaComentario  ">
+                        <img class="imagenPerfil" th:src="@{/img/roshka.jpg}" alt="" width="25" height="25"/> <!-- imagen usuario -->
+                        <h4 class="nombe"> Juan Carlos de los Santos </h4> <!-- nombre usuario -->
+                        <hr color="blue">
+                        <p> El documento pasa al Ejecutivo para su promulgación o veto.</p> <!-- comentario usuario -->
+                    </div>
+                </div>
+    </div>  <!--contenedor comentarios-->
 
+</div> <!--contenedor principal-->
 
-
-
-</div>
-<!--
-vh-90 vw-90
-
-col-sm-9 col-md-9 col-lg-9 col-xl-9
-
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-12"> <p> Te felicito, super bien explicado y armada tu estructura del video, estoy iniciando tu curso y me encanto, ya estaba yo oxidado en código por falta de practica y me estas ayudando muchísimo </p> </div>
-            <div class="col-sm-12 col-md-6"> <p> Te felicito, super bien explicado y armada tu estructura del video, estoy iniciando tu curso y me encanto, ya estaba yo oxidado en código por falta de practica y me estas ayudando muchísimo </p> </div>
-            <div class="col-sm-12 col-md-6 col-lg-3"> <p> Te felicito, super bien explicado y armada tu estructura del video, estoy iniciando tu curso y me encanto, ya estaba yo oxidado en código por falta de practica y me estas ayudando muchísimo </p> </div>
-            <div class="col-sm-12 col-lg-3"> <p> Te felicito, super bien explicado y armada tu estructura del video, estoy iniciando tu curso y me encanto, ya estaba yo oxidado en código por falta de practica y me estas ayudando muchísimo </p> </div>
-          </div>
-
-
-<div class="contenedoPrincipal">
-
-
-
-
-        <div class="form-group">
-            <div class="reacciones">
-            <a href=""> <i class="fa fa-frown-o iconoEmogi" style="color:red"></i></a>
-            <a href=""> <i class="fa fa-heart iconoEmogi" style="color:red"></i></a>
-                <a href=""><i class="fa fa-thumbs-o-up iconoEmogi" style="color:rgb(106, 13, 228)"></i></a>
-                <a href=""><i class="fa fa-smile-o iconoEmogi" style="color:#ffff00"></i></a>
-                <a href=""><p class="pComentario"> <b >Comentarios(3) </b></p> </a>
-        </div>
-        <div>
-            <label for="comment">Comentar:</label>
-             <textarea class="form-control" rows="2" id="comment"></textarea>
-        </div>
-
-    <div class="container2">
-        <a href="" class="iconoDireccion"><i class="fa fa-angle-left iconoAnterior"></i></a>
-        <a href="" class="iconoDireccion"><i class="fa fa-angle-right iconoSiguiente"></i></a>
-        <img class="imagenes"  th:src="@{/img/otro.png}" alt=""/>
-    </div>
-
-    <div class="coontainer3">
-
-        <h2 class="titulo"> Fotos tomada del bootcamp 2022</h2>
-        <p class="descripcion"> Fotos de bootcamp</p>
-        <div class="cajaScroll">
-            <div class="cajaComentario">
-                <img class="imagenPerfil"  th:src="@{/img/roshka.jpg}" alt="" width="25" height="25" />
-                <h2 class="nombe"> Juan Carlos de los Santos </h2>
-                <hr>
-                <p> El documento pasa al Ejecutivo para su promulgación o veto.</p>
-            </div>
-            <div class="cajaComentario">
-                <img class="imagenPerfil"  th:src="@{/img/roshka.jpg}" alt="" width="25" height="25" />
-                <h2 class="nombe"> Jose Arturo Ayala Rodriguez </h2>
-                <hr>
-                <p> juan se equivoco de chat parece... </p>
-            </div>
-            <div class="cajaComentario">
-                <img class="imagenPerfil"  th:src="@{/img/roshka.jpg}" alt="" width="25" height="25" />
-                <h2 class="nombe"> Mario Broh alias vape </h2>
-                <hr>
-                <p> se termino mi esencia broh, no te cortes las uñas aca men que asco. </p>
-            </div>
-            <div class="cajaComentario">
-                <img class="imagenPerfil"  th:src="@{/img/roshka.jpg}" alt="" width="25" height="25" />
-                <h2 class="nombe"> Y si alguen tiene el nombre asi de largo que pasa? </h2>
-                <hr>
-                <p>
-                    El documento pasa al Ejecutivo para su promulgación o veto.
-                    El documento pasa al Ejecutivo para su promulgación o veto.
-                    El documento pasa al Ejecutivo para su promulgación o veto.
-                    El documento pasa al Ejecutivo para su promulgación o veto.
-                    El documento pasa al Ejecutivo para su promulgación o veto.
-                    El documento pasa al Ejecutivo para su promulgación o veto.
-                    El documento pasa al Ejecutivo para su promulgación o veto.
-                    El documento pasa al Ejecutivo para su promulgación o veto.
-                    El documento pasa al Ejecutivo para su promulgación o veto.
-                    El documento pasa al Ejecutivo para su promulgación o veto.
-                    El documento pasa al Ejecutivo para su promulgación o veto.
-                    El documento pasa al Ejecutivo para su promulgación o veto.
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
--->
 </body>
 
 </html>
