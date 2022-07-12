@@ -7,6 +7,7 @@ import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
 import com.roshka.bootcamp.ProyectoJunio.repository.PermisoRepository;
 import com.roshka.bootcamp.ProyectoJunio.repository.RolRepository;
 import com.roshka.bootcamp.ProyectoJunio.repository.UsuarioRepository;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,6 +28,7 @@ public class UsuarioService implements UsuarioServiceInterface {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
@@ -51,8 +53,19 @@ public class UsuarioService implements UsuarioServiceInterface {
         /* se encripta la constraseña
         String clave = passwordEncoder.encode(registroDTO.getPassword());
         //String clave = registroDTO.getClave();
+        // se encripta la constraseña
+        String clave = passwordEncoder.encode(registroDTO.getClave());
+        // se genera tokenVerificacion
+        String tokenVerificacion = DigestUtils.sha256Hex(registroDTO.getCorreo()
+                + new Date().toString()
+                + DigestUtils.md5Hex(UUID.randomUUID().toString()));
         // por defecto el estado del usuario es pendiente
-        String estado = "pendiente";
+        String estado = "I";
+        // por defecto el usuario tiene rol de 'user'
+        Set<Rol> roles = new HashSet<>();
+        Rol rol = new Rol();
+        rol.setNombre("user");
+        roles.add(rol);
 
         //* validaciones
         //*  1. Correo con @roshka.com
@@ -68,8 +81,10 @@ public class UsuarioService implements UsuarioServiceInterface {
 
         Usuario usuario = new Usuario(registroDTO.getNombre(),
                 registroDTO.getApellido(),registroDTO.getEmail(),
-                passwordEncoder.encode(registroDTO.getPassword()), Arrays.asList(rol));
+                passwordEncoder.encode(registroDTO.getPassword()),
+                Arrays.asList(rol), tokenVerificacion);
 
+        /* guardar el usuario y lo retorna */
         return usuarioRepository.save(usuario);
     }
 
