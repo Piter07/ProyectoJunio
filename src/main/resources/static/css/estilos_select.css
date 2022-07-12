@@ -1,12 +1,9 @@
 * {
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background: #f4f4f7;
     font-family: 'poppins', sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box;
 }
 
 a {
@@ -61,6 +58,7 @@ a {
 .select:hover {
     box-shadow: 0px 5px 10px rgba(0, 0, 0, .16);
     border: 2px solid #213f8f;
+    border-radius: 10px;
 }
 
 .select.active:before {
@@ -78,23 +76,28 @@ a {
 }
 
 .select i {
-    font-size: 14px;
+    /*font-size: 14px;*/
     margin-left: 5px;
     color: #213f8f;
+    font-family: 'poppins', sans-serif;
+    font-size: 1rem;
 }
 
 .titulo {
     margin-bottom: 5px;
     color: #000;
-    font-weight: 600;
-    font-size: 14px;
+    /*font-weight: 600;*/
+    /*font-size: 14px;*/
+    font-family: 'poppins', sans-serif;
+    font-size: 1rem;
 }
 
 .descripcion {
-    font-size: 18px;
+    /*font-size: 18px;*/
+    font-family: 'poppins', sans-serif;
+    font-size: 1rem;
     color: #434343;
 }
-
 .opciones {
     background: #fff;
     border-radius: 10px;
@@ -110,6 +113,7 @@ a {
 .opciones.active {
     display: block;
     animation: fadeIn .3s forwards;
+    border-radius: 10px;
 }
 
 @keyframes fadeIn {
@@ -131,15 +135,22 @@ a {
 
 .opciones .contenido-opcion {
     padding: 5px;
+    margin-top: 8px;
+    border-radius: 10px;
+}
+div.contenido-opcion{
+    border-radius: 10px;
 }
 
 .opciones .contenido-opcion:hover {
     background: #213F8F;
+    border-radius: 10px;
 }
 
 .opciones .contenido-opcion:hover .titulo,
 .opciones .contenido-opcion:hover .descripcion {
     color: #fff;
+    border-radius: 10px;
 }
 
 @media screen and (max-width: 800px){

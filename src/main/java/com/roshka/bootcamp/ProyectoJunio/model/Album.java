@@ -30,7 +30,6 @@ public class Album {
     @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
     private Usuario usuario;
 
-
     @OneToMany(mappedBy = "album")
     private Set<Foto> fotos = new HashSet<Foto>();
 }

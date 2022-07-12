@@ -39,7 +39,7 @@ public class AlbumService implements AlbumServiceInterface {
             date_auxiliar=new Date();
         }
         album.setFechaEvento(date_auxiliar);
-//        album.setUsuario();
+        album.setUsuario(albumDTO.getUsuario());
         return albumRepository.save(album);
     }
     

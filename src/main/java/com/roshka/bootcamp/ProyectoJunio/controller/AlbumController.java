@@ -3,13 +3,20 @@ package com.roshka.bootcamp.ProyectoJunio.controller;
 
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.AlbumDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Album;
+import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
 import com.roshka.bootcamp.ProyectoJunio.service.AlbumService;
+import com.roshka.bootcamp.ProyectoJunio.service.UsuarioService;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +25,9 @@ import java.util.Optional;
 public class AlbumController {
 
     private AlbumService albumService;
+
+    @Autowired
+    private UsuarioService usuarioService;
 
     public AlbumController (AlbumService albumService) {this.albumService = albumService;}
 
@@ -54,8 +64,26 @@ public class AlbumController {
         return "formulario-fotos";
     }
     @PostMapping("/creacion-album")
-    public String postFormFotos(@ModelAttribute("album") AlbumDTO albumDTO, @RequestParam("file") MultipartFile multipartFile){
+    public String postFormFotos(@ModelAttribute("objAlbum") AlbumDTO albumDTO, @RequestParam("file") MultipartFile file){
+        Usuario usuario = usuarioService.existeUsuario(albumDTO.getUsername());
+        albumDTO.setUsuario(usuario);
         albumService.guardar(albumDTO);
+//        if(!file.isEmpty()){
+//            Path directorioImagenes= Paths.get("src/main/resources/static/img/ImagenesPrueba");
+//            String rutaAbsoluta=directorioImagenes.toFile().getAbsolutePath();
+//            try {
+//                byte[] bytesImg=file.getBytes();
+//                Path rutaCompleta=Paths.get(rutaAbsoluta+"/"+file.getOriginalFilename());
+//                Files.write(rutaCompleta,bytesImg);
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
         return "formulario-fotos";
     }
+    @ModelAttribute("objAlbum")
+    public AlbumDTO obtenerAlbumDTO() {
+        return new AlbumDTO();
+    }
+
 }

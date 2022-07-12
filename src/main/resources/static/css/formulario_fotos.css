@@ -182,9 +182,13 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
 /*    width: 150px;*/
 /*    white-space: nowrap;*/
 /*}*/
-/*#fecha{*/
-/*    width: 150px;*/
-/*    margin-left: 10px;*/
-/*}*/
-
+#fecha{
+    width: 200px;
+    font-family: 'poppins', sans-serif;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+#subida_archivos{
+    display:none !important;
+}
 /*aqui termina la configuracion para el formulario de fotos con dropzone*/

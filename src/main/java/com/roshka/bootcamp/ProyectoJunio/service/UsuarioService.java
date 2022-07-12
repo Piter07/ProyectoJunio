@@ -80,6 +80,10 @@ public class UsuarioService implements UsuarioServiceInterface {
         return usuarioRepository.findAll();
     }
 
+    public Usuario existeUsuario(String email) {
+        return usuarioRepository.findByCorreo(email);
+    }
+
     private Collection<? extends GrantedAuthority> mapearAutoridadesRoles(Collection<Rol> roles) {
         /* Mapea cada rol en 'roles' para que String security reconozca como un rol en el sistema */
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getNombre())).collect(Collectors.toList());
