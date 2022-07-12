@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Entity
 public class ReaccionFoto implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_reaccion_foto;
 
     @ManyToOne

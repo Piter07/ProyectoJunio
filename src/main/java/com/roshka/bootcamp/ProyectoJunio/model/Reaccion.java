@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 public class Reaccion {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_reaccion;
     private String nombre;
     private String icono;
