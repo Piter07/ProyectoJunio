@@ -32,6 +32,14 @@ public class AlbumService implements IAlbumService {
         return pagedResult.toList();
     }
 
+    public String[] findPages(){
+        int size = (int) Math.ceil((this.list().size())/((double)(3)));
+        String[] pages =  new String[size];
+        for (int i = 0 ; i < pages.length ; i++){
+            pages[i] = String.valueOf(i);
+        }
+        return pages;
+    }
 
 
 

@@ -16,17 +16,21 @@ import java.util.List;
 public class PageController {
     @Autowired
     private IAlbumService albumService;
-    /*
-    @GetMapping("/album/{pageNo}/{pageSize}")
-    public List<Album> getPaginatedAlbums(@PathVariable int pageNo, @PathVariable int pageSize) {
-
-        return albumService.findPaginated(pageNo, pageSize);
-    }*/
 
     @GetMapping("/album/{pageNo}/{pageSize}")
     public String getPaginatedAlbums(@PathVariable int pageNo, @PathVariable int pageSize, Model model) {
         List<Album> albumes = albumService.findPaginated(pageNo, pageSize);
+        int prev = (pageNo - 1);
+        int next = (pageNo + 1);
+        String pages[] = albumService.findPages();
+        if(prev < 0)
+            prev = 0;
+        if(next > pages.length - 1)
+            next = pages.length - 1;
         model.addAttribute("albumes", albumes);
+        model.addAttribute("pages",pages);
+        model.addAttribute("prev",prev);
+        model.addAttribute("next",next);
         return "albumes";
     }
 }
