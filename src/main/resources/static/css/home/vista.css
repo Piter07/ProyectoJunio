@@ -13,11 +13,19 @@ html, body{
     padding-left: 2rem;
     padding-right: 2rem;
 }
+/* contenedor grande */
+.container{
+    height :100vh;
+
+}
+
 .container2{
-    background: yellow;
+    /*background: yellow;*/
     width: 70%;   
     display: flex;
     height: auto;
+    float: right;
+
 }
 .coontainer3{
     background: white;
@@ -232,3 +240,8 @@ height: 60%;
     row: 1px;
 }
  }
+ /*relacion tamaño aspecto img*/
+.img-wrap {
+    height = auto;
+    weight = auto;
+}
