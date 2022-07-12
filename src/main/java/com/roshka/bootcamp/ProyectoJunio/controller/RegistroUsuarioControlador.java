@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 @Controller
 @RequestMapping("/registro")
 public class RegistroUsuarioControlador {
@@ -41,6 +44,23 @@ public class RegistroUsuarioControlador {
     @PostMapping
     public String registrarCuentaDeUsuario(@ModelAttribute("usuario") UsuarioRegistroDTO registroDTO) {
         try {
+            /* validar correo */
+            String correo = registroDTO.getEmail();
+            Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+@roshka.com$");
+            Matcher matcher = pattern.matcher(correo);
+
+            if(!matcher.matches()) {
+                return "redirect:/registro?err001";
+            }
+
+            if( !(registroDTO.getPassword().equals(registroDTO.getClaveConfirmar()) )) {
+                return "redirect:/registro?err002";
+            }
+
+            if(usuarioService.existeUsuario(correo)) {
+                return "redirect:/registro?err003";
+            }
+
             usuarioService.guardar(registroDTO);
             return "redirect:/registro?exito";
         } catch (Exception e) {
