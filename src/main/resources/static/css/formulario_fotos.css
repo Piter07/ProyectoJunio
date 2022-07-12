@@ -102,24 +102,6 @@ hr {
 #categorias_999{
     text-align: center;
 }
-#categoria_1{
-    color: #d63384;
-}
-#categoria_2{
-    color: chocolate;
-}
-#categoria_3{
-    color: saddlebrown;
-}
-#categoria_4{
-    color: #3878d3;
-}
-#categoria_5{
-    color: blueviolet;
-}
-#categoria_6{
-    color: green;
-}
 
 #drop{
     margin: 2rem auto;
@@ -143,9 +125,9 @@ hr {
     border-radius: 0;
     background: white;
     color: #7b7b7b;
-    font-size: 1em;
     color: red;
     font-family: 'poppins', sans-serif;
+    font-size: 1rem;
     border:2px solid rgba(0,0,0,0.2);
     border-radius: 12px;
     position: relative;
@@ -187,22 +169,22 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
    display: none;
 }
 
-.padre{
-    display: flex;
-    justify-content: flex-start;
-    align-content: flex-start;
-    align-items: center;
-}
-.hijo1,.hijo2{
-    width: 150px;
-}
-#fecha_evento{
-    width: 150px;
-    white-space: nowrap;
-}
-#fecha{
-    width: 150px;
-    margin-left: 10px;
-}
+/*.padre{*/
+/*    display: flex;*/
+/*    justify-content: flex-start;*/
+/*    align-content: flex-start;*/
+/*    align-items: center;*/
+/*}*/
+/*.hijo1,.hijo2{*/
+/*    width: 150px;*/
+/*}*/
+/*#fecha_evento{*/
+/*    width: 150px;*/
+/*    white-space: nowrap;*/
+/*}*/
+/*#fecha{*/
+/*    width: 150px;*/
+/*    margin-left: 10px;*/
+/*}*/
 
 /*aqui termina la configuracion para el formulario de fotos con dropzone*/
