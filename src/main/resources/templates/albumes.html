@@ -62,7 +62,7 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div th:each="album : ${albumes}">
-                    <a class="link" th:href="@{/album/}+${album.id_album}" onMouseover="this.style.color='black'">
+                    <a class="link" th:href="@{/galeria/}+${album.id_album}" onMouseover="this.style.color='black'">
                         <div th:id="${album.id_album}" class="col-sm">
                             <div class="col post-container" style="align-items: center !important;">
                                 <div class="post-row">
@@ -91,17 +91,17 @@
     <nav aria-label="Page navigation example" class="prueba">
         <ul class="pagination">
             <li class="page-item">
-                <a class="page-link" th:href="@{/album/}+${prev}+@{/3}" aria-label="Previous">
+                <a class="page-link" th:href="@{/album?pageNo=}+${prev}" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                     <span class="sr-only">Previous</span>
                 </a>
             </li>
             <label th:each="page: ${pages}">
-                <li class="page-item"><a class="page-link" th:href="@{/album/}+${page}+@{/3}" th:text="${page}+1"></a></li>
+                <li class="page-item"><a class="page-link" th:href="@{/album?pageNo=}+${page}" th:text="${page}+1"></a></li>
             </label>
 
             <li class="page-item">
-                <a class="page-link" th:href="@{/album/}+${next}+@{/3}" aria-label="Next">
+                <a class="page-link" th:href="@{/album?pageNo=}+${next}" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                     <span class="sr-only">Next</span>
                 </a>

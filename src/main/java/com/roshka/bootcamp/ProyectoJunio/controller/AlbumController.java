@@ -26,7 +26,7 @@ public class AlbumController {
     public AlbumController (AlbumService albumService) {this.albumService = albumService;}
 
 
-    @GetMapping("/album/{id}")
+    @GetMapping("/galeria/{id}")
     public String getAlbumById(@PathVariable long id, Model model) throws Exception {
         Optional<Album> album = albumService.findById(id);
         List<Foto> fotos = fotoService.getFotos(id);
@@ -39,11 +39,5 @@ public class AlbumController {
         return "album-fotos";
     }
 
-    @GetMapping("/album")
-    public String getAlbum(Model model) throws Exception {
-        List<Album> albumes = albumService.list();
-        model.addAttribute("albumes", albumes);
-        return "albumes";
-    }
 
 }

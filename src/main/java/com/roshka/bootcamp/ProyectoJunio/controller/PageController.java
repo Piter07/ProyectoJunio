@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.stereotype.Controller;
 
@@ -17,12 +18,13 @@ public class PageController {
     @Autowired
     private IAlbumService albumService;
 
-    @GetMapping("/album/{pageNo}/{pageSize}")
-    public String getPaginatedAlbums(@PathVariable int pageNo, @PathVariable int pageSize, Model model) {
+    @GetMapping("/album")
+    public String getPaginatedAlbums(@RequestParam(name="pageNo") int pageNo, Model model) {
+        int pageSize = 3;
         List<Album> albumes = albumService.findPaginated(pageNo, pageSize);
         int prev = (pageNo - 1);
         int next = (pageNo + 1);
-        String pages[] = albumService.findPages();
+        String pages[] = albumService.findPages(pageSize);
         if(prev < 0)
             prev = 0;
         if(next > pages.length - 1)

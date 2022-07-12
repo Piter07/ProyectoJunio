@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface IAlbumService  {
     List<Album> findPaginated(int pageNo, int pageSize);
-    String[] findPages();
+    String[] findPages(int pageSize);
 }
