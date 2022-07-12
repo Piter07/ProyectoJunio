@@ -4,6 +4,7 @@ import com.roshka.bootcamp.ProyectoJunio.controller.dto.UsuarioRegistroDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Rol;
 import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
 import com.roshka.bootcamp.ProyectoJunio.repository.UsuarioRepository;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -34,8 +35,12 @@ public class UsuarioService implements UsuarioServiceInterface {
     public Usuario guardar(UsuarioRegistroDTO registroDTO) {
         // se encripta la constraseña
         String clave = passwordEncoder.encode(registroDTO.getClave());
+        // se genera tokenVerificacion
+        String tokenVerificacion = DigestUtils.sha256Hex(registroDTO.getCorreo()
+                + new Date().toString()
+                + DigestUtils.md5Hex(UUID.randomUUID().toString()));
         // por defecto el estado del usuario es pendiente
-        String estado = "pendiente";
+        String estado = "I";
         // por defecto el usuario tiene rol de 'user'
         Set<Rol> roles = new HashSet<>();
         Rol rol = new Rol();
@@ -56,6 +61,7 @@ public class UsuarioService implements UsuarioServiceInterface {
         usuario.setNombre(registroDTO.getNombre());
         usuario.setCorreo(registroDTO.getCorreo());
         usuario.setClave(clave);
+        usuario.setTokenVerificacion(tokenVerificacion);
         usuario.setEstado(estado);
         // cargar los roles
         usuario.setRoles(roles);
@@ -85,4 +91,7 @@ public class UsuarioService implements UsuarioServiceInterface {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getNombre())).collect(Collectors.toList());
     }
 
+    public boolean existeUsuario(String correo) {
+        return usuarioRepository.existsByCorreo(correo);
+    }
 }
