@@ -62,7 +62,7 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div th:each="album : ${albumes}">
-                    <a class="link" th:href="@{/galeria/}+${album.id_album}" onMouseover="this.style.color='black'">
+                    <a class="link" th:href="@{/galeria/}+${album.id_album}+@{?pageAnt=}+${pageNo}" onMouseover="this.style.color='black'">
                         <div th:id="${album.id_album}" class="col-sm">
                             <div class="col post-container" style="align-items: center !important;">
                                 <div class="post-row">

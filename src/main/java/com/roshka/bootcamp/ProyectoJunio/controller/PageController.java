@@ -19,7 +19,7 @@ public class PageController {
     private IAlbumService albumService;
 
     @GetMapping("/album")
-    public String getPaginatedAlbums(@RequestParam(name="pageNo") int pageNo, Model model) {
+    public String getPaginatedAlbums(@RequestParam(name="pageNo", required=false,defaultValue= "0") int pageNo, Model model) {
         int pageSize = 3;
         List<Album> albumes = albumService.findPaginated(pageNo, pageSize);
         int prev = (pageNo - 1);
@@ -31,6 +31,7 @@ public class PageController {
             next = pages.length - 1;
         model.addAttribute("albumes", albumes);
         model.addAttribute("pages",pages);
+        model.addAttribute("pageNo",pageNo);
         model.addAttribute("prev",prev);
         model.addAttribute("next",next);
         return "albumes";

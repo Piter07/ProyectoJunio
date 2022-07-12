@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.util.List;
@@ -27,13 +28,14 @@ public class AlbumController {
 
 
     @GetMapping("/galeria/{id}")
-    public String getAlbumById(@PathVariable long id, Model model) throws Exception {
+    public String getAlbumById(@PathVariable long id, @RequestParam(name="pageAnt", required=false,defaultValue= "0") int pageAnt,Model model) throws Exception {
         Optional<Album> album = albumService.findById(id);
         List<Foto> fotos = fotoService.getFotos(id);
         if(album.isPresent()){
             model.addAttribute("titulo", album.get().getTitulo());
             model.addAttribute("descripcion", album.get().getDescripcion());
             model.addAttribute("fotos", fotos);
+            model.addAttribute("pageAnt", pageAnt);
         }
 
         return "album-fotos";

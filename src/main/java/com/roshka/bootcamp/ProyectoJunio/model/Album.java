@@ -30,7 +30,6 @@ public class Album {
     private Date fechaEvento;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
     @JsonIgnore
     @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
     private Usuario usuario;
