@@ -10,7 +10,7 @@ import java.util.Set;
 @Entity
 public class Foto {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_foto;
     private String ruta;
     private String descripcion;
