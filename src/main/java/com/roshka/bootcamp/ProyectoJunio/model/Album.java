@@ -1,14 +1,15 @@
 package com.roshka.bootcamp.ProyectoJunio.model;
 
-import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
 public class Album {
     @Id
@@ -22,7 +23,6 @@ public class Album {
     //@Temporal(TemporalType.TIMESTAMP)
     //@CreatedDate
     private Date fechaCreacion;
-
     private Date fechaUltMod;
     private Date fechaEvento;
 

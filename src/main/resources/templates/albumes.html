@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,11 +49,6 @@
                     <a class="dropdown-item" href="#">Filtro 1</a>
                     <a class="dropdown-item" href="#">Filtro 2</a>
                     <a class="dropdown-item" href="#">Filtro 3</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        <img class="mt-1" th:src="@{/img/apagado.png}" alt="" width="20" height="20"
-                             style="border-radius: 30px; float: left;"/>Desconectarse
-                    </a>
                 </div>
             </div>
         </div>
@@ -67,8 +62,8 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div th:each="album : ${albumes}">
-                        <a class="link" href="/album-fotos" onMouseover="this.style.color='black'">
-                        <div id="${album.id_album}" class="col-sm">
+                        <a class="link" th:href="@{/album/}+${album.id_album}" onMouseover="this.style.color='black'">
+                        <div th:id="${album.id_album}"  class="col-sm">
                             <div class="col post-container">
                                 <div class="post-row">
                                     <div class="user-profile">
@@ -79,8 +74,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p th:text="${album.id_usuario}"></p>
-                                    <img th:src="@{/img/foto.jpeg}" class="post-img">
+                                <p th:text="${album.usuario.getNombre()}"></p>
+                                <img th:src="${album.fotos.stream().findFirst().get().ruta}" class="img-fluid">
+
 
                             </div>
                         </div>

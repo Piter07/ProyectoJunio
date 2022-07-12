@@ -1,20 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.98.0">
-    <title>Album Evento</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title th:text="${titulo}"></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
     <link rel="icon" type="img/x-icon" href="/img/roshkaicon.ico">
     <link rel="stylesheet" href="css/home/home_head.css">
-    <link  th:href="@{/css/gallery-grid.css}" rel="stylesheet">
+    <link th:href="@{/css/gallery-grid.css}" rel="stylesheet">
 </head>
-<header style="position: sticky;  top: 0; ">
+<header style="position: sticky;  top: 0; " class="posicion">
     <div class="navbar navbar-dark bg-dark shadow-sm" style="background-color: #1d75bc !important;">
         <div class="container">
 
@@ -23,82 +24,53 @@
                      style="border-radius: 30px; margin-right: 3px !important; "/>
                 <strong>Roshkagram</strong>
             </a>
-            <div class="dropdown">
-                <button class="btn btn-outline-light me-2" type="button" data-toggle="dropdown">
-                    <span class="caret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-</svg></span></button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Filtro 1</a>
-                    <a class="dropdown-item" href="#">Filtro 2</a>
-                    <a class="dropdown-item" href="#">Filtro 3</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        <img class="mt-1" th:src="@{/img/apagado.png}" alt="" width="20" height="20"
-                             style="border-radius: 30px; float: left;"/>Desconectarse
-                    </a>
-                </div>
-            </div>
         </div>
     </div>
 </header>
 
 <body>
-    <div class="container gallery-container">
-        <h1>Nombre Evento</h1>
-        <p class="page-description text-center">Descripción</p>
-        <div class="tz-gallery">
-            <div class="row">
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" th:href="@{/images/1.jpg}">
-                        <img th:src="@{/img/1.jpg}" alt="imagen">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" th:href="@{/img/2.jpg}">
-                        <img th:src="@{/img/2.jpg}" alt="imagen">
-                    </a>
-                </div>
-                <div class="col-sm-12 col-md-4">
-                    <a class="lightbox" th:href="@{/img/3.jpg}">
-                        <img th:src="@{/img/3.jpg}" alt="imagen">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" th:href="@{/img/4.jpg}">
-                        <img th:src="@{/img/4.jpg}" alt="imagen">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" th:href="@{/img/1.jpg}">
-                        <img th:src="@{/img/1.jpg}" alt="imagen">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" th:href="@{/img/2.jpg}">
-                        <img th:src="@{/img/2.jpg}" alt="imagen">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" th:href="@{/img/3.jpg}">
-                        <img th:src="@{/img/3.jpg}" alt="imagen">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" th:href="@{/img/4.jpg}">
-                        <img th:src="@{/img/4.jpg}" alt="imagen">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" th:href="@{/img/1.jpg}">
-                        <img th:src="@{/img/1.jpg}" alt="imagen">
-                    </a>
+
+<div class="row">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+
+    <script>baguetteBox.run('.tz-gallery');</script>
+
+
+    <div class="col-1" >
+        <button   onclick="location.href='/album'" type="button" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"></path>
+            </svg>
+        </button>
+
+    </div>
+    <div class="col-11">
+        <div class="container gallery-container">
+            <h1 th:text="${titulo}"></h1>
+            <p class="page-description text-center" th:text="${descripcion}"></p>
+            <div class="tz-gallery"><!-- tz-gallery -->
+                <div class="row">
+                    <!--  -->
+                        <div class="col-sm-6 col-md-4" th:each="foto : ${fotos}">
+                            <a class="lightbox" th:href="${foto.ruta}">
+                                <img class="img-thumbnail" th:src="${foto.getRuta()}" alt="imagen">
+                            </a>
+                        </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
     <script>baguetteBox.run('.tz-gallery');</script>
+</div>
+
 </body>
 </html>
