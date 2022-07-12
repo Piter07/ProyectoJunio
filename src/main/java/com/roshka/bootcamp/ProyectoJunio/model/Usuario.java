@@ -31,6 +31,9 @@ public class Usuario {
     @Column(name = "clave")
     private String clave;
 
+    @Column(name = "token_verificacion")
+    private String tokenVerificacion;
+
     @OneToMany(mappedBy = "usuario")
     private Set<Rol> roles = new HashSet<>();
 
