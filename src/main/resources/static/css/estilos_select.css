@@ -6,7 +6,7 @@
 
 body {
     background: #f4f4f7;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'poppins', sans-serif;
 }
 
 a {
@@ -132,12 +132,6 @@ a {
 .opciones .contenido-opcion {
     padding: 5px;
 }
-
-/*.contenido-opcion img {*/
-/*    width: 60px;*/
-/*    height: 60px;*/
-/*    margin-right: 30px;*/
-/*}*/
 
 .opciones .contenido-opcion:hover {
     background: #213F8F;

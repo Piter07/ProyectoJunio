@@ -7,10 +7,8 @@ import com.roshka.bootcamp.ProyectoJunio.service.AlbumService;
 import lombok.Data;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -56,9 +54,8 @@ public class AlbumController {
         return "formulario-fotos";
     }
     @PostMapping("/creacion-album")
-    public String postFormFotos(@ModelAttribute("album") AlbumDTO albumDTO){
+    public String postFormFotos(@ModelAttribute("album") AlbumDTO albumDTO, @RequestParam("file") MultipartFile multipartFile){
         albumService.guardar(albumDTO);
-        System.out.println("Llegaron los datos");
         return "formulario-fotos";
     }
 }

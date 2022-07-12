@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: 'poppins', sans-serif;
+    font-size: 1rem;
     box-sizing: border-box;
 }
 
@@ -29,10 +30,12 @@
 }
 #album_contenido{
     padding: 2rem;
+    opacity: 1;
 }
 hr {
     background-color: white;
-    border-top: 3px dashed blue;
+    border-top: 1px solid red;
+    border-style: double;
 }
 
 /*aqui empieza la configuracion para el formulario de fotos con dropzone*/
@@ -66,7 +69,7 @@ hr {
 }
 .dz-remove {
     /*display: flex;*/
-    color:lightskyblue;
+    color:red;
     text-decoration:none;
     padding: 2px;
     margin: 2px;
@@ -75,7 +78,6 @@ hr {
     top: -25px;
     left: 40px;
     z-index:50;
-
     margin-top: 5px;
 }
 .dropzone .dz-preview .dz-remove{
@@ -87,7 +89,6 @@ hr {
     z-index:50;
     padding: 2px;
     margin: 2px auto;
-
     margin-top: 5px;
 }
 #all_categorias{
@@ -144,8 +145,7 @@ hr {
     color: #7b7b7b;
     font-size: 1em;
     color: red;
-    font-family:
-            'Quicksand', sans-serif;
+    font-family: 'poppins', sans-serif;
     border:2px solid rgba(0,0,0,0.2);
     border-radius: 12px;
     position: relative;

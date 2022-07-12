@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="UTF-8">
         <title>Agregar Fotos</title>
@@ -12,13 +11,10 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
         <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
 <!--        fin de CDNS-->
-
         <link th:href="@{/css/formulario_fotos.css}" rel = "stylesheet">
         <link th:href="@{/css/estilos_select.css}" rel = "stylesheet">
-
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-
     <header  class="p-3 mb-2 bg-primary text-white no-margin-top" style="background-color: #1d75bc !important;">
         <img class="mb-2"  th:src="@{/img/roshka.jpg}" alt="" width="40" height="40" style="border-radius: 30px; float: left;"/>
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -32,119 +28,72 @@
             </div>
         </div>
     </header>
-
     <body>
-<!--        <div class="container border border-2 border-primary shadow-lg p-3 mb-5 bg-body rounded" id="contenedor-principal">-->
-<!--        </div>-->
-            <div class="container rounded" id="super_principal">
-                <div class="container" id="contenedor-principal">
-                    <form action="#" th:action="@{/creacion-album}"  method="post" class="" enctype="multipart/form-data">
-                        <div class="row shadow-lg p-1 mb-2 bg-body rounded " id="contededorAlbum">
-                            <div class="col-12" id="album_contenido">
+        <div class="container rounded" id="super_principal">
+            <div class="container" id="contenedor-principal">
+                <form action="#" th:action="@{/creacion-album}"  method="post" class="" enctype="multipart/form-data">
+                    <div class="row shadow-lg p-1 mb-2 bg-body rounded " id="contededorAlbum">
+                        <div class="col-12" id="album_contenido">
 
+                            <div class="mb-3">
+                                <label for="nombre_album" class="form-label">
+                                    <h4>
+                                        Titulo del album
+                                    </h4><hr>
+                                </label>
+                                <div class="col-llx-5 col-sm-8 col-md-5">
+                                    <input type="text" class="form-control h3" id="nombre_album" name="titulo" required/>
+                                </div>
+
+                            </div>
+                            <div class="col-llx-4 col-sm-10 col-md-7">
                                 <div class="mb-3">
-                                    <label for="nombre_album" class="form-label">
-                                        <h3>
-                                            Titulo del album
-                                        </h3><hr>
+                                    <label for="descripcion" class="form-label">
+                                        <h4 class="align-middle">Descripcion</h4>
                                     </label>
-                                    <div class="col-llx-5 col-sm-8 col-md-5">
-                                        <input type="text" class="form-control h3" id="nombre_album" name="titulo" required/>
-                                    </div>
-
+                                    <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
                                 </div>
-                                <div class="col-llx-4 col-sm-10 col-md-7">
-                                    <div class="mb-3">
-                                        <label for="descripcion" class="form-label">
-                                            <strong class="align-middle">Descripcion: </strong>
-                                        </label>
-                                        <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
-                                    </div>
+                            </div>
+                            <div class="col-llx-3 col-sm-3 col-md-3 mb-3 padre">
+                                <div class="hijo1">
+                                    <lable for="fecha"><h5 id="fecha_evento">Fecha Evento</h5></lable>
                                 </div>
-                                <div class="col-llx-3 col-sm-3 col-md-3 mb-3 padre">
-                                    <div class="hijo1">
-                                        <strong id="fecha_evento" for="fecha">Fecha Evento: </strong>
-                                    </div>
-                                    <div class="hijo2">
-                                        <input class="from-control text-center" type="datetime-local" id="fecha" name="fechaEvento" required/>
-                                    </div>
+                                <div class="hijo2">
+                                    <input class="from-control text-center" type="datetime-local" id="fecha" name="fechaEvento" required/>
                                 </div>
-<!--                                <div class="row" id="all_categorias">-->
-<!--                                    <div class="col-1">-->
-<!--                                        <span><strong>Categorias: </strong></span>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-2 m3-2">-->
-<!--                                        <div class="content-select">-->
-<!--                                            <select class="form-select" name="categorias" id="categorias_999">-->
-<!--                                                <option selected></option>-->
-<!--                                                <option value="categoria_1" id="categoria_1">Categoria 1</option>-->
-<!--                                                <option value="categoria_2" id="categoria_2">Categoria 2</option>-->
-<!--                                                <option value="categoria_3" id="categoria_3">Categoria 3</option>-->
-<!--                                                <option value="categoria_4" id="categoria_4">Categoria 4</option>-->
-<!--                                                <option value="categoria_5" id="categoria_5">Categoria 5</option>-->
-<!--                                                <option value="categoria_6" id="categoria_6">Categoria 6</option>-->
-<!--                                                <option value="categoria_7" id="categoria_7">Categoria 7</option>-->
-<!--                                            </select>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                inicio de un experimento select-->
-                                <div class="selectbox col-llx-3 col-sm-3 col-md-3">
-                                    <div class="select" id="select">
-                                        <div class="contenido-select">
-                                            <span class="titulo">Categoria</span>
-<!--                                            <p class="descripcion">Lorem ipsum dolor sit.</p>-->
+                            </div>
+                            <div class="selectbox col-llx-3 col-sm-3 col-md-3">
+                                <div class="select" id="select">
+                                    <div class="contenido-select">
+                                        <span class="titulo">Categoria</span>
+                                    </div>
+                                    <i class="fas fa-angle-down"></i>
+                                </div>
+                                <div class="opciones" id="opciones">
+                                    <a href="#" class="opcion">
+                                        <div class="contenido-opcion">
+                                            <div class="textos">
+                                                <span class="titulo" required>Categoria 1</span>
+                                                <span class="valor">1</span>
+                                            </div>
                                         </div>
-                                        <i class="fas fa-angle-down"></i>
-                                    </div>
-
-                                    <div class="opciones" id="opciones">
-                                        <a href="#" class="opcion">
-                                            <div class="contenido-opcion">
-<!--                                                <img src="img/mexico.png" alt="">-->
-                                                <div class="textos">
-                                                    <span class="titulo" required>Categoria 1</span>
-                                                    <span class="valor">1</span>
-<!--                                                    <p class="descripcion">Lorem ipsum dolor sit.</p>-->
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="opcion">
-                                            <div class="contenido-opcion">
-<!--                                                <img src="img/spain.png" alt="">-->
-                                                <div class="textos">
-                                                    <span class="titulo">Categoria 2</span>
-                                                    <span class="valor">2</span>
-<!--                                                    <p class="descripcion">Consectetur adipiscing elit.</p>-->
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="opcion">
-                                            <div class="contenido-opcion">
-                                                <div class="textos">
-                                                    <span class="titulo">Categoria 3</span>
-                                                    <span class="valor">3</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
+                                    </a>
                                 </div>
-                                <input type="hidden" name="idCategoria" id="inputSelect"  value="">
                             </div>
+                            <input type="hidden" name="idCategoria" id="inputSelect"  value="">
                         </div>
-                        <div class="dropzone shadow-lg p-1 mb-2 bg-body rounded" id="drop">
-                            <div class="dz-default dz-message">
-                                <button class="dz-button" type="button"><img src="img/upload.png" alt=""></button>
-                            </div>
+                    </div>
+                    <div class="dropzone shadow-lg p-1 mb-2 bg-body rounded" id="drop">
+                        <div class="dz-default dz-message">
+                            <button class="dz-button" type="button"><img src="img/upload.png" alt=""></button>
                         </div>
-                        <div class="button">
-                            <button type="submit" id="send">Crear Album</button>
-                        </div>
-                    </form>
-                </div>
-
+                    </div>
+                    <div class="button">
+                        <button type="submit" id="send">Crear Album</button>
+                    </div>
+                </form>
             </div>
-
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
         <script>
@@ -170,7 +119,7 @@
                 arrImages.splice(i, 1);
             })
 
-            /*document.getElementById('send').addEventListener('click', () => {
+            document.getElementById('send').addEventListener('click', () => {
                 let respuesta = [];
                 for(let i=0; i<arrImages.length; i++) {
                     let imgData = new FormData();
@@ -182,27 +131,26 @@
                         respuesta.push(data);
                     });
                 }
-
-                if (!respuesta.includes('fail')) {
-                    alert('Fotos Guardados con éxito');
-                } else {
-                    alert('Ha ocurrido algun error, vuelva a intentarlo');
-                }
-            })*/
+                //
+                // if (!respuesta.includes('fail')) {
+                //     alert('Fotos Guardados con éxito');
+                // } else {
+                //     alert('Ha ocurrido algun error, vuelva a intentarlo');
+                // }
+            })
         </script>
         <script type="text/javascript" src="js/select.js"></script>
-    <!-- MDB -->
-    <script
-        type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        config = {
-            enableTime: false,
-            dateFormat: "d/m/Y",
-        }
-        flatpickr("input[type=datetime-local]", config);
-    </script>
+        <!-- MDB -->
+        <script
+            type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script>
+            config = {
+                enableTime: false,
+                dateFormat: "d/m/Y",
+            }
+            flatpickr("input[type=datetime-local]", config);
+        </script>
     </body>
-
 </html>
