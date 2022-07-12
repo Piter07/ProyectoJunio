@@ -9,7 +9,7 @@ public class AlbumDTO {
     private String titulo;
     private String descripcion;
     private Long idCategoria;
-    private Date fechaEvento;
+    private String fechaEvento;
     private Date fechaCreacion;
 //    private Long idUsuario;
 }

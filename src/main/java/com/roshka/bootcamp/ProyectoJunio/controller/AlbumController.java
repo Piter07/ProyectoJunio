@@ -4,6 +4,7 @@ package com.roshka.bootcamp.ProyectoJunio.controller;
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.AlbumDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Album;
 import com.roshka.bootcamp.ProyectoJunio.service.AlbumService;
+import lombok.Data;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+//@Data
 public class AlbumController {
 
     private AlbumService albumService;
@@ -56,6 +58,7 @@ public class AlbumController {
     @PostMapping("/creacion-album")
     public String postFormFotos(@ModelAttribute("album") AlbumDTO albumDTO){
         albumService.guardar(albumDTO);
+        System.out.println("Llegaron los datos");
         return "formulario-fotos";
     }
 }

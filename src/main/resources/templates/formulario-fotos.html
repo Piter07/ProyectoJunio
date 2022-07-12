@@ -10,6 +10,7 @@
         <!-- MDB -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
 <!--        fin de CDNS-->
 
         <link th:href="@{/css/formulario_fotos.css}" rel = "stylesheet">
@@ -65,7 +66,7 @@
                                         <strong id="fecha_evento" for="fecha">Fecha Evento: </strong>
                                     </div>
                                     <div class="hijo2">
-                                        <input class="from-control text-center" type="datetime-local" id="fecha"/>
+                                        <input class="from-control text-center" type="datetime-local" id="fecha" name="fechaEvento" required/>
                                     </div>
                                 </div>
 <!--                                <div class="row" id="all_categorias">-->
@@ -102,7 +103,7 @@
                                             <div class="contenido-opcion">
 <!--                                                <img src="img/mexico.png" alt="">-->
                                                 <div class="textos">
-                                                    <span class="titulo">Categoria 1</span>
+                                                    <span class="titulo" required>Categoria 1</span>
                                                     <span class="valor">1</span>
 <!--                                                    <p class="descripcion">Lorem ipsum dolor sit.</p>-->
                                                 </div>
@@ -196,7 +197,11 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
-        flatpickr("input[type=datetime-local]", {});
+        config = {
+            enableTime: false,
+            dateFormat: "d/m/Y",
+        }
+        flatpickr("input[type=datetime-local]", config);
     </script>
     </body>
 
