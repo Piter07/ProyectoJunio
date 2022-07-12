@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-//@Controller
-//@RequestMapping("/registro")
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+@Controller
+@RequestMapping("/registro")
 public class RegistroUsuarioControlador {
-    /*
     private UsuarioService usuarioService;
 
     public RegistroUsuarioControlador(UsuarioService usuarioService) {
@@ -26,13 +28,24 @@ public class RegistroUsuarioControlador {
 
     @GetMapping
     public String mostrarFomrularioDeRegistro() {
-        return "formulario-registro";
+        return "formulario-usuario";
     }
 
     @PostMapping
     public String registrarCuentaDeUsuario(@ModelAttribute("usuario") UsuarioRegistroDTO registroDTO) {
+        String correo = registroDTO.getCorreo();
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+@roshka.com$");
+        Matcher matcher = pattern.matcher(correo);
+        if (!matcher.matches()) {
+            return "redirect:/registro?error=correo-invalido";
+        }
+        if (!registroDTO.getClave().equals(registroDTO.getClaveConfirmar())) {
+            return "redirect:/registro?error=clave-no-coincide";
+        }
+        if (usuarioService.existeUsuario(correo)) {
+            return "redirect:/registro?error=correo-ya-existe";
+        }
         usuarioService.guardar(registroDTO);
         return "redirect:/registro?exito";
     }
-    */
 }
