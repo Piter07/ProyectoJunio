@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.*;
 
 @Getter
 @Setter
@@ -36,8 +38,8 @@ public class Album {
     @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
     private Usuario usuario;
-
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name="categoria_id", referencedColumnName = "id_categoria")
     private Categoria categoria;
 
 }

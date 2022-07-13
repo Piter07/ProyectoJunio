@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: 'poppins', sans-serif;
+    font-size: 1rem;
     box-sizing: border-box;
 }
 
@@ -29,10 +30,12 @@
 }
 #album_contenido{
     padding: 2rem;
+    opacity: 1;
 }
 hr {
     background-color: white;
-    border-top: 3px dashed blue;
+    border-top: 1px solid red;
+    border-style: double;
 }
 
 /*aqui empieza la configuracion para el formulario de fotos con dropzone*/
@@ -66,7 +69,7 @@ hr {
 }
 .dz-remove {
     /*display: flex;*/
-    color:lightskyblue;
+    color:red;
     text-decoration:none;
     padding: 2px;
     margin: 2px;
@@ -75,7 +78,6 @@ hr {
     top: -25px;
     left: 40px;
     z-index:50;
-
     margin-top: 5px;
 }
 .dropzone .dz-preview .dz-remove{
@@ -87,7 +89,6 @@ hr {
     z-index:50;
     padding: 2px;
     margin: 2px auto;
-
     margin-top: 5px;
 }
 #all_categorias{
@@ -100,24 +101,6 @@ hr {
 }
 #categorias_999{
     text-align: center;
-}
-#categoria_1{
-    color: #d63384;
-}
-#categoria_2{
-    color: chocolate;
-}
-#categoria_3{
-    color: saddlebrown;
-}
-#categoria_4{
-    color: #3878d3;
-}
-#categoria_5{
-    color: blueviolet;
-}
-#categoria_6{
-    color: green;
 }
 
 #drop{
@@ -142,10 +125,9 @@ hr {
     border-radius: 0;
     background: white;
     color: #7b7b7b;
-    font-size: 1em;
     color: red;
-    font-family:
-            'Quicksand', sans-serif;
+    font-family: 'poppins', sans-serif;
+    font-size: 1rem;
     border:2px solid rgba(0,0,0,0.2);
     border-radius: 12px;
     position: relative;
@@ -182,12 +164,31 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
 .content-select select::-ms-expand {
     display: none;
 }
-/*img{*/
-/*    width:220px;*/
-/*    height:220px;*/
+
+.valor {
+   display: none;
+}
+
+/*.padre{*/
+/*    display: flex;*/
+/*    justify-content: flex-start;*/
+/*    align-content: flex-start;*/
+/*    align-items: center;*/
 /*}*/
-/*div.dz-preview.dz-image-preview {*/
-/*    height:150px;*/
-/*    width:150px;*/
+/*.hijo1,.hijo2{*/
+/*    width: 150px;*/
 /*}*/
+/*#fecha_evento{*/
+/*    width: 150px;*/
+/*    white-space: nowrap;*/
+/*}*/
+#fecha{
+    width: 200px;
+    font-family: 'poppins', sans-serif;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+#subida_archivos{
+    display:none !important;
+}
 /*aqui termina la configuracion para el formulario de fotos con dropzone*/
