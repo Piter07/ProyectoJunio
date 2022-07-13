@@ -32,4 +32,8 @@ public class Album {
     @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
     private Usuario usuario;
+
+    @OneToOne
+    private Categoria categoria;
+
 }

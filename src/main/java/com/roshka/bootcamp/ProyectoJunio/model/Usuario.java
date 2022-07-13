@@ -35,10 +35,6 @@ public class Usuario {
     @Column(name = "token_verificacion")
     private String tokenVerificacion;
 
-    @OneToMany(mappedBy = "usuario")
-    private Set<Rol> roles = new HashSet<>();
-
-
     public Usuario() {
 
     }
@@ -51,8 +47,18 @@ public class Usuario {
         this.password = password;
     }
 
+    public Usuario(String nombre, String apellido, String email, String password, String estado, Collection<Rol> roles, String tokenVerificacion) {
+        super();
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.password = password;
+        this.estado = estado;
+        this.tokenVerificacion = tokenVerificacion;
+    }
+
     /** RELACIONES PARA LA BASE DE DATOS **/
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "usuarios")
+    @ManyToMany(mappedBy = "usuarios")
     //private Set<Rol> roles = new HashSet<>();
     private Collection<Rol> roles;
 
