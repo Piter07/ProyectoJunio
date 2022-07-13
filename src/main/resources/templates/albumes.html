@@ -46,9 +46,7 @@
         d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
 </svg></span></button>
                 <div class="dropdown-menu" style="right: 15%;">
-                    <a class="dropdown-item" href="#">Filtro 1</a>
-                    <a class="dropdown-item" href="#">Filtro 2</a>
-                    <a class="dropdown-item" href="#">Filtro 3</a>
+                    <a th:each="cat: ${categorias}" class="dropdown-item" th:href="@{/album?pageNo=}+${pageNo}+@{&categ=}+${cat.id_categoria}" th:text="${cat.nombre}"></a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/logout">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -72,8 +70,8 @@
 
     <div class="album py-5 bg-light">
         <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div th:each="album : ${albumes}">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
+                <div th:each="album : ${albumes}"  th:if="${album.getCategoria().getId_categoria() == categ} or ${categ == 0}">
                     <a class="link" th:href="@{/galeria/}+${album.id_album}+@{?pageAnt=}+${pageNo}"
                        onMouseover="this.style.color='black'">
                         <div th:id="${album.id_album}" class="col-sm">
@@ -101,7 +99,7 @@
             </div>
         </div>
     </div>
-    <nav aria-label="Page navigation example" class="prueba">
+    <nav  th:if="${categ == 0}"  aria-label="Page navigation example" class="prueba">
         <ul class="pagination">
             <li class="page-item">
                 <a class="page-link" th:href="@{/album?pageNo=}+${prev}" aria-label="Previous">
@@ -109,13 +107,34 @@
                     <span class="sr-only">Previous</span>
                 </a>
             </li>
-            <label th:each="page: ${pages}">
+            <label  th:each="page: ${pages}">
                 <li class="page-item"><a class="page-link" th:href="@{/album?pageNo=}+${page}" th:text="${page}+1"></a>
                 </li>
             </label>
 
             <li class="page-item">
                 <a class="page-link" th:href="@{/album?pageNo=}+${next}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <nav  th:if="${categ != 0}"  aria-label="Page navigation example" class="prueba">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" th:href="@{/album?pageNo=}+${prev}+@{&categ=}+${categ}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+            <label  th:each="page: ${pages}">
+                <li class="page-item"><a class="page-link" th:href="@{/album?pageNo=}+${page}+@{&categ=}+${categ}" th:text="${page}+1"></a>
+                </li>
+            </label>
+
+            <li class="page-item">
+                <a class="page-link" th:href="@{/album?pageNo=}+${next}+@{&categ=}+${categ}" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                     <span class="sr-only">Next</span>
                 </a>
