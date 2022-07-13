@@ -84,7 +84,7 @@
                 </div>
                 <div class="div">
                     <h5>Contraseña</h5>
-                    <input type="password" class="input" th:field="*{password}" required>
+                    <input type="password" class="input" minlength="8" th:field="*{password}" required>
                 </div>
             </div>
             <div class="input-div pass">
@@ -93,7 +93,7 @@
                 </div>
                 <div class="div">
                     <h5>Confirmar Contraseña</h5>
-                    <input type="password" class="input" th:field="*{claveConfirmar}" required>
+                    <input type="password" class="input" minlength="8" th:field="*{claveConfirmar}" required>
                 </div>
             </div>
             <div class="input-div pass">
