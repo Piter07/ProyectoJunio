@@ -54,24 +54,12 @@ public class AlbumController {
         return "album-fotos";
     }
 
-    @GetMapping("/album")
-    public String getAlbum(Model model) throws Exception {
-        List<Album> albumes = albumService.list();
-        model.addAttribute("albumes", albumes);
-        return "albumes";
-    }
-
-    @GetMapping("/album-fotos")
-    public String albumFoto(){
-
-        return "album-fotos";
-    }
-
     //retorna la pagina del formulario album y recibe las imagenes al subir las fotos
     @GetMapping("/creacion-album")
     public String getFormFotos(){
         return "formulario-fotos";
     }
+    //recibe los datos del formulario de creacion de album y crea un album en la base de datos por medio de AlbumService
     @PostMapping("/creacion-album")
     public String postFormFotos(@ModelAttribute("objAlbum") AlbumDTO albumDTO, @RequestParam("file") MultipartFile file){
         Usuario usuario = usuarioService.existeUsuario(albumDTO.getUsername());
