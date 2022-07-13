@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.HashSet;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,6 +32,9 @@ public class Usuario {
 
     private String password;
 
+    @Column(name = "token_verificacion")
+    private String tokenVerificacion;
+
     public Usuario() {
 
     }
@@ -45,9 +47,18 @@ public class Usuario {
         this.password = password;
     }
 
-    /** RELACIONES PARA LA BASE DE DATOS **/
+    public Usuario(String nombre, String apellido, String email, String password, String estado, Collection<Rol> roles, String tokenVerificacion) {
+        super();
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.password = password;
+        this.estado = estado;
+        this.tokenVerificacion = tokenVerificacion;
+    }
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "usuarios")
+    /** RELACIONES PARA LA BASE DE DATOS **/
+    @ManyToMany(mappedBy = "usuarios")
     //private Set<Rol> roles = new HashSet<>();
     private Collection<Rol> roles;
 

@@ -44,7 +44,7 @@ public class Rol {
     //private Set<Usuario> usuarios = new HashSet<>();
     private Collection<Usuario> usuarios;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "roles")
+    @ManyToMany(mappedBy = "roles")
     //private Set<Permiso> permisos = new HashSet<>();
     private Collection<Permiso> permisos;
 
