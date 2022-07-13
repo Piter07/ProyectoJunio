@@ -68,6 +68,14 @@
                     </div>
                 </div>
             </div>
+            <div th:if=${param.err004}>
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                    <div>
+                        La contraseña debe tener al menos 8 caracteres
+                    </div>
+                </div>
+            </div>
 
             <div class="input-div one">
                 <div class="i">
