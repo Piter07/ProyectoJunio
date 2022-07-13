@@ -13,5 +13,4 @@ public class AlbumDTO {
     private String fechaEvento;
     private Date fechaCreacion;
     private Usuario usuario;
-    private String username;
 }

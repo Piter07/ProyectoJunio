@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -15,7 +16,7 @@ public class Categoria {
 
     private String nombre;
 
-    @OneToOne(mappedBy = "categoria")
-    private Album album;
+    @OneToMany(mappedBy = "categoria")
+    private Set<Album> albumes;
 
 }
