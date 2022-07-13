@@ -1,8 +1,9 @@
 package com.roshka.bootcamp.ProyectoJunio.service;
 
+import org.springframework.security.core.userdetails.UserDetailsService;
+
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.UsuarioRegistroDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 

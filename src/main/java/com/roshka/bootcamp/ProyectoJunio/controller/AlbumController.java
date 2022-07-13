@@ -4,14 +4,22 @@ package com.roshka.bootcamp.ProyectoJunio.controller;
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.AlbumDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Album;
 import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
+import com.roshka.bootcamp.ProyectoJunio.model.Foto;
+import com.roshka.bootcamp.ProyectoJunio.model.Foto;
 import com.roshka.bootcamp.ProyectoJunio.service.AlbumService;
 import com.roshka.bootcamp.ProyectoJunio.service.UsuarioService;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.roshka.bootcamp.ProyectoJunio.service.FotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,10 +29,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-//@Data
 public class AlbumController {
 
     private AlbumService albumService;
+    @Autowired
+    private FotoService fotoService;
 
     @Autowired
     private UsuarioService usuarioService;
@@ -32,15 +41,15 @@ public class AlbumController {
     public AlbumController (AlbumService albumService) {this.albumService = albumService;}
 
 
-    @GetMapping("/album/{id}")
-    public String getAlbumById(@PathVariable long id, Model model) throws Exception {
+    @GetMapping("/galeria/{id}")
+    public String getAlbumById(@PathVariable long id, @RequestParam(name="pageAnt", required=false,defaultValue= "0") int pageAnt,Model model) throws Exception {
         Optional<Album> album = albumService.findById(id);
-
-        if (album.isPresent()) {
+        List<Foto> fotos = fotoService.getFotos(id);
+        if(album.isPresent()){
             model.addAttribute("titulo", album.get().getTitulo());
             model.addAttribute("descripcion", album.get().getDescripcion());
-            model.addAttribute("fechaEvento", album.get().getFechaEvento());
-            model.addAttribute("usuario", album.get().getUsuario().getId_usuario());
+            model.addAttribute("fotos", fotos);
+            model.addAttribute("pageAnt", pageAnt);
         }
         return "album-fotos";
     }

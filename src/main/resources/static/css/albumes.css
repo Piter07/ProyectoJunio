@@ -99,3 +99,18 @@
   background-color: #04AA6D;
   color: white;
 }
+
+.img-fluid{
+ max-height: 300px;
+    width: auto;
+    margin-bottom: 30px;
+    transition: 0.2s ease-in-out;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+
+ }
+.prueba{
+ display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+

@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class UsuarioRegistroDTO {
-    private String correo;
-    private String clave;
+    private String email;
+    private String password;
     private String claveConfirmar;
     private String nombre;
     private String apellido;

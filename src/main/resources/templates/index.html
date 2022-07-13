@@ -1,6 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      layout:decorator="layout/base">
 <head>
+
     <meta charset="utf-8">    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="/images/roshka.jpg">
@@ -25,9 +30,17 @@
                      style="border-radius: 30px; margin-right: 3px !important; "/>
                 <strong>Roshkagram</strong>
             </a>
+
+
             <div class="text-end">
-                <a href="/login"><button type="button" class="btn btn-outline-light me-2" >Login</button></a>
-                <a href="/registro"><button type="button" class="btn btn-warning" style="background-color: #FFFFFF !important; ">Sign-up</button></a>
+                <div sec:authorize="!isAuthenticated()">
+                    <a href="/login"><button type="button" class="btn btn-outline-light me-2" >Login</button></a>
+                    <a href="/registro"><button type="button" class="btn btn-warning" style="background-color: #FFFFFF !important; ">Sign-up</button></a>
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                    <a href="/logout"><button type="button" class="btn btn-outline-light me-2" >Logout</button></a>
+                    <a href="/album"><button type="button" class="btn btn-warning" style="background-color: #FFFFFF !important; ">Album</button></a>
+                </div>
             </div>
         </div>
     </div>
