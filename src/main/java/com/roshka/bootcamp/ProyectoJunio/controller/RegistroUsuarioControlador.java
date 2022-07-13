@@ -57,7 +57,7 @@ public class RegistroUsuarioControlador {
                 return "redirect:/registro?err002";
             }
 
-            if(usuarioService.existeUsuario(correo)) {
+            if(usuarioService.existeUsuario(correo) != null) {
                 return "redirect:/registro?err003";
             }
 

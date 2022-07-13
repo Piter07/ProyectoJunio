@@ -7,6 +7,7 @@ import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
 import com.roshka.bootcamp.ProyectoJunio.repository.PermisoRepository;
 import com.roshka.bootcamp.ProyectoJunio.repository.RolRepository;
 import com.roshka.bootcamp.ProyectoJunio.repository.UsuarioRepository;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,10 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,6 +25,7 @@ public class UsuarioService implements UsuarioServiceInterface {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
@@ -48,11 +47,19 @@ public class UsuarioService implements UsuarioServiceInterface {
         *  para guardarlo en la base de datos.
         * */
 
-        /* se encripta la constraseña
-        String clave = passwordEncoder.encode(registroDTO.getPassword());
-        //String clave = registroDTO.getClave();
+        // se genera tokenVerificacion
+        String tokenVerificacion = DigestUtils.sha256Hex(registroDTO.getEmail()
+                + new Date().toString()
+                + DigestUtils.md5Hex(UUID.randomUUID().toString()));
+
         // por defecto el estado del usuario es pendiente
-        String estado = "pendiente";
+        String estado = "I";
+
+        /* por defecto el usuario tiene rol de 'user'
+        Set<Rol> roles = new HashSet<>();
+        Rol rol = new Rol();
+        rol.setNombre("user");
+        roles.add(rol);*/
 
         //* validaciones
         //*  1. Correo con @roshka.com
@@ -61,15 +68,20 @@ public class UsuarioService implements UsuarioServiceInterface {
         //*  4. Permisos del usuario
 
         // guardar el usuario, rol y permiso */
-        Permiso permiso = new Permiso("CONECTARSE");
-        permisoRepository.save(permiso);
-        Rol rol = new Rol("USER", Arrays.asList(permiso));
+        Permiso permiso = new Permiso("conectarse");
+        Permiso permiso1 = new Permiso("ver_albums");
+        permisoRepository.saveAll(Arrays.asList(permiso, permiso1));
+
+        Rol rol = new Rol("USER", Arrays.asList(permiso, permiso1));
         rolRepository.save(rol);
 
         Usuario usuario = new Usuario(registroDTO.getNombre(),
                 registroDTO.getApellido(),registroDTO.getEmail(),
-                passwordEncoder.encode(registroDTO.getPassword()), Arrays.asList(rol));
+                passwordEncoder.encode(registroDTO.getPassword()),
+                estado,
+                Arrays.asList(rol), tokenVerificacion);
 
+        /* guardar el usuario y lo retorna */
         return usuarioRepository.save(usuario);
     }
 
@@ -95,8 +107,8 @@ public class UsuarioService implements UsuarioServiceInterface {
         return usuarioRepository.findAll();
     }
 
-    public boolean existeUsuario(String email) {
-        return usuarioRepository.findByEmail(email) != null;
+    public Usuario existeUsuario(String email) {
+        return usuarioRepository.findByEmail(email);
     }
 
     private Collection<? extends GrantedAuthority> mapearAutoridadesRoles(Collection<Rol> roles) {

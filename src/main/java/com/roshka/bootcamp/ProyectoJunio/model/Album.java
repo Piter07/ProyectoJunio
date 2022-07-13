@@ -29,12 +29,15 @@ public class Album {
     private Date fechaUltMod;
     private Date fechaEvento;
 
-    @ManyToOne
+    @OneToMany(mappedBy = "album")
     @JsonIgnore
+    private Set<Foto> fotos = new HashSet<>();
+
+    @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "album")
-    @JsonIgnore
-    private Set<Foto> fotos = new HashSet<Foto>();
+    @OneToOne
+    private Categoria categoria;
+
 }
