@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.98.0">
+    <title>Titulo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+    <link rel="icon" type="img/x-icon" href="/img/roshkaicon.ico">
+    <link rel="stylesheet" href="css/home/home_head.css">
+    <link href="css/galeria.css" rel="stylesheet">
+    <link href="css/foto-comentarios.css" rel="stylesheet">
+</head>
+<body>
+<header  class="posicion">
+    <div class="navbar navbar-dark bg-dark shadow-sm" style="background-color: #1d75bc !important;">
+        <div class="container">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <img class="mt-1" src="img/roshka.jpg" alt="" width="40" height="40"
+                     style="border-radius: 30px; margin-right: 3px !important; "/>
+                <strong>Roshkagram</strong>
+            </a>
+        </div>
+    </div>
+</header>
+<div class="row">
+    <div class="col-sm-1">
+        <button type="button" onclick="location.href='/album'" class="btn btn-outline-info"
+                style="position: sticky;top: 15%; left : 1%; color: #1d75bc; border-color: #1d75bc;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                 class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+            </svg>
+        </button>
+    </div>
+    <div class="col-sm-11">
+        <div class="row">
+            <div class="col-sm-12 col-md-7 contenedor-imagen">
+                <img class="img-thumbnail altura_caja_imagen" src="img/foto.jpeg" alt="imagen">
+            </div>
+            <div class="col-sm-12 col-md-4 contenedor-comentarios">
+                <div class="comentarios">
+                    <div class="overflow-scroll altura_caja_comentario">
+                        <div class="media">
+                            <img src="img/Foto de Perfil/Alexis.jpg" width="50" height="50" alt="">
+                            <div class="media_body">
+                                <p class="nombre">Alexis Ortiz <span>9:21 pm, Today</span></p>
+                                <p class="comentario">Los Bootcampers más facheros!! :)</p>
+                                <div class="botones text-right">
+                                    <a href="#">Editar</a>
+                                    <a href="#">Borrar</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="media">
+                            <img src="img/Foto de Perfil/Kendall.png" width="50" height="50" alt="">
+                            <div class="media_body">
+                                <p class="nombre">Ana Lezcano<span>9:25 pm, Today</span></p>
+                                <p class="comentario">El de gorrita mi perdición</p>
+                                <div class="botones text-right">
+                                    <a href="#">Editar</a>
+                                    <a href="#">Borrar</a>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="media">
+                            <img src="img/Foto de Perfil/Miranda.jpg" width="50" height="50" alt="">
+                            <div class="media_body">
+                                <p class="nombre">Zucarita<span>9:28 pm, Today</span></p>
+                                <p class="comentario">El es mio, jodete! p***</p>
+                                <div class="botones text-right">
+                                    <a href="#">Editar</a>
+                                    <a href="#">Borrar</a>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="media">
+                            <img src="img/Foto de Perfil/ProfeOscar.jpg" width="50" height="50" alt="">
+                            <div class="media_body">
+                                <p class="nombre">Oscar The Sensei<span>9:30 pm, Today</span></p>
+                                <p class="comentario">Bien Bien Bien!</p>
+                                <div class="botones text-right">
+                                    <a href="#">Editar</a>
+                                    <a href="#">Borrar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form action="" class="form_comentarios d-flex justify-content-end flex-wrap">
+                        <textarea name="" id="" placeholder="Comentario"></textarea>
+                        <button class="btn" type="button">Comentar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>baguetteBox.run('.tz-gallery');</script>
+</div>
+
+</body>
+</html>
