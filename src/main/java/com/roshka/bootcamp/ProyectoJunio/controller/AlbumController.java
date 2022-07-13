@@ -12,6 +12,7 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.roshka.bootcamp.ProyectoJunio.service.FotoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -61,8 +62,9 @@ public class AlbumController {
     }
     //recibe los datos del formulario de creacion de album y crea un album en la base de datos por medio de AlbumService
     @PostMapping("/creacion-album")
-    public String postFormFotos(@ModelAttribute("objAlbum") AlbumDTO albumDTO, @RequestParam("file") MultipartFile file){
-        Usuario usuario = usuarioService.existeUsuario(albumDTO.getUsername());
+    public String postFormAlbum(@ModelAttribute("objAlbum") AlbumDTO albumDTO){
+        final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
+        Usuario usuario = usuarioService.existeUsuario(currentUserName);
         albumDTO.setUsuario(usuario);
         albumService.guardar(albumDTO);
 //        if(!file.isEmpty()){
@@ -82,5 +84,25 @@ public class AlbumController {
     public AlbumDTO obtenerAlbumDTO() {
         return new AlbumDTO();
     }
+
+//    @PostMapping("/creacion-album-foto/{idAlbum}")
+//    public String postFormFoto(@RequestParam("idAlbum") idAlbum, @RequestParam("file") MultipartFile file){
+//        final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
+//        Usuario usuario = usuarioService.existeUsuario(currentUserName);
+//        albumDTO.setUsuario(usuario);
+//        albumService.guardar(albumDTO);
+////        if(!file.isEmpty()){
+////            Path directorioImagenes= Paths.get("src/main/resources/static/img/ImagenesPrueba");
+////            String rutaAbsoluta=directorioImagenes.toFile().getAbsolutePath();
+////            try {
+////                byte[] bytesImg=file.getBytes();
+////                Path rutaCompleta=Paths.get(rutaAbsoluta+"/"+file.getOriginalFilename());
+////                Files.write(rutaCompleta,bytesImg);
+////            } catch (IOException e) {
+////                throw new RuntimeException(e);
+////            }
+////        }
+//        return "formulario-fotos";
+//    }
 
 }
