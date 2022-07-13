@@ -1,6 +1,5 @@
 package com.roshka.bootcamp.ProyectoJunio.seguridad;
 
-import com.roshka.bootcamp.ProyectoJunio.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import com.roshka.bootcamp.ProyectoJunio.service.UsuarioService;
 
 @Configuration
 @EnableWebSecurity
@@ -41,20 +42,45 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/home", "/index", "/registro",
-                        "/album","/album/**","/album-fotos","/css/**","/js/**","/img/**")
-                .permitAll()
+                    .antMatchers("/", "/home", "/index", "/registro", "/css/**","/js/**","/img/**")
+                    .permitAll()
+                    .anyRequest()
+                    .authenticated()
+                    //.hasRole("CONECTARSE")
+                    .and()
+                .formLogin()
+                    .loginPage("/login")
+                    //.loginProcessingUrl("")
+                    .defaultSuccessUrl("/album", true)
+                    //.failureUrl("/login.html?error=true")
+                    //.failureHandler(authenticationFailureHandler())
+                    .permitAll()
+                    .and()
+                .logout()
+                    .invalidateHttpSession(true)
+                    .clearAuthentication(true)
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                    .logoutSuccessUrl("/")
+                    .permitAll();
+
+
+        /*http.authorizeRequests().antMatchers(
+                        "/registro**",
+                        "/js/**",
+                        "/css/**",
+                        "/img/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
+                    .loginPage("/login")
+                    .permitAll()
+                    .and()
                 .logout()
-                .invalidateHttpSession(true)
-                .clearAuthentication(true)
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/")
-                .permitAll();
+                    .invalidateHttpSession(true)
+                    .clearAuthentication(true)
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                    .logoutSuccessUrl("/")
+                    .permitAll();
+         */
     }
 }

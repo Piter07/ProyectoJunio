@@ -1,12 +1,16 @@
 package com.roshka.bootcamp.ProyectoJunio.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "permiso")
 public class Permiso {
@@ -15,7 +19,19 @@ public class Permiso {
     private Long id_permiso;
     private String nombre;
 
-    @ManyToOne
-    @JoinColumn(name = "rol_id", referencedColumnName = "id_rol")
-    private Rol rol;
+    public Permiso(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Permiso() {
+
+    }
+
+    @ManyToMany
+    @JoinTable(name = "rol_permiso",
+            joinColumns = @JoinColumn(name = "permiso_id"),
+            inverseJoinColumns = @JoinColumn(name = "rol_id"))
+    //private Set<Rol> roles = new HashSet<>();
+    private Collection<Rol> roles;
+
 }

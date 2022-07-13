@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Entity
 public class ReaccionFoto implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_reaccion_foto;
 
     @ManyToOne
@@ -20,6 +20,6 @@ public class ReaccionFoto implements Serializable {
     @JoinColumn(name = "reaccion_id", referencedColumnName = "id_reaccion")
     private Reaccion reaccion;
 
-    @OneToOne(mappedBy = "reaccionFoto")
+    @OneToOne
     private Usuario usuario;
 }
