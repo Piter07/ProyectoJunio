@@ -16,6 +16,7 @@ html, body{
 /* contenedor grande */
 .container{
     height :100vh;
+    /*width :80vh;*/
     /*background:black;*/
 
 }
@@ -59,7 +60,7 @@ html, body{
     padding-top: 0.5rem;
     padding-bottom: 0.1rem;  
     border-radius:7px;       
-    
+
 }
 
 h2{
@@ -140,7 +141,7 @@ height: 60%;
    
 }
 
-@media only screen and (max-width: 768px) {
+/*@media only screen and (max-width: 768px) {*/
     /* For mobile phones: */
     .container2{
         background: yellow;
@@ -237,8 +238,13 @@ height: 60%;
         font-size:1.5rem;
        
     }
-.form-control{
-    row: 1px;
+.form-control textarea{
+    height: 75px;
+    min-height: 75px;
+    max-height: 75px;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
 }
  }
  /*relacion tamaño aspecto img*/
@@ -249,4 +255,11 @@ img{
 
 .carousel-item{
     /*background:black;*/
+}
+.scrol{
+    height: 70vh;
+}
+
+.fijo{
+
 }
