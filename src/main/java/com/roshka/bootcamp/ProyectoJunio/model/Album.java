@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -37,7 +38,7 @@ public class Album {
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_id",referencedColumnName = "id_categoria")
+    @JoinColumn(name="categoria_id", referencedColumnName = "id_categoria")
     private Categoria categoria;
 
 }
