@@ -113,4 +113,11 @@
   justify-content: center;
   align-items: center;
   }
+  #menu1:focus{
+   cursor: pointer;
+  }
+    #menu2:focus{
+     cursor: pointer;
+    }
+
 
