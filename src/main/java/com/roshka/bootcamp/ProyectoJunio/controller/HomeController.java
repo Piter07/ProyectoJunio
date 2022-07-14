@@ -26,6 +26,12 @@ public class HomeController {
         return "login";
     }
 
+    @GetMapping("/foto-comentario")
+    public String fotoComentario() {
+        // retorna el nombre de la vista
+        return "foto-comentario";
+    }
+
 
     /*
     @GetMapping("/registro")
