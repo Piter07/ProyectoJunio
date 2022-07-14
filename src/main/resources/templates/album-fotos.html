@@ -79,7 +79,7 @@
             <div class="tz-gallery">
                 <div class="row altura">
                         <div class="col-sm-6 col-md-4" th:each="foto : ${fotos}">
-                            <a class="lightbox" th:href="${foto.ruta}">
+                            <a class="lightbox" th:href="@{/foto-comentario/}+${foto.id_foto}">
                                 <img class="img-thumbnail" th:src="${foto.getRuta()}" alt="imagen">
                             </a>
                         </div>
