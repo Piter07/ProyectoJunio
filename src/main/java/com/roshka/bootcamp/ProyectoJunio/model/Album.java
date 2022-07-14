@@ -16,6 +16,7 @@ public class Album {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_album;
     private String titulo;
+    @Column(length = 5000)
     private String descripcion;
     private Long id_categoria;
 
