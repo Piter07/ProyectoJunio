@@ -31,20 +31,20 @@
                 </a>
             </div>
             <div class="btn-group">
-                <div class="dropdown" >
-                <button type="button" class="btn btn-outline-light me-2" data-toggle="modal" data-target="#staticBackdrop" aria-haspopup="true"
-                        aria-expanded="false">
-                    <i class="fas fa-plus fa-lg"></i>Crear Álbum
-                </button>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-outline-light me-2" data-toggle="modal"
+                            data-target="#staticBackdrop" aria-haspopup="true"
+                            aria-expanded="false">
+                        <i class="fas fa-plus fa-lg"></i>Crear Álbum
+                    </button>
                 </div>
 
                 <!--Dropdown Categorias-->
-                <div class="dropdown" >
+                <div class="dropdown">
                     <li class="btn btn-outline-light me-2" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <span th:text="${categName}"></span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                             class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
                             <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"></path>
                         </svg>
                     </li>
@@ -57,8 +57,7 @@
                         </a>
                         </a>
                         <a th:if="${categ != 0}" class="dropdown-item" th:href="@{/albumes}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-x-circle" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                             </svg>
@@ -95,7 +94,6 @@
 </header>
 <body>
 <main>
-
     <!--Contendor de la vista albumes-->
     <div class="album py-5 bg-light">
         <div class="container">
@@ -105,39 +103,52 @@
                 <!-- Si no hay categoria mostrara todos los albumes y si hay solo los de esa categoria -->
                 <div th:each="album : ${albumLista}"
                      th:if="${album.getCategoria().getId_categoria() == categ} or ${categ == 0}">
-                    <a class="link" th:href="@{/album/}+${album.id_album}+@{?pageAnt=}+${pageNo}"
-                       onMouseover="this.style.color='black'">
-                        <div th:id="${album.id_album}" class="col-sm">
-                            <div class="col post-container" style="align-items: center !important;">
+                    <div th:id="${album.id_album}" class="col-sm">
+                        <div class="col post-container" style="align-items: center !important;">
                                 <div class="post-row">
-                                    <div class="user-profile">
-                                        <div>
-                                            <p th:text="${album.titulo}">
-                                            </p>
-                                            <span th:text="${album.fechaEvento}"></span>
+                                    <a class="link" th:href="@{/album/}+${album.id_album}+@{?pageAnt=}+${pageNo}"
+                                       onMouseover="this.style.color='black'">
+                                        <div class="user-profile">
+                                            <div>
+                                                <p th:text="${album.titulo}">
+                                                </p>
+                                                <span th:text="${album.fechaEvento}"></span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
+                                        <p th:text="${album.usuario.getNombre()}"></p>
+                            </a>
+                                    <!-- Boton para agregar mas fotos -->
+                                    <a class="edit" th:href="@{/albumes}" onMouseover="this.style.color='black'" style="margin-bottom: -5px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
+                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
+                                        </svg>
 
-                                <p th:text="${album.usuario.getNombre()}"></p>
+                                    </a>
+                                </div>
+                                <!-- Primera imagen del album -->
+                                <a class="link" th:href="@{/album/}+${album.id_album}+@{?pageAnt=}+${pageNo}"
+                                   onMouseover="this.style.color='black'">
                                 <div class="prueba">
                                     <!--  -->
                                     <img th:if="${!album.fotos.isEmpty()}" class="img-fluid"
                                          th:src="${album.fotos.stream().findFirst().get().ruta}"
                                          alt="imagen">
                                 </div>
-
-                            </div>
+                                </a>
                         </div>
-                    </a>
-                </div>
-            </div>
+                    </div>
 
-            <h1 th:if="${albumLista.isEmpty()}" style="">No Hay Albumes Disponibles</h1>
+                </div>
+                <!-- Caso en el que no hay albumes disponibles -->
+                <h1 th:if="${albumLista.isEmpty()}" style="">No Hay Albumes Disponibles</h1>
+            </div>
         </div>
     </div>
     </div>
-    </div>
+   <!-- Navegacion de pagina para la categoria inicial
+     con validacion para que desaprezca los botones de next y prev dependiendo
+     de la pagina en la que este poscionado la pagina-->
     <nav th:if="${categ == 0}" aria-label="Page navigation example" class="prueba">
         <ul class="pagination">
             <li class="page-item" th:if="${pageNo != 0}">
@@ -160,6 +171,9 @@
             </li>
         </ul>
     </nav>
+    <!-- Navegacion de pagina  para las categorias
+   con validacion para que desaprezca los botones de next y prev dependiendo
+   de la pagina en la que este poscionado la pagina-->
     <nav th:if="${categ != 0}" aria-label="Page navigation example" class="prueba">
         <ul class="pagination">
             <li th:if="${pageNo != 0}" class="page-item">

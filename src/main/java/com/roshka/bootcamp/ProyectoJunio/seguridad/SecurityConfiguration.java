@@ -51,7 +51,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin()
                     .loginPage("/login")
                     //.loginProcessingUrl("")
-                    .defaultSuccessUrl("/album", true)
+                    .defaultSuccessUrl("/albumes", true)
                     //.failureUrl("/login.html?error=true")
                     //.failureHandler(authenticationFailureHandler())
                     .permitAll()
