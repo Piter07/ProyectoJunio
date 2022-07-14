@@ -116,7 +116,7 @@
         <div class="container">
             <div th:if ="${!albumes.isEmpty()}" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
                 <div  th:each="album : ${albumes}"  th:if="${album.getCategoria().getId_categoria() == categ} or ${categ == 0}">
-                    <a class="link" th:href="@{/galeria/}+${album.id_album}+@{?pageAnt=}+${pageNo}"
+                    <a class="link" th:href="@{/galeria/}+${album.id_album}+@{?pageAnt=}+${pageNo}"></a>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
                 <div th:each="album : ${albumes}"  th:if="${album.getCategoria().getId_categoria() == categ} or ${categ == 0}">
                     <a class="link" th:href="@{/album/}+${album.id_album}+@{?pageAnt=}+${pageNo}"
@@ -135,7 +135,7 @@
 
                                 <p th:text="${album.usuario.getNombre()}"></p>
                                 <div class="prueba">
-                                    <img th:if="${!album.fotos.isEmpty()}" class="img-fluid}" th:src="${album.fotos.stream().findFirst().get().ruta}"
+                                    <img th:if="${!album.fotos.isEmpty()}" class="img-fluid" th:src="${album.fotos.stream().findFirst().get().ruta}"
                                          alt="imagen">
                                 </div>
                                     <p th:text="${album.usuario.getNombre()}"></p>
