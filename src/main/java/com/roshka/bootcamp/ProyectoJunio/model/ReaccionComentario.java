@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 public class ReaccionComentario {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_reaccion_comentario;
 
     @ManyToOne
@@ -19,7 +19,7 @@ public class ReaccionComentario {
     @JoinColumn(name = "reaccion_id", referencedColumnName = "id_reaccion")
     private Reaccion reaccion;
 
-    @OneToOne(mappedBy = "reaccionComentario")
+    @OneToOne
     private Usuario usuario;
 
 }

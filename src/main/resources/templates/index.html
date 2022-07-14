@@ -1,7 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      layout:decorator="layout/base">
 <head>
-    <meta charset="utf-8">    
+
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="/images/roshka.jpg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -11,9 +16,9 @@
     <link rel="stylesheet" href="css/home/home_head.css">
     <title>Roshkagram</title>
 
-  </head>
+</head>
 
-    <link th:href="@{/headers.css}" rel = "stylesheet">
+<link th:href="@{/headers.css}" rel="stylesheet">
 
 
 <header style="position: sticky;  top: 0; ">
@@ -25,40 +30,63 @@
                      style="border-radius: 30px; margin-right: 3px !important; "/>
                 <strong>Roshkagram</strong>
             </a>
+
+
             <div class="text-end">
-                <a href="/login"><button type="button" class="btn btn-outline-light me-2" >Login</button></a>
-                <a href="/registro"><button type="button" class="btn btn-warning" style="background-color: #FFFFFF !important; ">Sign-up</button></a>
+                <div sec:authorize="!isAuthenticated()">
+                    <a href="/login">
+                        <button type="button" class="btn btn-outline-light me-2">Login</button>
+                    </a>
+                    <a href="/registro">
+                        <button type="button" class="btn btn-warning" style="background-color: #FFFFFF !important; ">
+                            Sign-up
+                        </button>
+                    </a>
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                    <a href="/logout">
+                        <button type="button" class="btn btn-outline-light me-2">Logout</button>
+                    </a>
+                    <a href="/album">
+                        <button type="button" class="btn btn-warning" style="background-color: #FFFFFF !important; ">
+                            Album
+                        </button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </header>
 <body>
 
-   <div class="contenedorPrincipal">
-   
+<div class="d-flex p-2">
+    <div class="row row-cols-1 row-cols-1 row-cols-md-2 g-2">
 
-        <div class="contenedorUno">
-            <img th:src="@{img/otro.png}" alt="imagen" class="images">
-        
+        <div class="col-sm">
+                <img th:src="@{img/otro.png}" alt="imagen" class="img-fluid ">
         </div>
-        <div class="contenedorDos">
-            <h1>ROSHKAGRAM</h1>
-            <h2> Una de las aplicaciones imprescindibles</h2>   
-            <h3> Los nombres de fuentes</h3> 
-            <h4 class="h4"> Lorem ipsum dolor sit amet consectetur adipisicing elit. <br> Eligendi delectus optio id blanditiis animi, tempora a laudantium ullam est hic omnis quae.</h4>
-            <div class="rectangle"></div>
-            <div class="rectangle2"></div>
-            <div class="rectangle3"></div>
-            <div class="rectangle4"></div>
-        
+        <div class="col-sm">
+            <div class="contenedorDos">
+                <h1>ROSHKAGRAM</h1>
+                <h2> Una de las aplicaciones imprescindibles</h2>
+                <h3> Los nombres de fuentes</h3>
+                <h4 class="h4"> Lorem ipsum dolor sit amet consectetur adipisicing elit. <br> Eligendi delectus optio id
+                    blanditiis animi, tempora a laudantium ullam est hic omnis quae.</h4>
+                <div class="rectangle"></div>
+                <div class="rectangle2"></div>
+                <div class="rectangle3"></div>
+                <div class="rectangle4"></div>
+
+            </div>
         </div>
-        
     </div>
+
+</div>
 
 
 </body>
 <div class="footer">
-    <p>Todo Los Derechos Reservado "Roskha S.A"  Paraguay-Asuncion  2022</p>
+    <p>Todo Los Derechos Reservado "Roskha S.A" Paraguay-Asuncion 2022</p>
     <style>
             .footer {
             position: fixed;
@@ -70,6 +98,8 @@
             text-align: center;
             position: fixed;
             }
-          </style>
+
+
+    </style>
 </div>
 </html>
