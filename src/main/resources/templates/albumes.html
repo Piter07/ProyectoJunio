@@ -85,7 +85,7 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
                 <div th:each="album : ${albumes}"  th:if="${album.getCategoria().getId_categoria() == categ} or ${categ == 0}">
-                    <a class="link" th:href="@{/galeria/}+${album.id_album}+@{?pageAnt=}+${pageNo}"
+                    <a class="link" th:href="@{/album/}+${album.id_album}+@{?pageAnt=}+${pageNo}"
                        onMouseover="this.style.color='black'">
                         <div th:id="${album.id_album}" class="col-sm">
                             <div class="col post-container" style="align-items: center !important;">
@@ -101,7 +101,7 @@
 
                                 <p th:text="${album.usuario.getNombre()}"></p>
                                 <div class="prueba">
-                                    <img class="img-fluid" th:src="${album.fotos.stream().findFirst().get().ruta}"
+                                    <img th:if="${!album.fotos.isEmpty()}" class="img-fluid}" th:src="${album.fotos.stream().findFirst().get().ruta}"
                                          alt="imagen">
                                 </div>
 
