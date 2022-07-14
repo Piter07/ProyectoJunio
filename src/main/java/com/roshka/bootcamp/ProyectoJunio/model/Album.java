@@ -11,7 +11,6 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.*;
 
 @Getter
 @Setter
@@ -22,7 +21,6 @@ public class Album {
     private Long id_album;
     private String titulo;
     private String descripcion;
-    private Long id_categoria;
 
     //@Column(nullable = false, updatable = false)
     //@Temporal(TemporalType.TIMESTAMP)
@@ -38,6 +36,7 @@ public class Album {
     @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
     private Usuario usuario;
+
     @ManyToOne
     @JoinColumn(name="categoria_id", referencedColumnName = "id_categoria")
     private Categoria categoria;
