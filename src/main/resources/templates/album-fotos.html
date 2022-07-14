@@ -27,18 +27,8 @@
         </div>
     </div>
 </header>
-
 <body>
-
 <div class="row">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
-
-<script>baguetteBox.run('.tz-gallery');</script>
-
-
     <div class="col-1">
         <button type="button" onclick="location.href='/album'" class="btn btn-outline-info"
                 style="position: sticky;top: 15%; left : 1%; color: #1d75bc; border-color: #1d75bc;">
@@ -52,9 +42,8 @@
         <div class="container gallery-container">
             <h1 th:text="${titulo}"></h1>
             <p class="page-description text-center" th:text="${descripcion}"></p>
-            <div class="tz-gallery"><!-- tz-gallery -->
-                <div class="row">
-                    <!--  -->
+            <div class="tz-gallery">
+                <div class="row altura">
                         <div class="col-sm-6 col-md-4" th:each="foto : ${fotos}">
                             <a class="lightbox" th:href="${foto.ruta}">
                                 <img class="img-thumbnail" th:src="${foto.getRuta()}" alt="imagen">
@@ -64,8 +53,6 @@
             </div>
         </div>
     </div>
-
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
