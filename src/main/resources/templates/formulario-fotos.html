@@ -50,65 +50,17 @@
     <body>
         <div class="container rounded" id="super_principal">
             <div class="container" id="contenedor-principal">
-                <form action="#" th:action="@{/creacion-album/}"  th:object="${objAlbum}" method="post" class="" enctype="multipart/form-data" >
-                    <div class="row shadow-lg p-1 mb-2 bg-body rounded " id="contededorAlbum">
-                        <div class="col-12" id="album_contenido">
-
-                            <div class="mb-3">
-                                <label for="nombre_album" class="form-label">
-                                    <h4>
-                                        Título del álbum
-                                    </h4>
-                                </label>
-                                <div class="col-llx-4 col-sm-10 col-md-7">
-                                    <input type="text" class="form-control h3" id="nombre_album" name="titulo" th:field="*{titulo}" required/>
-                                </div>
-                            </div>
-
-                            <div class="col-llx-4 col-sm-10 col-md-7">
-                                <div class="mb-3">
-                                    <label for="descripcion"class="form-label">
-                                        <h4>
-                                            Descripción
-                                        </h4>
-                                    </label>
-                                    <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required th:field="*{descripcion}"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-llx-4 col-sm-10 col-md-7 mb-3">
-                                <div class="hijo1">
-                                    <label for="fecha" class="form-label">
-                                        <h4>
-                                            Fecha evento
-                                        </h4>
-                                    </label>
-                                </div>
-                                <div class="hijo2">
-                                    <input class="from-control text-center" placeholder="Calendario" type="datetime-local" id="fecha" name="fechaEvento" th:field="*{fechaEvento}"/><label for="fecha"><i class="far fa-calendar-alt fa-lg" ></i></label>
-                                </div>
-                            </div>
-                            <div class="selectbox col-llx-3 col-sm-3 col-md-3 mb-3">
-                                <div class="select" id="select">
-                                    <div class="contenido-select">
-                                        <span class="titulo">Categoría</span>
-                                    </div>
-                                </div>
-                                <div class="opciones" id="opciones">
-                                    <a href="#" class="opcion">
-                                        <div class="contenido-opcion">
-                                            <div class="textos">
-                                                <span class="titulo">Categoría 1</span>
-                                                <span class="valor">1</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <input type="hidden" name="idCategoria" id="inputSelect"  value="" th:field="*{idCategoria}">
+                <form action="#" th:action="@{/creacion-album}"  th:object="${objAlbum}" method="post" class="" enctype="multipart/form-data" >
+                    <h3>Fotos del album ${TITULOALBUM}</h3>
+                    <div class="dropzone shadow-lg p-1 mb-2 bg-body rounded" id="drop">
+                        <div class="dz-default dz-message">
+                            <button class="dz-button" type="button"><img src="img/upload.png" alt=""></button>
                         </div>
                     </div>
+
+
                     <div class="button">
-                        <button type="submit" id="send">Crear Álbum</button>
+                        <button type="submit" id="send">Subir Fotos</button>
                     </div>
                 </form>
             </div>
