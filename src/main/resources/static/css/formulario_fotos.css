@@ -23,7 +23,7 @@
     height: auto;
 }
 #contededorAlbum{
-    border:3px dashed forestgreen;
+    border: 2px dashed purple;
     margin: 1rem auto;
     height: auto;
 }
@@ -173,7 +173,23 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
     font-size: 1rem;
     margin-right: 10px;
 }
-#botones{
+#botones,#tituloModal{
     margin: auto;
+}
+i{
+    margin-right: 10px;
+}
+i:hover{
+    cursor: pointer;
+}
+#contenedorBoton{
+    padding: 1rem;
+}
+.modal-header{
+    font-family: 'poppins', sans-serif;
+}
+#staticBackdropLabel,#prueba34{
+    font-family: 'poppins', sans-serif;
+    font-size: 2rem;
 }
 /*aqui termina la configuracion para el formulario de fotos con dropzone*/
