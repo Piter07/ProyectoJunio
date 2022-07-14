@@ -24,7 +24,7 @@ public class PageController {
     @Autowired
     private CategoriaService categoriaService;
 
-    @GetMapping("/album")
+    @GetMapping("/albumes")
     public String getPaginatedAlbums (@RequestParam(name="pageNo", required=false,defaultValue= "0") int pageNo,
              @RequestParam(name="categ", required=false ,defaultValue= "0") long categ ,Model model) {
         int pageSize = 3;
@@ -53,7 +53,7 @@ public class PageController {
         if(next > pages.length - 1)
             next = pages.length - 1;
 
-        model.addAttribute("albumes", albumes);
+        model.addAttribute("albumLista", albumes);
         model.addAttribute("categorias", categorias);
         model.addAttribute("pages",pages);
         model.addAttribute("pageNo",pageNo);
