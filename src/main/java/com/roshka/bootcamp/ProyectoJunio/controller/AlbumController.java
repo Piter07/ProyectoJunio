@@ -42,7 +42,7 @@ public class AlbumController {
     public AlbumController (AlbumService albumService) {this.albumService = albumService;}
 
 
-    @GetMapping("/galeria/{id}")
+    @GetMapping("/album/{id}")
     public String getAlbumById(@PathVariable long id, @RequestParam(name="pageAnt", required=false,defaultValue= "0") int pageAnt,Model model) throws Exception {
         Optional<Album> album = albumService.findById(id);
         List<Foto> fotos = fotoService.getFotos(id);
@@ -51,14 +51,20 @@ public class AlbumController {
             model.addAttribute("descripcion", album.get().getDescripcion());
             model.addAttribute("fotos", fotos);
             model.addAttribute("pageAnt", pageAnt);
+            model.addAttribute("id", album.get().getId_album());
         }
         return "album-fotos";
+    }
+
+    @GetMapping("/album/{id}/subir-fotos")
+    public String getAlbumById(@PathVariable long id) throws Exception {
+        return "formulario-fotos";
     }
 
     //retorna la pagina del formulario album y recibe las imagenes al subir las fotos
     @GetMapping("/creacion-album")
     public String getFormFotos(){
-        return "formulario-fotos";
+        return "formulario-album";
     }
     //recibe los datos del formulario de creacion de album y crea un album en la base de datos por medio de AlbumService
     @PostMapping("/creacion-album")

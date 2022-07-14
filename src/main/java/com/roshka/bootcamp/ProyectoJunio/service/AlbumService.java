@@ -5,6 +5,7 @@ import com.roshka.bootcamp.ProyectoJunio.model.Album;
 import com.roshka.bootcamp.ProyectoJunio.model.Categoria;
 import com.roshka.bootcamp.ProyectoJunio.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -49,7 +50,7 @@ public class AlbumService implements IAlbumService,AlbumServiceInterface  {
 
     public Page<Album> findPaginated(int pageNo, int pageSize) {
 
-        Pageable paging = PageRequest.of(pageNo, pageSize);
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by("fechaCreacion").descending());
         Page<Album> pagedResult = albumRepository.findAll(paging);
 
         return pagedResult;
