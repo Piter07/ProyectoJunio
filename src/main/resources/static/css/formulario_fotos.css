@@ -23,14 +23,12 @@
     height: auto;
 }
 #contededorAlbum{
-    border:2px outset blue;
-    margin: 2rem auto;
+    border:3px dashed forestgreen;
+    margin: 1rem auto;
     height: auto;
-    margin-bottom: 1rem;
 }
 #album_contenido{
-    padding: 2rem;
-    opacity: 1;
+    padding: 1rem;
 }
 hr {
     background-color: white;
@@ -166,29 +164,16 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
 }
 
 .valor {
-   display: none;
+    display: none;
 }
 
-/*.padre{*/
-/*    display: flex;*/
-/*    justify-content: flex-start;*/
-/*    align-content: flex-start;*/
-/*    align-items: center;*/
-/*}*/
-/*.hijo1,.hijo2{*/
-/*    width: 150px;*/
-/*}*/
-/*#fecha_evento{*/
-/*    width: 150px;*/
-/*    white-space: nowrap;*/
-/*}*/
 #fecha{
     width: 200px;
     font-family: 'poppins', sans-serif;
     font-size: 1rem;
     margin-right: 10px;
 }
-#subida_archivos{
-    display:none !important;
+#botones{
+    margin: auto;
 }
 /*aqui termina la configuracion para el formulario de fotos con dropzone*/
