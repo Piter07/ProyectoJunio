@@ -1,5 +1,8 @@
 package com.roshka.bootcamp.ProyectoJunio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,6 +30,7 @@ public class Album {
     private Date fechaEvento;
 
     @OneToMany(mappedBy = "album")
+    @JsonIgnore
     private Set<Foto> fotos = new HashSet<>();
 
     @ManyToOne
