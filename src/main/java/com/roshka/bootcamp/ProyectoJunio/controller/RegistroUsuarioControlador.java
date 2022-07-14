@@ -55,14 +55,22 @@ public class RegistroUsuarioControlador {
             Matcher matcher = pattern.matcher(correo);
 
             if(!matcher.matches()) {
+                /* verifica que sea @roshka.com */
                 return "redirect:/registro?err001";
             }
 
             if( !(registroDTO.getPassword().equals(registroDTO.getClaveConfirmar()) )) {
+                //verifica que las contraseñas sean iguales
                 return "redirect:/registro?err002";
             }
 
+            if(registroDTO.getPassword().length() < 8) {
+                //verifica que la longitud sea mayor o igual a 8
+                return "redirect:/registro?err004";
+            }
+
             if(usuarioService.existeUsuario(correo) != null) {
+                //verifica que el correo no exista en la base de datos
                 return "redirect:/registro?err003";
             }
 

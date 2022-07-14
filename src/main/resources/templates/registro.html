@@ -68,6 +68,14 @@
                     </div>
                 </div>
             </div>
+            <div th:if=${param.err004}>
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                    <div>
+                        La contraseña debe tener al menos 8 caracteres
+                    </div>
+                </div>
+            </div>
 
             <div class="input-div one">
                 <div class="i">
@@ -84,7 +92,7 @@
                 </div>
                 <div class="div">
                     <h5>Contraseña</h5>
-                    <input type="password" class="input" th:field="*{password}" required>
+                    <input type="password" class="input" minlength="8" th:field="*{password}" required>
                 </div>
             </div>
             <div class="input-div pass">
@@ -93,7 +101,7 @@
                 </div>
                 <div class="div">
                     <h5>Confirmar Contraseña</h5>
-                    <input type="password" class="input" th:field="*{claveConfirmar}" required>
+                    <input type="password" class="input" minlength="8" th:field="*{claveConfirmar}" required>
                 </div>
             </div>
             <div class="input-div pass">
