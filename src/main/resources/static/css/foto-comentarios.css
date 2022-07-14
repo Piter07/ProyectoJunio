@@ -10,6 +10,7 @@
     justify-content: center;
     align-items: center;
 }
+/* height:450px !important; */
 .contenedor-imagen img{
     height: auto;
     width: auto;
