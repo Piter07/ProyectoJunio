@@ -38,7 +38,21 @@
                      style="border-radius: 30px; margin-right: 3px !important; "/>
                 <strong>Roshkagram</strong>
             </a>
-            <div class="dropdown">
+            <div class="dropdown" style="left : 35%;">
+                <li  class="btn btn-outline-light me-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span th:text = "${categName}"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"></path>
+                    </svg>
+                </li>
+                <div class="dropdown-menu">
+                    <a th:each="cat: ${categorias}" class="dropdown-item" th:href="@{/album?pageNo=}+${pageNo}+@{&categ=}+${cat.id_categoria}" th:text="${cat.nombre}"></a>
+                    </a>
+                    <a th:if="${categ != 0}" class="dropdown-item" th:href="@{/album}">Quitar Filtro</a>
+                </div>
+
+            </div>
+            <div class="dropdown" >
                 <button class="btn btn-outline-light me-2" type="button" data-toggle="dropdown">
                     <span class="caret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                              fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
@@ -46,7 +60,6 @@
         d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
 </svg></span></button>
                 <div class="dropdown-menu" style="right: 15%;">
-                    <a th:each="cat: ${categorias}" class="dropdown-item" th:href="@{/album?pageNo=}+${pageNo}+@{&categ=}+${cat.id_categoria}" th:text="${cat.nombre}"></a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/logout">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -62,7 +75,7 @@
             </div>
         </div>
     </div>
-    </div>
+
 </header>
 <body>
 <main>
@@ -145,6 +158,7 @@
 </main>
 <script type="text/javascript" src="js/main.js"></script>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
 
 
 </body>

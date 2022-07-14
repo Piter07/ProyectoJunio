@@ -34,7 +34,7 @@ public class AlbumService implements IAlbumService,AlbumServiceInterface  {
         Date date_auxiliar;
         album.setTitulo(albumDTO.getTitulo());
         album.setDescripcion(albumDTO.getDescripcion());
-        album.setId_categoria(albumDTO.getIdCategoria());
+        //album.setId_categoria(albumDTO.getIdCategoria());
         album.setFechaCreacion(new Date());
         try {
             date_auxiliar=new SimpleDateFormat("dd/MM/yyyy").parse(albumDTO.getFechaEvento());
