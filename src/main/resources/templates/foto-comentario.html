@@ -70,6 +70,17 @@
 
 </header>
 <div class="row">
+    <!--breadcrumb-->
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a th:href="@{/albumes?pageNo=} + ${pageAnt}">Albumes</a></li>
+                <li class="breadcrumb-item"><a th:href="@{/album/}+${nroAlbum}+@{?pageAnt=}+${pageAnt}">Album</a></li>
+                <li class="breadcrumb-item"><a href="#">Foto-Comentario</a></li>
+            </ol>
+        </nav>
+    </div>
         <div class="row">
             <div class="col-sm-12 col-md-7 contenedor-imagen">
                 <img class="img-thumbnail altura_caja_imagen" th:src="${foto.getRuta()}" alt="imagen">
