@@ -7,6 +7,7 @@ import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
 import com.roshka.bootcamp.ProyectoJunio.model.Foto;
 import com.roshka.bootcamp.ProyectoJunio.model.Foto;
 import com.roshka.bootcamp.ProyectoJunio.service.AlbumService;
+/*import com.roshka.bootcamp.ProyectoJunio.service.UsuarioService;*/
 import com.roshka.bootcamp.ProyectoJunio.service.UsuarioService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;

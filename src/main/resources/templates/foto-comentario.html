@@ -1,12 +1,13 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.98.0">
-    <title>Titulo</title>
+    <title th:text="${id_foto}"></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
@@ -63,9 +64,11 @@
                                  </div>
                         </div>
                     </div>
-                    <form action="" class="form_comentarios d-flex justify-content-end flex-wrap">
-                        <textarea name="" id="" placeholder="Comentario"></textarea>
-                        <button class="btn" type="button">Comentar</button>
+                    <form th:action="@{/foto-comentario}" method="post" class="form_comentarios d-flex justify-content-end flex-wrap" th:object="${comentario}">
+                        <textarea id="descripcion"th:field="*{descripcion}"></textarea>
+                        <input id="idFoto" type="text"  th:field="*{idFoto}" th:value="${id_Foto}">
+                        <!--<input id="idUsuario" type="text" th:field="*{username}" sec:value="principal.username">-->
+                        <button class="btn" type="submit">Comentar</button>
                     </form>
                 </div>
             </div>

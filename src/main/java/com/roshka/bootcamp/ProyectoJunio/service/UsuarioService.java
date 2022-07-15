@@ -1,5 +1,4 @@
 package com.roshka.bootcamp.ProyectoJunio.service;
-
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.UsuarioRegistroDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Permiso;
 import com.roshka.bootcamp.ProyectoJunio.model.Rol;

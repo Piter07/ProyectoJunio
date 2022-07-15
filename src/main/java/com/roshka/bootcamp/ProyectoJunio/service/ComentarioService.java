@@ -1,5 +1,6 @@
 package com.roshka.bootcamp.ProyectoJunio.service;
 
+import com.roshka.bootcamp.ProyectoJunio.controller.dto.ComentarioDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Comentario;
 import com.roshka.bootcamp.ProyectoJunio.repository.ComentarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,5 @@ public class ComentarioService {
         return comentarioRepository.findById(id);
     }
 
-    public void guardarComentario(Comentario comentario){
-        comentarioRepository.save(comentario);
-    }
+
 }

@@ -42,10 +42,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/", "/home", "/index", "/registro", "/css/**","/js/**","/img/**")
-                    .permitAll()
-                    .anyRequest()
-                    .authenticated()
+                    .antMatchers("/", "/home", "/index", "/registro", "/css/**","/js/**","/img/**","/foto-comentario").permitAll()
+                    //.anyRequest()
+                    //.authenticated()
                     //.hasRole("CONECTARSE")
                     .and()
                 .formLogin()
@@ -62,7 +61,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                     .logoutSuccessUrl("/")
                     .permitAll();
-
 
         /*http.authorizeRequests().antMatchers(
                         "/registro**",
