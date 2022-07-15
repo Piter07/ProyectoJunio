@@ -20,6 +20,8 @@ public class Album {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_album;
     private String titulo;
+
+    @Column(length = 5000)
     private String descripcion;
 
     //@Column(nullable = false, updatable = false)

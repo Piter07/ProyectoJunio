@@ -1,11 +1,15 @@
 package com.roshka.bootcamp.ProyectoJunio.controller;
 
+import com.roshka.bootcamp.ProyectoJunio.model.Rol;
 import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
+import com.roshka.bootcamp.ProyectoJunio.service.RolService;
 import com.roshka.bootcamp.ProyectoJunio.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
 
 @Controller
 public class ValidarCorreoController {
@@ -13,10 +17,11 @@ public class ValidarCorreoController {
     @Autowired
     private UsuarioService usuarioService;
 
+    @Autowired
+    private RolService rolService;
+
     @GetMapping("/verificacion")
     public String validarUsuario(@RequestParam String token, @RequestParam String correo) {
-
-        System.out.println(token + " >>> " + correo);
 
         Usuario usuario = usuarioService.existeUsuario(correo);
 
@@ -35,18 +40,24 @@ public class ValidarCorreoController {
             return "redirect:/login?err001";
         }
 
-        usuario.setTokenVerificacion("");
-        usuario.setEstado("A");
+        /* actuliza los siguientes atributos */
+        try {
+            Rol rol = rolService.getDefaultRol();
 
-        /* guardar cambios */
-        if(usuarioService.guardar(usuario) == null) {
-            System.out.println("\nHa ocurrido un error inesperado");
+            usuario.getRoles().add(rol); // asignar el rol por defecto al usuario
+            usuario.setTokenVerificacion("");
+            usuario.setEstado("A");
+
+            /* guardar cambios */
+            if(usuarioService.guardar(usuario) == null) {
+                System.out.println("\nHa ocurrido un error inesperado al activar el usuario");
+                return "redirect:/login?err001";
+            }
+
+            return "redirect:/login?validado";
+        } catch (Exception e) {
             return "redirect:/login?err001";
-        } else {
-            System.out.println("\nUsuario actualizado correctamente");
         }
-
-        return "redirect:/login?validado";
     }
 
 }

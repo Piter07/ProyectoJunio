@@ -46,8 +46,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                             "/css/**","/js/**","/img/**")
                     .permitAll()
                     .anyRequest()
-                    .authenticated()
-                    //.hasRole("conectarse")
+                    //.authenticated()
+                    //.hasRole()
+                    .hasAuthority("conectarse")
                     .and()
                 .formLogin()
                     .loginPage("/login")
@@ -61,7 +62,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .invalidateHttpSession(true)
                     .clearAuthentication(true)
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/")
+                    .logoutSuccessUrl("/login")
                     .permitAll();
     }
 }
