@@ -68,22 +68,12 @@ public class AlbumController {
     }
     //recibe los datos del formulario de creacion de album y crea un album en la base de datos por medio de AlbumService
     @PostMapping("/creacion-album")
-    public String postFormAlbum(@ModelAttribute("objAlbum") AlbumDTO albumDTO){
+    public String postFormAlbum(@ModelAttribute("objAlbum") AlbumDTO albumDTO, Model model){
         final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
         Usuario usuario = usuarioService.existeUsuario(currentUserName);
         albumDTO.setUsuario(usuario);
-        albumService.guardar(albumDTO);
-//        if(!file.isEmpty()){
-//            Path directorioImagenes= Paths.get("src/main/resources/static/img/ImagenesPrueba");
-//            String rutaAbsoluta=directorioImagenes.toFile().getAbsolutePath();
-//            try {
-//                byte[] bytesImg=file.getBytes();
-//                Path rutaCompleta=Paths.get(rutaAbsoluta+"/"+file.getOriginalFilename());
-//                Files.write(rutaCompleta,bytesImg);
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
+        Album albumGuardado = albumService.guardar(albumDTO);
+        albumDTO.setId_album(albumGuardado.getId_album());
         return "formulario-fotos";
     }
     @ModelAttribute("objAlbum")
@@ -91,12 +81,9 @@ public class AlbumController {
         return new AlbumDTO();
     }
 
-//    @PostMapping("/creacion-album-foto/{idAlbum}")
-//    public String postFormFoto(@RequestParam("idAlbum") idAlbum, @RequestParam("file") MultipartFile file){
-//        final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
-//        Usuario usuario = usuarioService.existeUsuario(currentUserName);
-//        albumDTO.setUsuario(usuario);
-//        albumService.guardar(albumDTO);
+    @PostMapping("/creacion-album-foto/{idAlbum}")
+    public String postFormFoto(@RequestParam("file") MultipartFile file){
+
 ////        if(!file.isEmpty()){
 ////            Path directorioImagenes= Paths.get("src/main/resources/static/img/ImagenesPrueba");
 ////            String rutaAbsoluta=directorioImagenes.toFile().getAbsolutePath();
@@ -108,7 +95,7 @@ public class AlbumController {
 ////                throw new RuntimeException(e);
 ////            }
 ////        }
-//        return "formulario-fotos";
-//    }
+        return "formulario-fotos";
+    }
 
 }

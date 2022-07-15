@@ -13,7 +13,7 @@
     -moz-appearance: none;
 }
 #super_principal{
-    border:2px outset blue;
+    /*border:2px outset blue;*/
     /*padding: 1rem;*/
     margin: 3rem auto;
 }
@@ -23,14 +23,12 @@
     height: auto;
 }
 #contededorAlbum{
-    border:2px outset blue;
-    margin: 2rem auto;
+    border: 2px dashed purple;
+    margin: 1rem auto;
     height: auto;
-    margin-bottom: 1rem;
 }
 #album_contenido{
-    padding: 2rem;
-    opacity: 1;
+    padding: 1rem;
 }
 hr {
     background-color: white;
@@ -40,7 +38,8 @@ hr {
 
 /*aqui empieza la configuracion para el formulario de fotos con dropzone*/
 .dropzone {
-    border:2px outset blue;
+    /*border:2px outset blue;*/
+    border: 2px dashed purple;
     margin-bottom:30px;
     margin-top: 2rem;
 }
@@ -50,7 +49,7 @@ hr {
 }
 
 #send {
-    background-color:#1d75bc;
+    background-color:purple;
     color:#fff;
     border:1px outset;
     padding:10px;
@@ -65,7 +64,7 @@ hr {
     /*color:darkred;*/
 }
 #send:hover {
-    background-color: #2AC176;
+    background-color: #1d75bc;
 }
 .dz-remove {
     /*display: flex;*/
@@ -166,29 +165,32 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
 }
 
 .valor {
-   display: none;
+    display: none;
 }
 
-/*.padre{*/
-/*    display: flex;*/
-/*    justify-content: flex-start;*/
-/*    align-content: flex-start;*/
-/*    align-items: center;*/
-/*}*/
-/*.hijo1,.hijo2{*/
-/*    width: 150px;*/
-/*}*/
-/*#fecha_evento{*/
-/*    width: 150px;*/
-/*    white-space: nowrap;*/
-/*}*/
 #fecha{
     width: 200px;
     font-family: 'poppins', sans-serif;
     font-size: 1rem;
     margin-right: 10px;
 }
-#subida_archivos{
-    display:none !important;
+#botones,#tituloModal{
+    margin: auto;
+}
+i{
+    margin-right: 10px;
+}
+i:hover{
+    cursor: pointer;
+}
+#contenedorBoton{
+    padding: 1rem;
+}
+.modal-header{
+    font-family: 'poppins', sans-serif;
+}
+#staticBackdropLabel,#prueba34{
+    font-family: 'poppins', sans-serif;
+    font-size: 2rem;
 }
 /*aqui termina la configuracion para el formulario de fotos con dropzone*/
