@@ -13,7 +13,7 @@
     -moz-appearance: none;
 }
 #super_principal{
-    border:2px outset blue;
+    /*border:2px outset blue;*/
     /*padding: 1rem;*/
     margin: 3rem auto;
 }
@@ -38,7 +38,8 @@ hr {
 
 /*aqui empieza la configuracion para el formulario de fotos con dropzone*/
 .dropzone {
-    border:2px outset blue;
+    /*border:2px outset blue;*/
+    border: 2px dashed purple;
     margin-bottom:30px;
     margin-top: 2rem;
 }
@@ -48,7 +49,7 @@ hr {
 }
 
 #send {
-    background-color:#1d75bc;
+    background-color:purple;
     color:#fff;
     border:1px outset;
     padding:10px;
@@ -63,7 +64,7 @@ hr {
     /*color:darkred;*/
 }
 #send:hover {
-    background-color: #2AC176;
+    background-color: #1d75bc;
 }
 .dz-remove {
     /*display: flex;*/
