@@ -96,7 +96,7 @@
 }
 
 .active {
-  background-color: #04AA6D;
+  background-color: #FFFFFF;
   color: white;
 }
 
@@ -129,5 +129,10 @@ h1 {
   font-family: Arial;
   text-align : center;
 
+ }
+
+ .edit {
+    color: black;
+    text-decoration: none;
  }
 

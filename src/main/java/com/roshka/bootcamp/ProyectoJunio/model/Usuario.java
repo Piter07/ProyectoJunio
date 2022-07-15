@@ -1,6 +1,5 @@
 package com.roshka.bootcamp.ProyectoJunio.model;
 
-import java.util.Collection;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -39,7 +38,7 @@ public class Usuario {
 
     }
 
-    public Usuario(String nombre, String apellido, String email, String password, Collection<Rol> roles) {
+    public Usuario(String nombre, String apellido, String email, String password) {
         super();
         this.nombre = nombre;
         this.apellido = apellido;
@@ -47,7 +46,7 @@ public class Usuario {
         this.password = password;
     }
 
-    public Usuario(String nombre, String apellido, String email, String password, String estado, Collection<Rol> roles, String tokenVerificacion) {
+    public Usuario(String nombre, String apellido, String email, String password, String estado, String tokenVerificacion) {
         super();
         this.nombre = nombre;
         this.apellido = apellido;
@@ -58,19 +57,13 @@ public class Usuario {
     }
 
     /** RELACIONES PARA LA BASE DE DATOS **/
-    @ManyToMany(mappedBy = "usuarios")
-    //private Set<Rol> roles = new HashSet<>();
-    private Collection<Rol> roles;
-
-    /*
-    @ManyToMany//(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinTable(name = "usuario_rol",
-                joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario"),
-                inverseJoinColumns = @JoinColumn(name = "rol_id", referencedColumnName = "id_rol")
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "usuario_rol",
+            joinColumns = {@JoinColumn(name = "usuario_id")},
+            inverseJoinColumns = {@JoinColumn(name = "rol_id")}
     )
-    private Collection<Rol> roles;
-
-     */
+    private Set<Rol> roles = new HashSet<>();
 
     /* Relaciona que a un usuario le pertenece una reaccion de una foto
     @OneToOne(mappedBy = "usuario")
