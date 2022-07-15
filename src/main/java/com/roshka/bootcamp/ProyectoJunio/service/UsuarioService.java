@@ -4,10 +4,10 @@ import com.roshka.bootcamp.ProyectoJunio.controller.dto.UsuarioRegistroDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Permiso;
 import com.roshka.bootcamp.ProyectoJunio.model.Rol;
 import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
-import com.roshka.bootcamp.ProyectoJunio.repository.PermisoRepository;
-import com.roshka.bootcamp.ProyectoJunio.repository.RolRepository;
 import com.roshka.bootcamp.ProyectoJunio.repository.UsuarioRepository;
+
 import org.apache.commons.codec.digest.DigestUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,7 +17,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,20 +33,18 @@ public class UsuarioService implements UsuarioServiceInterface {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    RolRepository rolRepository;
-    @Autowired
-    PermisoRepository permisoRepository;
+    CorreoService correoService;
 
     /*
     public UsuarioService(UsuarioRepository usuarioRepository) {
         super();
         this.usuarioRepository = usuarioRepository;
     }
-     */
+    */
 
     @Override
-    public Usuario guardar(UsuarioRegistroDTO registroDTO) {
-        /* Trae un los datos para un Usuario desde el formulario registrar
+    public Usuario guardarDTO(UsuarioRegistroDTO registroDTO) {
+        /* Trae un objeto con los datos para un Usuario desde el formulario registrar
         *  para guardarlo en la base de datos.
         * */
 
@@ -55,33 +56,30 @@ public class UsuarioService implements UsuarioServiceInterface {
         // por defecto el estado del usuario es pendiente
         String estado = "I";
 
-        /* por defecto el usuario tiene rol de 'user'
-        Set<Rol> roles = new HashSet<>();
-        Rol rol = new Rol();
-        rol.setNombre("user");
-        roles.add(rol);*/
+        /* enviar mensaje al correo registrado en el formulario para activar la cuenta */
+        String text = "http://localhost:8080/verificacion?token=" + tokenVerificacion +
+                "&correo=" + registroDTO.getEmail();
 
-        //* validaciones
-        //*  1. Correo con @roshka.com
-        //*  2. Confirmar contraseña igual a contraseña
-        //*  3. Estado del usuario
-        //*  4. Permisos del usuario
+        correoService.sendEmail(registroDTO.getEmail(),
+                "Correo de verificación Roshkagram",
+                text);
 
-        // guardar el usuario, rol y permiso */
-        Permiso permiso = new Permiso("conectarse");
-        Permiso permiso1 = new Permiso("ver_albums");
-        permisoRepository.saveAll(Arrays.asList(permiso, permiso1));
-
-        Rol rol = new Rol("USER", Arrays.asList(permiso, permiso1));
-        rolRepository.save(rol);
-
+        /* genera un objeto del tipo Usuario para guardarlo en la
+        *  base de datos
+        * */
         Usuario usuario = new Usuario(registroDTO.getNombre(),
-                registroDTO.getApellido(),registroDTO.getEmail(),
+                registroDTO.getApellido(), registroDTO.getEmail(),
                 passwordEncoder.encode(registroDTO.getPassword()),
-                estado,
-                Arrays.asList(rol), tokenVerificacion);
+                estado, tokenVerificacion);
 
-        /* guardar el usuario y lo retorna */
+        return usuarioRepository.save(usuario);
+    }
+
+    @Override
+    public Usuario guardar(Usuario usuario) {
+        /* Trae un objeto del tipo Usuario y lo guardar en la base de
+        *  datos
+        * */
         return usuarioRepository.save(usuario);
     }
 
@@ -96,7 +94,13 @@ public class UsuarioService implements UsuarioServiceInterface {
             throw new UsernameNotFoundException("Usuario o password invalidos");
         }
 
-        /* validar roles */
+        /* validar que la cuenta esté 'A' [activa] para loguearse */
+        if(usuario.getEstado().equals("I")) {
+            throw new UsernameNotFoundException("El usuario no está activo");
+        }
+
+        /* validar que tenga el permiso de conectarse */
+        // ...
 
         return new User(usuario.getEmail(), usuario.getPassword(), mapearAutoridadesRoles(usuario.getRoles()));
     }
@@ -111,15 +115,22 @@ public class UsuarioService implements UsuarioServiceInterface {
         return usuarioRepository.findByEmail(email);
     }
 
-    private Collection<? extends GrantedAuthority> mapearAutoridadesRoles(Collection<Rol> roles) {
-        /* Mapea cada rol en 'roles' para que Spring security reconozca como un rol en el sistema */
-        //List<Permiso> flat = roles.stream().flatMap(List::stream).collect(Collectors.toList());
-        Collection<SimpleGrantedAuthority> permisos = new ArrayList<>();
-        roles.stream().map(role -> ( role.getPermisos().stream().map(permiso ->
-                permisos.add(new SimpleGrantedAuthority(permiso.getNombre())))
-                .collect(Collectors.toList())));
+    private Collection<? extends GrantedAuthority> mapearAutoridadesRoles(Set<Rol> roles) {
+        /* Mapea cada rol del usuario (lista de listas) a una lista para que Spring security reconozca como
+         * un rol (permiso) en el sistema.
+         * */
+        Set<SimpleGrantedAuthority> permisos = new HashSet<>();
+
+        System.out.println(">> Roles:");
+        for(Rol rol : roles) {
+            for(Permiso permiso : rol.getPermisos()) {
+                permisos.add(new SimpleGrantedAuthority(permiso.getNombre()));
+                System.out.println(permiso.getNombre());
+            }
+        }
+
         return permisos;
-        //return roles.stream().map(role -> new SimpleGrantedAuthority(role.getNombre())).collect(Collectors.toList());
+
     }
 
 }

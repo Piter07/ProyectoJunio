@@ -27,11 +27,4 @@ public class Permiso {
 
     }
 
-    @ManyToMany
-    @JoinTable(name = "rol_permiso",
-            joinColumns = @JoinColumn(name = "permiso_id"),
-            inverseJoinColumns = @JoinColumn(name = "rol_id"))
-    //private Set<Rol> roles = new HashSet<>();
-    private Collection<Rol> roles;
-
 }

@@ -35,7 +35,7 @@
 					<div class="alert alert-danger d-flex align-items-center" role="alert">
 						<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
 						<div>
-							Usuario o contraseña inválido
+							Usuario/contraseña inválido o cuenta inactiva
 						</div>
 					</div>
 				</div>
@@ -45,6 +45,33 @@
 						<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
 						<div>
 							Se ha cerrado sesión
+						</div>
+					</div>
+				</div>
+				<!-- usuario validado correctamente -->
+				<div th:if=${param.validado}>
+					<div class="alert alert-primary d-flex align-items-center" role="alert">
+						<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+						<div>
+							La cuenta ha sido activada
+						</div>
+					</div>
+				</div>
+				<!-- Error en la activacion del usuario -->
+				<div th:if=${param.err001}>
+					<div class="alert alert-danger d-flex align-items-center" role="alert">
+						<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+						<div>
+							Error al activar la cuenta
+						</div>
+					</div>
+				</div>
+				<!-- Error en la activacion del usuario -->
+				<div th:if=${param.err002}>
+					<div class="alert alert-danger d-flex align-items-center" role="alert">
+						<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+						<div>
+							La cuenta ya está activa
 						</div>
 					</div>
 				</div>

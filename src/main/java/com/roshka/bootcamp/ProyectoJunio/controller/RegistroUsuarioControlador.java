@@ -1,6 +1,7 @@
 package com.roshka.bootcamp.ProyectoJunio.controller;
 
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.UsuarioRegistroDTO;
+import com.roshka.bootcamp.ProyectoJunio.service.CorreoService;
 import com.roshka.bootcamp.ProyectoJunio.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,9 @@ public class RegistroUsuarioControlador {
     }
     */
 
+    @Autowired
+    private CorreoService correoService;
+
     /* Si se usa el tag th:object en el formulario crea un objecto del tipo
     *  UsuarioRegistroDTO para rellenar los datos del formulario en el objeto.
     * */
@@ -46,7 +50,8 @@ public class RegistroUsuarioControlador {
         try {
             /* validar correo */
             String correo = registroDTO.getEmail();
-            Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+@roshka.com$");
+            //Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+@roshka.com$");
+            Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+@gmail.com$");
             Matcher matcher = pattern.matcher(correo);
 
             if(!matcher.matches()) {
@@ -69,7 +74,7 @@ public class RegistroUsuarioControlador {
                 return "redirect:/registro?err003";
             }
 
-            usuarioService.guardar(registroDTO);
+            usuarioService.guardarDTO(registroDTO);
             return "redirect:/registro?exito";
         } catch (Exception e) {
             return "redirect:/registro?error";
