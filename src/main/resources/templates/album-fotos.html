@@ -76,7 +76,16 @@
 <body>
 
 <div class="row">
-
+    <!--breadcrumb-->
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a th:href="@{/albumes?pageNo=} + ${pageAnt}">Albumes</a></li>
+                <li class="breadcrumb-item"><a href="#">Album</a></li>
+            </ol>
+        </nav>
+    </div>
         <div class="container gallery-container">
             <h1 th:text="${titulo}"></h1>
             <p class="page-description text-center" th:text="${descripcion}"></p>

@@ -96,6 +96,15 @@
 <main>
     <!--Contendor de la vista albumes-->
     <div class="album py-5 bg-light">
+        <!--breadcrumb-->
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="#">Albumes</a></li>
+                </ol>
+            </nav>
+        </div>
         <div class="container">
             <!--Verificacion de la lista de albumes, si no esta vacio mostrara todos los albumes -->
             <div th:if="${!albumLista.isEmpty()}" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
