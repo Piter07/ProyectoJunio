@@ -139,34 +139,27 @@
                                     </label>
                                 </div>
                                 <div class="hijo2">
-                                    <input class="from-control text-center" placeholder="Calendario" type="datetime-local" id="fecha" name="fechaEvento" /><label for="fecha" style="color:white;"><i class="far fa-calendar-alt fa-lg" ></i></label>
+                                    <input class="from-control text-center" placeholder="Calendario" type="datetime-local" id="fecha" name="fechaEvento" /><label for="fecha" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                                      <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+                                      <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                    </svg>
+                                </label>
                                 </div>
                             </div>
-                            <div class="selectbox col-llx-3 col-sm-3 col-md-3 none-3 mb-3">
-                                <div class="select" id="select">
-                                    <div class="contenido-select">
-                                        <span class="titulo">Categoría</span>
-                                    </div>
-                                </div>
-                                <div class="opciones" id="opciones">
-                                    <a href="#" class="opcion" th:each="cat: ${categorias}" >
-                                        <div class="contenido-opcion">
-                                            <div class="textos">
-                                                <span class="titulo" th:text ="${cat.nombre}"></span>
-                                                <span class="valor" th:text ="${cat.id_categoria}"></span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <input type="hidden" name="idCategoria" id="inputSelect"  value="">
+                            <select id="categoria" class="form-select p-1  border border-1 border-dark  " aria-label="Default select example" style="width: 200px; text-align-last: center;">
+                                <a th:each="cat: ${categorias}">
+                                    <option  th:id="cat.id_categoria" th:text ="${cat.nombre}"></option>
+                                </a>
+                                <option  hidden="true" value="Categoria" selected>Categorias</option>
+                            </select>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <div id="botones">
                         <button type="submit" class="btn btn-primary">Crear Álbum</button>
-                        <button type="button" onclick="restaurarValores()" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" onclick="restaurarValores()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
             </form>
@@ -306,9 +299,8 @@
 	    flatpickr("input[type=datetime-local]", config);
 	</script>
 <script>
-            function restaurarValores(){
-
-            document.getElementById("nombre_album").value ="";
+        function restaurarValores(){
+         document.getElementById("nombre_album").value ="";
             document.getElementById("descripcion").value ="";
             document.getElementById("fecha").value ="";
 
@@ -316,10 +308,10 @@
             const opciones = document.querySelector('#opciones');
             const contenidoSelect = document.querySelector('#select .contenido-select');
             const hiddenInput = document.querySelector('#inputSelect');
-            select.innerHTML = 'Categoría';
-            select.classList.toggle('active');
-        }
 
+            const selectedValue = 'Categoria';
+            document.querySelector('#categoria [value="' + selectedValue + '"]').selected = true;
+        }
 	</script>
 <!--fin de scripts-->
 
