@@ -39,7 +39,8 @@ public class AlbumService implements IAlbumService,AlbumServiceInterface  {
         album.setTitulo(albumDTO.getTitulo());
         album.setDescripcion(albumDTO.getDescripcion());
         //buscar categoria por medio de categoriaService.findById(id_categoria)
-        Long id_categoria=Long.parseLong(albumDTO.getIdCategoria());
+        Long id_categoria=albumDTO.getIdCategoria();
+        System.out.println("\n\n\n\n\n\n\n\n" + id_categoria);
         Optional<Categoria> cat=categoriaService.findById(id_categoria);
 //        Optional categoriaAuxiliar=categoriaService.findById(id_categoria);
         album.setCategoria(cat.get());

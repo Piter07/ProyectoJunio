@@ -147,9 +147,9 @@
                                 </label>
                                 </div>
                             </div>
-                            <select id="categoria" class="form-select p-1  border border-1 border-dark  " aria-label="Default select example" style="width: 200px; text-align-last: center;">
+                            <select id="inpuntSelect" name="idCategoria" class="form-select p-1  border border-1 border-dark  " aria-label="Default select example" style="width: 200px; text-align-last: center;">
                                 <a th:each="cat: ${categorias}">
-                                    <option  th:id="cat.id_categoria" th:text ="${cat.nombre}"></option>
+                                    <option  th:value="${cat.id_categoria}" th:text ="${cat.nombre}"></option>
                                 </a>
                                 <option  hidden="true" value="Categoria" selected>Categorias</option>
                             </select>
@@ -310,7 +310,7 @@
             const hiddenInput = document.querySelector('#inputSelect');
 
             const selectedValue = 'Categoria';
-            document.querySelector('#categoria [value="' + selectedValue + '"]').selected = true;
+            document.querySelector('#select [value="' + selectedValue + '"]').selected = true;
         }
 	</script>
 <!--fin de scripts-->
