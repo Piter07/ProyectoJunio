@@ -42,16 +42,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/**", "/home", "/index", "/registro", "/css/**","/js/**","/img/**")
+                    .antMatchers("/", "/registro", "/verificacion", "/login",
+                            "/css/**","/js/**","/img/**")
                     .permitAll()
                     .anyRequest()
-                    .authenticated()
-                    //.hasRole("CONECTARSE")
+                    //.authenticated()
+                    //.hasRole()
+                    .hasAuthority("conectarse")
                     .and()
                 .formLogin()
                     .loginPage("/login")
                     //.loginProcessingUrl("")
-                    .defaultSuccessUrl("/album", true)
+                    .defaultSuccessUrl("/albumes", true)
                     //.failureUrl("/login.html?error=true")
                     //.failureHandler(authenticationFailureHandler())
                     .permitAll()
@@ -60,27 +62,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .invalidateHttpSession(true)
                     .clearAuthentication(true)
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/")
+                    .logoutSuccessUrl("/login")
                     .permitAll();
-
-
-        /*http.authorizeRequests().antMatchers(
-                        "/registro**",
-                        "/js/**",
-                        "/css/**",
-                        "/img/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                    .loginPage("/login")
-                    .permitAll()
-                    .and()
-                .logout()
-                    .invalidateHttpSession(true)
-                    .clearAuthentication(true)
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/")
-                    .permitAll();
-         */
     }
 }

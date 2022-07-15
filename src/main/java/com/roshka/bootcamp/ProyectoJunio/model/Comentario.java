@@ -24,6 +24,6 @@ public class Comentario {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
-    private Usuario usuario;
+    private Usuario comentarioUsuario;
 
 }
