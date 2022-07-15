@@ -21,4 +21,8 @@ public class ComentarioService {
     public Optional<Comentario> findById(Long id) {
         return comentarioRepository.findById(id);
     }
+
+    public void guardarComentario(Comentario comentario){
+        comentarioRepository.save(comentario);
+    }
 }
