@@ -21,6 +21,9 @@ public class AlbumService implements IAlbumService,AlbumServiceInterface  {
     @Autowired
     private AlbumRepository albumRepository;
 
+    @Autowired
+    private CategoriaService  categoriaService;
+
     public List<Album> list() {
         return (List<Album>) albumRepository.findAll();
     }
@@ -35,7 +38,11 @@ public class AlbumService implements IAlbumService,AlbumServiceInterface  {
         Date date_auxiliar;
         album.setTitulo(albumDTO.getTitulo());
         album.setDescripcion(albumDTO.getDescripcion());
-        //album.setId_categoria(albumDTO.getIdCategoria());
+        //buscar categoria por medio de categoriaService.findById(id_categoria)
+        Long id_categoria=Long.parseLong(albumDTO.getIdCategoria());
+        Optional<Categoria> cat=categoriaService.findById(id_categoria);
+//        Optional categoriaAuxiliar=categoriaService.findById(id_categoria);
+        album.setCategoria(cat.get());
         album.setFechaCreacion(new Date());
         try {
             date_auxiliar=new SimpleDateFormat("dd/MM/yyyy").parse(albumDTO.getFechaEvento());
@@ -46,7 +53,6 @@ public class AlbumService implements IAlbumService,AlbumServiceInterface  {
         album.setUsuario(albumDTO.getUsuario());
         return albumRepository.save(album);
     }
-    
 
     public Page<Album> findPaginated(int pageNo, int pageSize) {
 
