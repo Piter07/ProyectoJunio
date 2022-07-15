@@ -39,7 +39,7 @@
     <body>
         <div class="container rounded" id="super_principal">
             <div class="container" id="contenedor-principal">
-                <form action="#" th:action="@{/album/1/subir-fotos}" enctype="multipart/form-data" method="post" class="" >
+                <form action="#" th:action="@{/album/3/subir-fotos}" enctype="multipart/form-data" method="post" class="" id="upload-form" >
                     <div style="display: flex; flex-wrap: no-wrap;">
                         <h4 th:text="@{Arrastra aqui para subir tus fotos al album:}"></h4>
                         <h4 style="font-weight: bold; margin-left: 10px;" th:text="${album.titulo}"></h4>
@@ -60,30 +60,79 @@
         <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 <!--        script dropzone-->
         <script>
+            // Dropzone.autoDiscover = false;
+            // let myDropzone = new Dropzone('.dropzone', {
+            //     url:'/album/3/subir-fotos',
+            //     maxFilesize:2,
+            //     acceptedFiles:'image/jpeg, image/png, image/jpg',
+            //     addRemoveLinks:true,
+            //     dictRemoveFile:'Quitar',
+            //     autoProcessQueue:false,
+            //     uploadMultiple: true,
+            //     parallelUploads: 100,
+            //     maxFiles: 100,
+            //     init: function() {
+            //         var myDropzone = this;
+            //
+            //         // First change the button to actually tell Dropzone to process the queue.
+            //         this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
+            //           // Make sure that the form isn't actually being sent.
+            //           e.preventDefault();
+            //           e.stopPropagation();
+            //           myDropzone.processQueue();
+            //         });
+            //
+            //         this.on("errormultiple", function(files, response) {
+            //             // Gets triggered when there was an error sending the files.
+            //             // Maybe show form again, and notify user of error
+            //             alert("error sending files: " + response.message);
+            //         });
+            //
+            //
+            //     }
+            //
+            // })
             Dropzone.autoDiscover = false;
-            let myDropzone = new Dropzone('.dropzone', {
-                url:'/album/1/subir-fotos',
-                maxFilesize:2,
-                acceptedFiles:'image/jpeg, image/png, image/jpg',
-                addRemoveLinks:true,
-                dictRemoveFile:'Quitar',
-                autoProcessQueue:false,
+            Dropzone.options.uploadForm = { // The camelized version of the ID of the form element
+
+                // The configuration we've talked about above
+                autoProcessQueue: false,
                 uploadMultiple: true,
                 parallelUploads: 100,
                 maxFiles: 100,
+                url:'/album/3/subir-fotos',
+                    maxFilesize:2,
+                    acceptedFiles:'image/jpeg, image/png, image/jpg',
+
+                // The setting up of the dropzone
                 init: function() {
                     var myDropzone = this;
 
                     // First change the button to actually tell Dropzone to process the queue.
-                document.querySelector("button[type=submit]").addEventListener("click", function(e) {
-                      // Make sure that the form isn't actually being sent.
-                      e.preventDefault();
-                      e.stopPropagation();
-                      myDropzone.processQueue();
+                    this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
+                        // Make sure that the form isn't actually being sent.
+                        e.preventDefault();
+                        e.stopPropagation();
+                        myDropzone.processQueue();
                     });
 
-                  }
-            })
+                    // Listen to the sendingmultiple event. In this case, it's the sendingmultiple event instead
+                    // of the sending event because uploadMultiple is set to true.
+                    this.on("sendingmultiple", function() {
+                        // Gets triggered when the form is actually being sent.
+                        // Hide the success button or the complete form.
+                    });
+                    this.on("successmultiple", function(files, response) {
+                        // Gets triggered when the files have successfully been sent.
+                        // Redirect user or notify of success.
+                    });
+                    this.on("errormultiple", function(files, response) {
+                        // Gets triggered when there was an error sending the files.
+                        // Maybe show form again, and notify user of error
+                    });
+                }
+
+            }
 
         </script>
 <!--	scripts -->

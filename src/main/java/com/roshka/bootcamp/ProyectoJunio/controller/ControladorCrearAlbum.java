@@ -52,7 +52,7 @@ public class ControladorCrearAlbum {
     }
 
     @PostMapping("/album/{id}/subir-fotos")
-    public String postFormFoto(@RequestParam("file") MultipartFile file, @PathVariable long id){
+    public String postFormFoto(@PathVariable long id,@RequestParam("file") MultipartFile file){
         Optional<Album> albumActual = albumService.findById(id);
         if (albumActual.isPresent()) {
             if(!file.isEmpty()){
