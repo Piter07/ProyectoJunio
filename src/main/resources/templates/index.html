@@ -1,80 +1,238 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="/images/roshka.jpg">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="css/home/home.css">
-    <link rel="stylesheet" href="css/home/home_head.css">
     <title>Roshkagram</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--[ADD]-icon -->
     <link rel="icon" type="img/x-icon" href="/img/roshkaicon.ico">
+
+    <!--	<link rel="stylesheet" href="">-->
+    <link th:href="@{/css/home/home.css}" rel = "stylesheet">
 </head>
 
-<link th:href="@{/headers.css}" rel="stylesheet">
-
-<header class="p-3 mb-2 bg-primary text-white" style="background-color: #1d75bc !important;">
-    <img class="mb-2"  th:src="@{/img/roshka.jpg}" alt="" width="40" height="40" style="border-radius: 30px; float: left;"/>
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-
-        </a>
-
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        </ul>
-
-        <div class="text-end">
-            <a href="/login">
-                <button type="button" class="btn btn-outline-light me-2">Login</button>
-            </a>
-            <a href="/registro">
-                <button type="button" class="btn btn-warning" style="background-color: #FFFFFF !important; ">Sign-up</button>
-            </a>
+<!--	<"Header">-->
+<header>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div>
+                <p><a href="/" target="_blank"><img src="/img/roskagram.png" alt=""
+                                                        height="43" width="180" class="footer__logo"></a></p>
+            </div>
+            <div class="nav navbar-nav1">
+                <a href="/login"
+                   class="btn">Login</a>
+                <a href="/registro" class="btn btn1">Sign-up</a>
+            </div>
         </div>
-    </div>
+    </nav>
 </header>
+
 <body>
 
-<div class="contenedorPrincipal">
+<!--<"Contenido-1">-->
 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <img src="/img/social-content-redes-sociales.svg" class="img-fluid imagen-1" alt="" >
+        </div>
 
-    <div class="contenedorUno">
-
-        <img class="images" src="img/ilustracion-herov3.svg" alt="Chania" width="460" height="345">
-    </div>
-
-    <div class="contenedorDos">
-        <h1>¿Qué es Roshkagram?</h1>
-        <h5>Roshkagram es la red social de Roshka. </h5>
-        <h5>Un espacio destinado a compartir las fotos de los eventos realizados en la tribu, Deja tus comentarios y
-            reacciones. Podras filtrar los eventos como "uvdm, san juan, cumpleaños.."</h5>
-        <h3></h3>
-        <h4 class="h4"></h4>
-        <div class="rectangle"></div>
-        <div class="rectangle2"></div>
-        <div class="rectangle3"></div>
-        <div class="rectangle4"></div>
+        <div class="col-lg-6 contenido-1">
+            <h1>¿Qué es Roshkagram?</h1>
+            <h4>Roshkagram es la red social de Roshka. </h4>
+            <h4>Un espacio destinado a compartir las fotos de los eventos realizados en la tribu, Deja tus comentarios y
+                reacciones. Podras filtrar los eventos como "uvdm, san juan, cumpleaños.."</h4>
+        </div>
     </div>
 </div>
-<div>
-    <div class="footer">
-        <p>Todo Los Derechos Reservado "Roskha S.A"  Paraguay-Asuncion  2022</p>
-          <style>
-            .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: #1d75bc;
-            color: white;
-            text-align: center;
-            position: fixed;
-            }
-          </style>
+
+<!--<"Estilo de Texto contenido-1">-->
+<style>
+      h1 {
+        color: #1d75bc;
+        font-family: fantasy;
+        line-height: 3;
+
+      }
+
+      h4 {
+        font-family: "Consolas", monospace;
+        color: #044170;
+        font-size: 1.3rem;
+        line-height: 2;
+      }
+
+      .footer__logo {
+        float: left;
+      }
+
+    </style>
+
+
+
+<!--<"Contenido-2">-->
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+        </div>
     </div>
+</div>
+
+
+<!--Contenido-3-->
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg">
+                                <div class="row row-cols-1 row-cols-md-3">
+                                    <div class="col oscilacion-c3">
+                                        <div class="card">
+                                            <video autoplay="" class="content-centering" loop="" muted="" playsinline="" poster="https://lh3.googleusercontent.com/vdAi4ggQ-kW4LhwQw4lN9z1Go09gvJKnvZwHjvJygyrRc6qbeQHQ1CCGTg2xI5EE5K3c26wZTSxKgIxATgdD7_oJwcCtr0W2D9x18G8" role="tab" width="100%"><source src="https://kstatic.googleusercontent.com/files/9d95deb4a50cfe478f85134619179770aede09907068d2a5dc367a6fb1f1ee9b05cb2850761bff5f1056cd085f388367ad83f5611b1487518fe2f0c90168db55" type="video/mp4"><source src="https://kstatic.googleusercontent.com/files/2ae1cd4b84a1f389d2183cb79a55e779d33f34c26d2ff3a067d5959f0a86d502a987816df37cc52d477ad2dba1a463e4d2dc9ad039d34c6c2d89cc80719ce65b" type="video/webm"></video>
+                                            <div class="card-body">
+                                                <h5 class="card-title text-center">Cuenta</h5>
+                                                <p class="card-text text-center">Registra de forma segura tu cuenta Email para acceder a la plataforma Roshkagram </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col oscilacion-c3" >
+                                        <div class="card">
+                                            <video autoplay="" class="content-centering" loop="" muted="" playsinline="" poster="https://lh3.googleusercontent.com/wofiCyQEbszkJpnMdFW7mLsnODDy1oziISRmIpfNWZm-XGGiq7BleN9YiLqf84be_T_rlfqshJO0zh_-XNRy_obnjan_-m2AQobOH8U" role="tab" width="100%"><source src="https://kstatic.googleusercontent.com/files/a81d8778814d13b565e10d68adf007716a69c01e51856ac9db73586f7e9dbd0b3d35e514992e9991ca144dd6235f2cd0ae0c80ad526a4e8fd10f129855b54b66" type="video/mp4"><source src="https://kstatic.googleusercontent.com/files/2a904519ad921dfd3cd94e431256c4eb309901b1fad6e06f7d46641a4175a0275ab61a63aef0cb95d1ea9a7138224cb2f1b7bcfa087a65d5a74d0aaedcc24d66" type="video/webm"></video>
+                                            <div class="card-body">
+                                                <h5 class="card-title text-center">Seguridad</h5>
+                                                <p class="card-text text-center">Usamos tu información de seguridad solo para verificar tu identidad y detectar si tienes un problema con la cuenta. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col oscilacion-c3" >
+                                        <div class="card">
+                                            <img src="/img/pagina-sr.gif" class="img-circle " alt="" id="">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-center">Conectividad</h5>
+                                                <p class="card-text text-center">En la plataforma Roshkagram podras compartir, reacionar y comentar a las activadades realizadas en Roshka.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 </body>
+
+<!-- Fotoer. -->
+
+<footer class="new_footer_area bg_color movimiento-footer">
+    <div class="new_footer_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s"
+                         style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                        <h3 class="f-title f_600 t_color f_size_18">Direccion</h3>
+
+                        <address>
+                            <p>Tte. Cusmanich 867 c/ Defensa Nacional<a href="https://g.page/Roshka?share" target="_blank"><img
+                                    src="/img/icons8-google-maps.svg" alt="" height="25" width="25" class="footer__logo"></a></p>
+                            <p>Código postal 1409</p>
+                            <p>Asunción, Paraguay</p>
+                        </address>
+
+                        <p class="mchimp-errmessage" style="display: none;"></p>
+                        <p class="mchimp-sucmessage" style="display: none;"></p>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s"
+                         style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+                        <h3 class="f-title f_600 t_color f_size_18">Contacto</h3>
+                        <ul class="list-unstyled f_list">
+                            <li><a>+ 595 21 204 252</a></li>
+                            <li><a>+ 595 21 214 884</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s"
+                         style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+                        <h3 class="f-title f_600 t_color f_size_18">Info</h3>
+                        <ul class="list-unstyled f_list">
+                            <li><a class="t-1" href="https://www.roshka.com/">Home</a></li>
+                            <li><a class="t-2" href="https://www.roshka.com/about/">About us</a></li>
+                            <li><a class="t-3" href="https://www.roshka.com/jobs/">Work with us</a></li>
+                            <li><a class="t-4" href="https://www.roshka.com/contact/">Get in touch</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s"
+                         style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+                        <h3 class="f-title f_600 t_color f_size_18 text-center">Redes</h3>
+                        <div class="f_social_icon">
+                            <a href="https://www.facebook.com/roshkadev/" target="_blank">
+                                <img src="/img/social-fb.svg" alt="" height="25" width="35">
+                            </a>
+
+                            <a href="https://twitter.com/roshkadev" target="_blank">
+                                <img src="/img/social-twitter.svg" alt="" height="25" width="35">
+
+                                <a href="https://www.instagram.com/roshkapy" target="_blank">
+                                    <img src="/img/social-ig.svg" alt="" height="25" width="35">
+                                </a>
+
+                                <a href="https://www.linkedin.com/company/roshka/" target="_blank">
+                                    <img src="/img/social-linkedin.svg" alt="" height="25" width="35">
+                                </a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_bg">
+            <div class="footer_bg_one"></div>
+            <div class="footer_bg_two"></div>
+        </div>
+    </div>
+    <div class="footer_bottom">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-sm-7">
+                    <p>Todo Los Derechos Reservado Roshka S.A Paraguay-Asuncion<a href="https://www.roshka.com/"
+                                                                                  target="_blank"><img src="/img/roshkaicon.ico" alt="" height="18" width="18" class="footer__logo"></a></p>
+                </div>
+                <div class="col-lg-6 col-sm-4 text-right">
+                    <p>Promocion Maquina <i class="icon_heart"></i> <a href="https://www.youtube.com/watch?v=OK4RJA78E9Q"
+                                                                       target="_blank">🐱‍🏍</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
 </html>
