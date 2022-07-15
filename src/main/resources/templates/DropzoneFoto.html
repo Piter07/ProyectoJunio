@@ -39,7 +39,7 @@
     <body>
         <div class="container rounded" id="super_principal">
             <div class="container" id="contenedor-principal">
-                <form action="#" th:action="@{/album/3/subir-fotos}" enctype="multipart/form-data" method="post" class="" >
+                <form action="#" th:action="@{/album/1/subir-fotos}" enctype="multipart/form-data" method="post" class="" >
                     <div style="display: flex; flex-wrap: no-wrap;">
                         <h4 th:text="@{Arrastra aqui para subir tus fotos al album:}"></h4>
                         <h4 style="font-weight: bold; margin-left: 10px;" th:text="${album.titulo}"></h4>
@@ -62,7 +62,7 @@
         <script>
             Dropzone.autoDiscover = false;
             let myDropzone = new Dropzone('.dropzone', {
-                url:'/album/3/subir-fotos',
+                url:'/album/1/subir-fotos',
                 maxFilesize:2,
                 acceptedFiles:'image/jpeg, image/png, image/jpg',
                 addRemoveLinks:true,
