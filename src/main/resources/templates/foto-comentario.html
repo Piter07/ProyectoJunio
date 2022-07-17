@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.98.0">
-    <title th:text="${id_foto}"></title>
+    <title th:text="${id_Foto}"></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
@@ -104,8 +104,7 @@
                     </div>
                     <form th:action="@{/foto-comentario}" method="post" class="form_comentarios d-flex justify-content-end flex-wrap" th:object="${comentario}">
                         <textarea id="descripcion"th:field="*{descripcion}"></textarea>
-                        <input id="idFoto" type="text"  th:field="*{idFoto}" th:value="${id_Foto}">
-                        <!--<input id="idUsuario" type="text" th:field="*{username}" sec:value="principal.username">-->
+                        <input type="hidden" th:value="${id_Foto}" th:attr="name = 'idFoto'">
                         <button class="btn" type="submit">Comentar</button>
                     </form>
                 </div>

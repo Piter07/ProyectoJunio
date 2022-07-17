@@ -23,5 +23,10 @@ public class ComentarioService {
         return comentarioRepository.findById(id);
     }
 
+    public void guardarComentario(ComentarioDTO comentarioDTO) {
+
+        Comentario comentario = new Comentario(comentarioDTO.getDescripcion(), Long.parseLong(comentarioDTO.getIdFoto()),Long.parseLong(comentarioDTO.getIdUsuario()));
+        comentarioRepository.save(comentario);
+    }
 
 }

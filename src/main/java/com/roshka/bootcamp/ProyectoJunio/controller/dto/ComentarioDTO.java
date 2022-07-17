@@ -8,5 +8,5 @@ import java.util.Date;
 public class ComentarioDTO {
     private String descripcion;
     private String idFoto;
-    private String username;
+    private String idUsuario;
 }

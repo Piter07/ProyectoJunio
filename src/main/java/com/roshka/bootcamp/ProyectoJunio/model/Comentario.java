@@ -14,6 +14,22 @@ public class Comentario {
     private Long id_comentario;
     private String descripcion;
     private Date fechaPublicacion;
+    private Long foto_id;
+    private Long usuario_id;
+
+    public Comentario() {
+    }
+
+    public Comentario(String descripcion, long id_foto, long id_usuario) {
+        super();
+        this.descripcion = descripcion;
+        this.foto_id = id_foto;
+        this.usuario_id = id_usuario;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
+    private Usuario comentarioUsuario;
 
     @ManyToOne
     @JoinColumn(name = "foto_id", referencedColumnName = "id_foto")
@@ -22,8 +38,5 @@ public class Comentario {
     @OneToMany(mappedBy = "comentario")
     private Set<ReaccionComentario> reaciones;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
-    private Usuario comentarioUsuario;
 
 }

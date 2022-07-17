@@ -4,9 +4,12 @@ import com.roshka.bootcamp.ProyectoJunio.controller.dto.ComentarioDTO;
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.UsuarioRegistroDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Comentario;
 import com.roshka.bootcamp.ProyectoJunio.model.Foto;
+import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
 import com.roshka.bootcamp.ProyectoJunio.service.ComentarioService;
 import com.roshka.bootcamp.ProyectoJunio.service.FotoService;
+import com.roshka.bootcamp.ProyectoJunio.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +30,9 @@ public class FotoComentarioController {
     @Autowired
     private ComentarioService comentarioService;
 
+    @Autowired
+    private UsuarioService usuarioService;
+
     @GetMapping("/foto-comentario/{id}")
     public String getFotoComentarioById(@RequestParam(name="pageNo", required=false,defaultValue= "0") int pageNo, @PathVariable long id, Model model) throws Exception{
         Optional<Foto> foto = fotoService.findById(id);
@@ -35,7 +41,7 @@ public class FotoComentarioController {
             model.addAttribute("nroAlbum", id);
             model.addAttribute("pageAnt", pageNo);
             model.addAttribute("comentarios",foto.get().getListaComentarios());
-            model.addAttribute("id_foto", id);
+            model.addAttribute("id_Foto", id);
         }
         return "foto-comentario";
     }
@@ -45,10 +51,12 @@ public class FotoComentarioController {
     }
     @PostMapping("foto-comentario")
     public String saveComentario(@ModelAttribute("comentario") ComentarioDTO comentarioDTO) {
+        final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
+        Usuario usuario = usuarioService.existeUsuario(currentUserName);
         try {
             /* comentario. id_foto y id_usuario */
-            //comentarioService.guardarComentario(comentarioDTO);
-            System.out.println(comentarioDTO);
+            comentarioDTO.setIdUsuario(usuario.getId_usuario().toString());
+            comentarioService.guardarComentario(comentarioDTO);
         } catch (Exception e){
             System.out.println("error");
         }
