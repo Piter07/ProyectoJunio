@@ -25,7 +25,8 @@ public class ComentarioService {
 
     public void guardarComentario(ComentarioDTO comentarioDTO) {
 
-        Comentario comentario = new Comentario(comentarioDTO.getDescripcion(), Long.parseLong(comentarioDTO.getIdFoto()),Long.parseLong(comentarioDTO.getIdUsuario()));
+        Comentario comentario = new Comentario(comentarioDTO.getDescripcion(),
+                Long.parseLong(comentarioDTO.getIdFoto()),Long.parseLong(comentarioDTO.getIdUsuario()));
         comentarioRepository.save(comentario);
     }
 
