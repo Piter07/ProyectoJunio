@@ -334,11 +334,7 @@ transform: scale(1.3);
 }
 */
 
-.contenido-3 {
 
-    opacity: 85%;
-    justify-content: center;
-}
 
 .imagen-1:hover {
     -webkit-transform: rotateY(180deg);
@@ -349,14 +345,14 @@ transform: scale(1.3);
 
 .imagen-1 {
     position: relative;
-    animation: mymove 4s infinite;
+    animation: mymove 3s infinite;
     animation-iteration-count: 1;
-    animation-delay: 1s;
+    animation-delay: 0s;
 }
 
 @keyframes mymove {
     from {
-        right: 620px;
+        right: 800px;
     }
 
     to {
@@ -364,12 +360,11 @@ transform: scale(1.3);
     }
 }
 
-
-.contenido-1 {
+.contenido-1{
     position: relative;
     animation: mymoves 3s infinite;
     animation-iteration-count: 1;
-    animation-delay: 1s;
+    animation-delay: 0s;
     padding-top: 3%;
     padding-bottom: 3%;
 }
@@ -380,7 +375,43 @@ transform: scale(1.3);
     }
 
     to {
-        bottom: -1px;
+        bottom: 0px;
+    }
+}
+
+
+.navegador{
+    position: relative;
+    animation: mymovess 3s infinite;
+    animation-iteration-count: 1;
+    animation-delay: 0s;
+}
+
+@keyframes mymovess {
+    from {
+        bottom: 660px;
+    }
+
+    to {
+        bottom: 0px;
+    }
+}
+
+.c3{
+    position: relative;
+    animation: mymovesss 3s infinite;
+    animation-iteration-count: 1;
+    animation-delay: 0s;
+    border-radius: 25px;
+}
+
+@keyframes mymovesss {
+    from {
+        top: 360px;
+    }
+
+    to {
+        top: 0px;
     }
 }
 
@@ -396,7 +427,8 @@ transform: scale(1.3);
     margin-bottom: 20px;
     padding-top: 4%;
     padding-bottom: 2%;
-
+    opacity: 83%;
+    border-radius: 20px;
 }
 .imagen-1{
    margin-top: 10%;
