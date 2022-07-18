@@ -1,14 +1,26 @@
 
 /*Fotos de los comentarios*/
 .altura_caja_imagen{
-    height: 88.5vh;
-    width:auto;
+    height: auto;
+    width:500px;
+
 }
+/*
+.carousel-inner{
+width: 600px;
+height: 600px;
+}
+.carousel-item{
+width: auto;
+height: auto;
+}*/
 .contenedor-imagen{
     background-color: #f2f2f2;
     display: flex;
     justify-content: center;
     align-items: center;
+        height: auto;
+        max-width: 800;
 }
 /* height:450px !important; */
 .contenedor-imagen img{
