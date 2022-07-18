@@ -88,3 +88,6 @@ background-color: #1d75bc !important;
     background-color : #828282;
     cursor : pointer;
 }
+.header-index{
+    z-index:2;
+}

@@ -82,14 +82,14 @@
         </nav>
     </div>
         <div class="row contenedor">
-            <div class="col-sm-12 col-md-7 contenedor-imagen">
+            <div class="col-sm-12 col-md-7 contenedor-imagen" >
+
                 <img class="img-thumbnail" th:src="${foto.getRuta()}" alt="imagen">
             </div>
             <div class="col-sm-12 col-md-5 contenedor-comentarios">
                 <div class="comentarios">
                     <div class="overflow-scroll altura_caja_comentario">
                         <div class="media" th:each="comentario : ${comentarios}">
-                            <!--<img src="img/Foto de Perfil/Alexis.jpg" width="50" height="50" alt="">-->
                                 <div class="media_body container-fluid">
                                     <div class="row">
                                         <div class="d-flex flex-row-reverse">
