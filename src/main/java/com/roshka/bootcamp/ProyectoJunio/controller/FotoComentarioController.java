@@ -64,7 +64,10 @@ public class FotoComentarioController {
             //comentarioDTO.setIdUsuario(usuario.getId_usuario().toString());
             comentarioDTO.setFoto(foto);
             comentarioDTO.setUsuario(usuario);
-            comentarioService.guardarComentarioDTO(comentarioDTO);
+            if (!(comentarioDTO.getDescripcion().isEmpty())){
+                comentarioService.guardarComentarioDTO(comentarioDTO);
+            }
+
         } catch (Exception e) {
             System.out.println("error");
         }
@@ -78,10 +81,7 @@ public class FotoComentarioController {
         foto.setId_foto(Long.parseLong(comentarioDTO.getIdFoto()));
         try {
             comentarioDTO.setUsuario(usuario);
-            if(comentarioDTO.getDescripcion().isEmpty()){
-                comentarioService.borrarComentarioDTO(comentarioDTO);
-            }
-
+            comentarioService.borrarComentarioDTO(comentarioDTO);
         } catch (Exception e) {
             System.out.println("error");
         }

@@ -99,7 +99,7 @@
                                         <form th:action="@{/foto-comentario-borrar}" method="post" th:object="${borrarComentario}">
                                             <input type="hidden" th:value="${comentario.getId_comentario}" th:attr="name = 'idComentario'">
                                             <input type="hidden" th:value="${id_Foto}" th:attr="name = 'idFoto'">
-                                            <button th:if = "${comentario.getComentarioUsuario().getEmail() == #authentication.name }" type="submit">Borrar</button>
+                                            <a th:if = "${comentario.getComentarioUsuario().getEmail() == #authentication.name}" type="submit">Borrar</a>
                                         </form>
 
                                 </div>
