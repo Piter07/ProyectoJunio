@@ -79,14 +79,13 @@
                 <li class="breadcrumb-item"><a th:href="@{/album/}+${nroAlbum}+@{?pageAnt=}+${pageAnt}">Album</a></li>
                 <li class="breadcrumb-item"><a href="#">Foto-Comentario</a></li>
             </ol>
-        </nav>
     </div>
-        <div class="row contenedor">
-            <div class="col-sm-12 col-md-7 contenedor-imagen" >
-
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-sm-12 col-md-6 contenedor-imagen" >
                 <img class="img-thumbnail" th:src="${foto.getRuta()}" alt="imagen">
             </div>
-            <div class="col-sm-12 col-md-5 contenedor-comentarios">
+            <div class="col-sm-12 col-md-4 contenedor-comentarios">
                 <div class="comentarios">
                     <div class="overflow-scroll altura_caja_comentario">
                         <div class="media" th:each="comentario : ${comentarios}">
@@ -125,6 +124,7 @@
                     </form>
                 </div>
             </div>
+            <div class="col-md-1"></div>
         </div>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"

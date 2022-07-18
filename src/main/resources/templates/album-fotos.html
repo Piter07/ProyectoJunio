@@ -89,7 +89,7 @@
         <div class="container gallery-container">
             <h1 th:text="${titulo}"></h1>
             <p class="page-description text-center" th:text="${descripcion}"></p>
-            <div class="tz-gallery">
+            <div class="tz-gallery container">
                 <div class="row altura">
                         <div class="col-sm-6 col-md-4" th:each="foto : ${fotos}">
                         <a class="lightbox" th:href="@{/foto-comentario/}+${foto.id_foto}+@{?pageAnt=}+${pageAnt}">
