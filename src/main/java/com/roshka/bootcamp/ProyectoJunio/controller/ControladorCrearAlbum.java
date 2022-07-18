@@ -45,8 +45,14 @@ public class ControladorCrearAlbum {
         return "redirect:/album/" + albumGuardado.getId_album() + "/subir-fotos";
     }
 
+    @PatchMapping("crearAlbum/{id}")
+    public String editarAlbum(@PathVariable long id, Model model) throws Exception {
+        return "album";
+    }
+
     @GetMapping("/album/{id}/subir-fotos")
     public String subirFotos(@PathVariable long id, Model model) throws Exception {
+        model.addAttribute("idAlbum", id);
         Optional<Album> albumActual = albumService.findById(id);
         if (albumActual.isPresent()) {
             model.addAttribute("album", albumActual.get());
@@ -60,20 +66,20 @@ public class ControladorCrearAlbum {
         model.addAttribute("idAlbum", id);
         if (albumActual.isPresent()) {
             if(!file.isEmpty()){
-                Path directorioImagenes= Paths.get("src/main/resources/public/"+ albumActual.get().getId_album() + file.getOriginalFilename());
-                String rutaAbsoluta=directorioImagenes.toFile().getAbsolutePath();
+                Path directorioImagenes= Paths.get("src/main/resources/public/"+  file.getOriginalFilename());
+                String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
                 try {
                     byte[] bytesImg=file.getBytes();
                     Path rutaCompleta=Paths.get(rutaAbsoluta);
                     Files.write(rutaCompleta, bytesImg);
 //                     si todo salio bien guardamos la foto en la base de datos
-                    fotoService.guardarFoto(albumActual.get(),file.getOriginalFilename());
+                    fotoService.guardarFoto(albumActual.get(), file.getOriginalFilename());
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
         }
-        return "redirect:album/" + id ;
+        return "redirect:/album/" + id ;
     }
 
 }
