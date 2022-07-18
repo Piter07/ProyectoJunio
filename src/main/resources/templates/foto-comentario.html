@@ -91,7 +91,7 @@
                     <div class="overflow-scroll altura_caja_comentario">
                         <div class="media" th:each="comentario : ${comentarios}">
                             <!--<img src="img/Foto de Perfil/Alexis.jpg" width="50" height="50" alt="">-->
-                                 <div class="media_body">
+                                <div class="media_body">
                                       <p class="nombre" th:text="${comentario.comentarioUsuario.getNombre()} +' '+ ${comentario.comentarioUsuario.getApellido()}">
                                           <span th:text="${comentario.comentarioUsuario.getNombre()}"></span>
                                       </p>
@@ -99,6 +99,7 @@
                                      <div class="botones text-right">
                                          <a href="#">Borrar</a>
                                      </div>
+                                    <input type="text" value="id" hidden>
                                  </div>
                         </div>
                     </div>

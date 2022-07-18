@@ -4,7 +4,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -16,18 +15,13 @@ public class Comentario {
     private String descripcion;
     private Date fechaPublicacion;
 
-
-    public Comentario() {
-    }
-
-    public Comentario(String descripcion, long id_foto, long id_usuario) {
-        super();
-        this.descripcion = descripcion;
-    }
-
     @OneToMany(mappedBy = "comentario")
     private Set<ReaccionComentario> reaciones;
 
+
+    /*@ManyToOne
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
+    private Usuario usuario;*/
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
@@ -38,6 +32,5 @@ public class Comentario {
     private Foto foto;
 
 
-    
 
 }

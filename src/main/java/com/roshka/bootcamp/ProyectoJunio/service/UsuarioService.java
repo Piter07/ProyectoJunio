@@ -3,7 +3,7 @@ import com.roshka.bootcamp.ProyectoJunio.controller.dto.UsuarioRegistroDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Permiso;
 import com.roshka.bootcamp.ProyectoJunio.model.Rol;
 import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
-import com.roshka.bootcamp.ProyectoJunio.repository.UsuarioRepository;
+import com.roshka.bootcamp.ProyectoJunio.controller.repository.UsuarioRepository;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
