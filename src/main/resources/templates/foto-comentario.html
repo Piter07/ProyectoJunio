@@ -69,7 +69,7 @@
     </div>
 
 </header>
-<div class="row">
+<div class="row bg-light">
     <!--breadcrumb-->
     <div class="container">
         <nav aria-label="breadcrumb">
@@ -81,11 +81,11 @@
             </ol>
         </nav>
     </div>
-        <div class="row">
+        <div class="row bg-opacity-50">
             <div class="col-sm-12 col-md-7 contenedor-imagen">
-                <img class="img-thumbnail altura_caja_imagen" th:src="${foto.getRuta()}" alt="imagen">
+                <img class="img-thumbnail" th:src="${foto.getRuta()}" alt="imagen">
             </div>
-            <div class="col-sm-12 col-md-4 contenedor-comentarios">
+            <div class="col-sm-12 col-md-5 contenedor-comentarios">
                 <div class="comentarios">
                     <div class="overflow-scroll altura_caja_comentario">
                         <div class="media" th:each="comentario : ${comentarios}">
@@ -103,7 +103,6 @@
                                         </form>
 
                                 </div>
-
                         </div>
                     </div>
                     <form th:action="@{/foto-comentario}" method="post" class="form_comentarios d-flex justify-content-end flex-wrap" th:object="${comentario}">
