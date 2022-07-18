@@ -39,7 +39,7 @@
     <body>
         <div class="container rounded" id="super_principal">
             <div class="container" id="contenedor-principal">
-                <form action="#" th:action="@{/album/1/subir-fotos}" enctype="multipart/form-data" method="post" class="" >
+                <form action="#" th:action="@{/album/4/subir-fotos}" enctype="multipart/form-data" method="post" class="" >
                     <div style="display: flex; flex-wrap: no-wrap;">
                         <h4 th:text="@{Arrastra aqui para subir tus fotos al album:}"></h4>
                         <h4 style="font-weight: bold; margin-left: 10px;" th:text="${album.titulo}"></h4>
@@ -60,9 +60,10 @@
         <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 <!--        script dropzone-->
         <script>
+            let arrImages = [];
             Dropzone.autoDiscover = false;
             let myDropzone = new Dropzone('.dropzone', {
-                url:'/album/1/subir-fotos',
+                url:'/album/4/subir-fotos',
                 maxFilesize:2,
                 acceptedFiles:'image/jpeg, image/png, image/jpg',
                 addRemoveLinks:true,
@@ -70,21 +71,46 @@
                 autoProcessQueue:false,
                 uploadMultiple: true,
                 parallelUploads: 100,
+                paramName: "file",
                 maxFiles: 100,
                 init: function() {
                     var myDropzone = this;
 
-                    // First change the button to actually tell Dropzone to process the queue.
-                document.querySelector("button[type=submit]").addEventListener("click", function(e) {
-                      // Make sure that the form isn't actually being sent.
-                      e.preventDefault();
-                      e.stopPropagation();
-                      myDropzone.processQueue();
+                    myDropzone.on("errormultiple", function (files, response) {
+                        // Gets triggered when there was an error sending the files.
+                        // Maybe show form again, and notify user of error
+                        console.log("Error sending files: " + response)
+
                     });
 
-                  }
+                }
             })
 
+            myDropzone.on('addedfile', file => {
+                arrImages.push(file);
+            })
+
+            myDropzone.on('removedfile', file => {
+                let i = arrImages.indexOf(file);
+                arrImages.splice(i, 1);
+            })
+            document.querySelector("button[type=submit]").addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                let not = [];
+                for(let i=0; i<arrImages.length; i++) {
+                    let imgData = new FormData();
+                    imgData.append('file', arrImages[i]);
+
+                    fetch('/album/4/subir-fotos', {
+                        method:'POST',
+                        body:imgData
+                    }).then(res => res.json()).then(data => {
+                        console.log(data)
+                        //not.push(data);
+                    });
+                }
+            })
         </script>
 <!--	scripts -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

@@ -4,7 +4,7 @@ import com.roshka.bootcamp.ProyectoJunio.controller.dto.AlbumDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Album;
 import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
 import com.roshka.bootcamp.ProyectoJunio.service.AlbumService;
-import com.roshka.bootcamp.ProyectoJunio.service.CategoriaService;
+import com.roshka.bootcamp.ProyectoJunio.service.FotoService;
 import com.roshka.bootcamp.ProyectoJunio.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,6 +26,9 @@ public class ControladorCrearAlbum {
     private AlbumService albumService;
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private FotoService fotoService;
 
     @GetMapping("mostrarVista")
     public String mostrarVista(){
@@ -52,22 +55,25 @@ public class ControladorCrearAlbum {
     }
 
     @PostMapping("/album/{id}/subir-fotos")
-    public String postFormFoto(@RequestParam("file") MultipartFile file, @PathVariable long id){
+    public String postFormFoto(@RequestParam("file") MultipartFile file, @PathVariable long id, Model model){
         Optional<Album> albumActual = albumService.findById(id);
+        model.addAttribute("idAlbum", id);
         if (albumActual.isPresent()) {
             if(!file.isEmpty()){
-                Path directorioImagenes= Paths.get("src/main/resources/media/"+ albumActual.get().getId_album() + file.getOriginalFilename());
+                Path directorioImagenes= Paths.get("src/main/resources/public/"+ albumActual.get().getId_album() + file.getOriginalFilename());
                 String rutaAbsoluta=directorioImagenes.toFile().getAbsolutePath();
                 try {
                     byte[] bytesImg=file.getBytes();
-                    Path rutaCompleta=Paths.get(rutaAbsoluta+"/"+file.getOriginalFilename());
-                    Files.write(rutaCompleta,bytesImg);
+                    Path rutaCompleta=Paths.get(rutaAbsoluta);
+                    Files.write(rutaCompleta, bytesImg);
+                    // si todo salio bien guardamos la foto en la base de datos
+
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
         }
-        return "redirect:album/" + albumActual.get().getId_album() ;
+        return "redirect:album/" + id ;
     }
 
 }
