@@ -23,6 +23,21 @@
     <!--	FIN DE CDNS-->
     <link th:href="@{/css/formulario_fotos.css}" rel="stylesheet">
     <link th:href="@{/css/estilos_select.css}" rel="stylesheet">
+    <!--style para el breadcrumb-->
+    <style>
+        .breadcrumb {
+            list-style: none;
+            white-space: nowrap;
+            overflow: hidden;
+            border-radius: 0;
+            text-decoration: underline;
+            color: #0d6efd;
+            font-size: var(--bs-breadcrumb-font-size);
+        }
+        .breadcrumb-item {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <header style="position: sticky;  top: 0; ">
     <div class="navbar navbar-dark bg-dark shadow-sm" style="background-color: #1d75bc !important;">
@@ -176,7 +191,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Inicio</a></li>
-                    <li class="breadcrumb-item" aria-current="page"><a href="#">Albumes</a></li>
+                    <li class="breadcrumb-item"><a href="#">Albumes</a></li>
                 </ol>
             </nav>
         </div>
@@ -224,9 +239,10 @@
                     </div>
 
                 </div>
-                <!-- Caso en el que no hay albumes disponibles -->
-                <h1 th:if="${albumLista.isEmpty()}" style="">No Hay Albumes Disponibles</h1>
             </div>
+
+            <!-- Caso en el que no hay albumes disponibles -->
+            <h1 th:if="${albumLista.isEmpty()}" style="">No Hay Albumes Disponibles</h1>
         </div>
     </div>
     </div>
