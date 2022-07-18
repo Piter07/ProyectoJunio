@@ -70,4 +70,21 @@ public class FotoComentarioController {
         }
         return "redirect:/foto-comentario/" + comentarioDTO.getIdFoto();
     }
+    @PostMapping("foto-comentario-borrar")
+    public String deleteComentario(@ModelAttribute("borrarComentario") ComentarioDTO comentarioDTO) {
+        final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
+        Usuario usuario = usuarioService.existeUsuario(currentUserName);
+        Foto foto = new Foto();
+        foto.setId_foto(Long.parseLong(comentarioDTO.getIdFoto()));
+        try {
+            comentarioDTO.setUsuario(usuario);
+            if(comentarioDTO.getDescripcion().isEmpty()){
+                comentarioService.borrarComentarioDTO(comentarioDTO);
+            }
+
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+        return "redirect:/foto-comentario/" + comentarioDTO.getIdFoto();
+    }
 }

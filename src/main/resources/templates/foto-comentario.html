@@ -91,19 +91,24 @@
                         <div class="media" th:each="comentario : ${comentarios}">
                             <!--<img src="img/Foto de Perfil/Alexis.jpg" width="50" height="50" alt="">-->
                                 <div class="media_body">
-                                      <p class="nombre" th:text="${comentario.comentarioUsuario.getNombre()} +' '+ ${comentario.comentarioUsuario.getApellido()}">
-                                          <span th:text="${comentario.comentarioUsuario.getNombre()}"></span>
-                                      </p>
-                                     <p class="comentario" th:text="${comentario.descripcion}"></p>
-                                     <div class="botones text-right">
-                                         <a href="#">Borrar</a>
-                                     </div>
-                                    <input type="text" value="id" hidden>
-                                 </div>
+                                    <p class="nombre" th:text="${comentario.comentarioUsuario.getNombre()} +' '+ ${comentario.comentarioUsuario.getApellido()}">
+                                        <span th:text="${comentario.comentarioUsuario.getNombre()}"></span>
+                                    </p>
+                                    <p class="comentario" th:text="${comentario.descripcion}"></p>
+                                    <!--<div th:if="${comentario.comentarioUsuario.getEmail == #authentication.name}">-->
+                                        <form th:action="@{/foto-comentario-borrar}" method="post" th:object="${borrarComentario}">
+                                            <input type="hidden" th:value="${comentario.getId_comentario}" th:attr="name = 'idComentario'">
+                                            <input type="hidden" th:value="${id_Foto}" th:attr="name = 'idFoto'">
+                                            <button th:if = "${comentario.getComentarioUsuario().getEmail() == #authentication.name }" type="submit">Borrar</button>
+                                        </form>
+
+                                </div>
+
                         </div>
                     </div>
                     <form th:action="@{/foto-comentario}" method="post" class="form_comentarios d-flex justify-content-end flex-wrap" th:object="${comentario}">
                         <textarea id="descripcion"th:field="*{descripcion}"></textarea>
+
                         <input type="hidden" th:value="${id_Foto}" th:attr="name = 'idFoto'">
                         <button class="btn" type="submit">Comentar</button>
                     </form>

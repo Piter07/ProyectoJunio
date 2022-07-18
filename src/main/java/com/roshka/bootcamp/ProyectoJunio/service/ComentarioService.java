@@ -35,5 +35,7 @@ public class ComentarioService {
         comentario.setComentarioUsuario(comentarioDTO.getUsuario());
         comentarioRepository.save(comentario);
     }
-
+    public void borrarComentarioDTO(ComentarioDTO comentarioDTO) {
+        comentarioRepository.deleteById(Long.parseLong(comentarioDTO.getIdComentario()));
+    }
 }

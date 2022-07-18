@@ -12,4 +12,5 @@ public class ComentarioDTO {
     private Foto foto;
     private Usuario usuario;
     private String idFoto;
+    private String idComentario;
 }
