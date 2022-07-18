@@ -6,10 +6,7 @@ import com.roshka.bootcamp.ProyectoJunio.service.RolService;
 import com.roshka.bootcamp.ProyectoJunio.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Arrays;
 
 @Controller
 public class ValidarCorreoController {
@@ -21,12 +18,17 @@ public class ValidarCorreoController {
     private RolService rolService;
 
     @GetMapping("/verificacion")
-    public String validarUsuario(@RequestParam String token, @RequestParam String correo) {
+    public String validarUsuario(@RequestParam(defaultValue = "") String token, @RequestParam(defaultValue = "") String correo) {
+
+        /* si el token o correo está vacio */
+        if(correo.equals("") || token.equals("")) {
+            return "redirect:/login?err001";
+        }
 
         Usuario usuario = usuarioService.existeUsuario(correo);
 
-        /* si no existe el usuario o el token está vacio */
-        if(usuario == null || token.equals("")) {
+        /* si no existe el usuario */
+        if(usuario == null) {
             return "redirect:/login?err001";
         }
 
