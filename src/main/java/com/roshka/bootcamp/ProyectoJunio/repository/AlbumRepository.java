@@ -13,4 +13,5 @@ import java.util.Optional;
 @Repository
 public interface AlbumRepository extends PagingAndSortingRepository<Album, Long> {
     Page<Album> findByCategoria(Optional<Categoria> categoria, Pageable pageable);
+
 }

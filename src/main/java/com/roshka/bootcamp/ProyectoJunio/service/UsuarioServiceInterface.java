@@ -9,7 +9,9 @@ import java.util.List;
 
 public interface UsuarioServiceInterface extends UserDetailsService {
 
-    public Usuario guardar(UsuarioRegistroDTO registroDTO);
+    public Usuario guardarDTO(UsuarioRegistroDTO registroDTO);
+
+    public Usuario guardar(Usuario usuario);
     public List<Usuario> listarUsuarios();
     
 }

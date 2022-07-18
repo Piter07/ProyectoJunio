@@ -5,6 +5,7 @@ import com.roshka.bootcamp.ProyectoJunio.model.Album;
 import com.roshka.bootcamp.ProyectoJunio.model.Categoria;
 import com.roshka.bootcamp.ProyectoJunio.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -20,6 +21,9 @@ public class AlbumService implements IAlbumService,AlbumServiceInterface  {
     @Autowired
     private AlbumRepository albumRepository;
 
+    @Autowired
+    private CategoriaService  categoriaService;
+
     public List<Album> list() {
         return (List<Album>) albumRepository.findAll();
     }
@@ -34,7 +38,12 @@ public class AlbumService implements IAlbumService,AlbumServiceInterface  {
         Date date_auxiliar;
         album.setTitulo(albumDTO.getTitulo());
         album.setDescripcion(albumDTO.getDescripcion());
-        //album.setId_categoria(albumDTO.getIdCategoria());
+        //buscar categoria por medio de categoriaService.findById(id_categoria)
+        Long id_categoria=albumDTO.getIdCategoria();
+        System.out.println("\n\n\n\n\n\n\n\n" + id_categoria);
+        Optional<Categoria> cat=categoriaService.findById(id_categoria);
+//        Optional categoriaAuxiliar=categoriaService.findById(id_categoria);
+        album.setCategoria(cat.get());
         album.setFechaCreacion(new Date());
         try {
             date_auxiliar=new SimpleDateFormat("dd/MM/yyyy").parse(albumDTO.getFechaEvento());
@@ -45,11 +54,10 @@ public class AlbumService implements IAlbumService,AlbumServiceInterface  {
         album.setUsuario(albumDTO.getUsuario());
         return albumRepository.save(album);
     }
-    
 
     public Page<Album> findPaginated(int pageNo, int pageSize) {
 
-        Pageable paging = PageRequest.of(pageNo, pageSize);
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by("fechaCreacion").descending());
         Page<Album> pagedResult = albumRepository.findAll(paging);
 
         return pagedResult;

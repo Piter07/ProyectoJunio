@@ -7,6 +7,7 @@ import java.util.Date;
 
 @Data
 public class AlbumDTO {
+    private Long id_album;
     private String titulo;
     private String descripcion;
     private Long idCategoria;
