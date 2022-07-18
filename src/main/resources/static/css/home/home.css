@@ -477,3 +477,20 @@ transform: scale(1.3);
 }
 
 /*************Efectos De Oscilazcion <-End->*****************/
+
+/*********Efecto de rotacion *******/
+
+.rotate {
+      position: relative;
+      animation: rotation 3s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+/*********Efecto de rotacion End*******/
