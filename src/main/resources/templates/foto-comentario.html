@@ -19,6 +19,20 @@
     <link rel="stylesheet" href="css/home/home_head.css">
     <link th:href="@{/css/galeria.css}" rel="stylesheet">
     <link th:href="@{/css/foto-comentarios.css}" rel="stylesheet">
+    <!--style para el breadcrumb-->
+    <style>
+        .breadcrumb {
+            padding: 15px;
+            padding-left: 110px;
+            padding-top: 50px;
+            margin-top: 0;
+            list-style: none;
+            white-space: nowrap;
+            overflow: hidden;
+            border-radius: 0;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 <header style="position: sticky;  top: 0; ">
@@ -76,8 +90,8 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Inicio</a></li>
                 <li class="breadcrumb-item"><a th:href="@{/albumes?pageNo=} + ${pageAnt}">Albumes</a></li>
-                <li class="breadcrumb-item"><a th:href="@{/album/}+${nroAlbum}+@{?pageAnt=}+${pageAnt}">Album</a></li>
-                <li class="breadcrumb-item"><a href="#">Foto-Comentario</a></li>
+                <li class="breadcrumb-item"><a th:href="@{/album/}+${nroAlbum}+@{?pageAnt=}+${pageAnt}" th:text="${titulo}"></a></li>
+                <li class="breadcrumb-item"><a href="#">Foto</a></li>
             </ol>
         </nav>
     </div>
