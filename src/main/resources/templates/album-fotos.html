@@ -14,6 +14,25 @@
     <link rel="icon" type="img/x-icon" href="/img/roshkaicon.ico">
     <link rel="stylesheet" href="css/home/home_head.css">
     <link th:href="@{/css/galeria.css}" rel="stylesheet">
+    <!--style para el breadcrumb-->
+    <style>
+        .breadcrumb {
+            padding-left: 110px;
+            padding-top: 50px;
+            margin-top: 0;
+            list-style: none;
+            white-space: nowrap;
+            overflow: hidden;
+            border-radius: 0;
+            text-decoration: none;
+        }
+        .breadcrumb-item {
+            text-decoration: none;
+        }
+        .container gallery-container {
+            margin-top: -30px;
+        }
+    </style>
 </head>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -82,7 +101,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Inicio</a></li>
                 <li class="breadcrumb-item"><a th:href="@{/albumes?pageNo=} + ${pageAnt}">Albumes</a></li>
-                <li class="breadcrumb-item"><a href="#">Album</a></li>
+                <li class="breadcrumb-item"><a href="#" th:text="${titulo}"></a></li>
             </ol>
         </nav>
     </div>
