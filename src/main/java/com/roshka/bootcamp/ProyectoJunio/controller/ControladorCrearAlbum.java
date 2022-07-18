@@ -66,8 +66,8 @@ public class ControladorCrearAlbum {
                     byte[] bytesImg=file.getBytes();
                     Path rutaCompleta=Paths.get(rutaAbsoluta);
                     Files.write(rutaCompleta, bytesImg);
-                    // si todo salio bien guardamos la foto en la base de datos
-
+//                     si todo salio bien guardamos la foto en la base de datos
+                    fotoService.guardarFoto(albumActual.get(),file.getOriginalFilename());
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
