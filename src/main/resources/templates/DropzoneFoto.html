@@ -2,6 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Subir Fotos</title>
 <!--	CDNS-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -36,13 +37,17 @@
         </div>
     </header>
     <body>
+        <span id="idAlbum" style="display: none;" th:text="${idAlbum}"></span>
         <div class="container rounded" id="super_principal">
             <div class="container" id="contenedor-principal">
-                <form action="#" th:action="@{/}" method="post" class="" enctype="multipart/form-data" >
-                    <h4>Arrastra aqui para subir tus fotos ${TITULOALBUM}</h4>
+                <form action="#" th:action="@{/album/} + ${idAlbum} + @{/subir-fotos}" enctype="multipart/form-data" method="post" class="" >
+                    <div style="display: flex; flex-wrap: no-wrap;">
+                        <h4 th:text="@{Arrastra aqui para subir tus fotos al album:}"></h4>
+                        <h4 style="font-weight: bold; margin-left: 10px;" th:text="${album.titulo}"></h4>
+                    </div>
                     <div class="dropzone shadow-lg p-1 mb-2 bg-body rounded" id="drop">
                         <div class="dz-default dz-message">
-                            <button class="dz-button" type="button"><img src="img/upload.png" alt=""></button>
+                            <button class="dz-button" type="button"><img th:src="@{/img/upload.png}" alt=""></button>
                         </div>
                     </div>
 
@@ -54,6 +59,61 @@
         </div>
 <!--        dropzone-->
         <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+<!--        script dropzone-->
+        <script>
+            let arrImages = [];
+            let idAlbum = document.getElementById("idAlbum").innerHTML;
+            Dropzone.autoDiscover = false;
+            let myDropzone = new Dropzone('.dropzone', {
+                url:'/album/' + idAlbum + '/subir-fotos',
+                maxFilesize:2,
+                acceptedFiles:'image/jpeg, image/png, image/jpg',
+                addRemoveLinks:true,
+                dictRemoveFile:'Quitar',
+                autoProcessQueue:false,
+                uploadMultiple: true,
+                parallelUploads: 100,
+                paramName: "file",
+                maxFiles: 100,
+                init: function() {
+                    var myDropzone = this;
+
+                    myDropzone.on("errormultiple", function (files, response) {
+                        // Gets triggered when there was an error sending the files.
+                        // Maybe show form again, and notify user of error
+                        console.log("Error sending files: " + response)
+
+                    });
+
+                }
+            })
+
+            myDropzone.on('addedfile', file => {
+                arrImages.push(file);
+            })
+
+            myDropzone.on('removedfile', file => {
+                let i = arrImages.indexOf(file);
+                arrImages.splice(i, 1);
+            })
+            document.querySelector("button[type=submit]").addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                let not = [];
+                for(let i=0; i<arrImages.length; i++) {
+                    let imgData = new FormData();
+                    imgData.append('file', arrImages[i]);
+
+                    fetch('/album/' + idAlbum + '/subir-fotos', {
+                        method:'POST',
+                        body:imgData
+                    }).then(res => {
+                        console.log(res)
+                    });
+                }
+                window.location.href = "/album/" + idAlbum;
+            })
+        </script>
 <!--	scripts -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <!-- MDB -->

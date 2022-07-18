@@ -56,31 +56,6 @@ public class AlbumController {
         return "album-fotos";
     }
 
-    @GetMapping("/album/{id}/subir-fotos")
-    public String getAlbumById(@PathVariable long id) throws Exception {
-        return "formulario-fotos";
-    }
-
-    //retorna la pagina del formulario album y recibe las imagenes al subir las fotos
-    @GetMapping("/creacion-album")
-    public String getFormFotos(){
-        return "formulario-album";
-    }
-    //recibe los datos del formulario de creacion de album y crea un album en la base de datos por medio de AlbumService
-    @PostMapping("/creacion-album")
-    public String postFormAlbum(@ModelAttribute("objAlbum") AlbumDTO albumDTO, Model model){
-        final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
-        Usuario usuario = usuarioService.existeUsuario(currentUserName);
-        albumDTO.setUsuario(usuario);
-        Album albumGuardado = albumService.guardar(albumDTO);
-        albumDTO.setId_album(albumGuardado.getId_album());
-        return "formulario-fotos";
-    }
-    @ModelAttribute("objAlbum")
-    public AlbumDTO obtenerAlbumDTO() {
-        return new AlbumDTO();
-    }
-
     @PostMapping("/creacion-album-foto/{idAlbum}")
     public String postFormFoto(@RequestParam("file") MultipartFile file){
 

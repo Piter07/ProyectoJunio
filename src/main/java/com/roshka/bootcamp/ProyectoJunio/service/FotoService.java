@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class FotoService {
+public class FotoService implements FotoServicioInterface{
     @Autowired
     private FotoRepository fotoRepository;
 
@@ -22,5 +22,15 @@ public class FotoService {
 
     public Optional<Foto> findById(Long id) {
         return fotoRepository.findById(id);
+    }
+
+    @Override
+    public Foto guardarFoto(Album album, String pathRelativo) {
+        Foto foto = new Foto();
+        foto.setRuta(pathRelativo);
+        foto.setDescripcion("");
+        foto.setAlbum(album);
+        Foto fotoGuardada= fotoRepository.save(foto);
+        return fotoGuardada;
     }
 }
