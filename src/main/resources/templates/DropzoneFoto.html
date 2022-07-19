@@ -109,9 +109,11 @@
                         body:imgData
                     }).then(res => {
                         console.log(res)
+                        if(i === arrImages.length -1) {
+                            window.location.href = "/album/" + idAlbum;
+                        }
                     });
                 }
-                // window.location.href = "/album/" + idAlbum;
             })
         </script>
 <!--	scripts -->
