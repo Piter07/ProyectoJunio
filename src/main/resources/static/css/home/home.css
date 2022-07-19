@@ -1,3 +1,4 @@
+
 body {
 
 
@@ -14,54 +15,7 @@ body {
 
 /*************  Header *****************/
 
-.navbar {
-    background-color: #1d75bc;
-    color: white;
-    height: auto;
-    width: 100%;
-    padding-left: 60px;
-    padding-right: 60px;
-    display: block;
-}
-
-header img {
-    float: left
-}
-
-.navbar-nav1 {
-    flex-direction: row;
-}
-
-.btn {
-    color: white;
-}
-
-.btn:hover {
-    color: white;
-    border-bottom: 2px solid white;
-}
-
-.btn1 {
-    border: 2px solid white;
-}
-
-.btn1:hover {
-    color: black;
-    background-color: white;
-}
-
-@media screen and (max-width:700px) {
-    .navbar .container-fluid {
-        flex-direction: column;
-    }
-}
-
-@media screen and (max-width:525px) {
-    .container-fluid div a {
-        float: none;
-        width: 100%;
-    }
-}
+/*  header and home_head.css */
 
 
 /*************  Header End *****************/
@@ -78,7 +32,7 @@ header img {
 
 
 .new_footer_top {
-    padding: 120px 0px 270px;
+    padding: 100px 0px 270px;
     position: relative;
     overflow-x: hidden;
 }
@@ -158,7 +112,7 @@ button:focus {
     width: 44px;
     height: 44px;
     line-height: 43px;
-    background: transparent;
+    background: rgba(23, 2, 161, 0.112);
     border: 1px solid #e2e2eb;
     font-size: 24px;
 }
@@ -290,7 +244,7 @@ h6 {
 
 @-webkit-keyframes myfirst {
     0% {
-        left: -25%;
+        left: -24%;
     }
 
     100% {
@@ -314,7 +268,7 @@ h6 {
 
 /*************Efectos De Transicion*****************/
 
-.t-1:hover{
+.icon-1:hover{
 -webkit-transform: scale(1.3);
 -ms-transform: scale(1.3);
 transform: scale(1.3);
@@ -397,17 +351,34 @@ transform: scale(1.3);
     }
 }
 
-.c3{
+.c3, .oscilacion-3{
     position: relative;
-    animation: mymovesss 3s infinite;
+    animation: mymoves2 3s infinite;
     animation-iteration-count: 1;
     animation-delay: 0s;
     border-radius: 25px;
 }
 
-@keyframes mymovesss {
+@keyframes mymoves2 {
     from {
-        top: 360px;
+        top: 430px;
+    }
+
+    to {
+        top: 0px;
+    }
+}
+
+.movimiento-footer{
+    position: relative;
+    animation: mymovessss 3s infinite;
+    animation-iteration-count: 1;
+    animation-delay: 0s;
+}
+
+@keyframes mymovessss {
+    from {
+        top: 610px;
     }
 
     to {
@@ -434,7 +405,7 @@ transform: scale(1.3);
    margin-top: 10%;
 }
 
-.oscilacion-c3:hover, .f_social_icon:hover, .footer__logo:hover{
+.oscilacion-c3:hover, .f_social_iconn:hover, .titulo-1:hover, .footer__logo:hover, .t-1:hover{
     -webkit-animation: swing 1s ease;
     animation: swing 1s ease;
     -webkit-animation-iteration-count: 1;
@@ -506,3 +477,20 @@ transform: scale(1.3);
 }
 
 /*************Efectos De Oscilazcion <-End->*****************/
+
+/*********Efecto de rotacion *******/
+
+.rotate {
+      position: relative;
+      animation: rotation 3s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+/*********Efecto de rotacion End*******/

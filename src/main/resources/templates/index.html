@@ -13,22 +13,45 @@
 
     <!--	<link rel="stylesheet" href="">-->
     <link th:href="@{/css/home/home.css}" rel = "stylesheet">
+    <link th:href="@{/css/home/home_head.css}" rel = "stylesheet">
 </head>
 
 <!--	<"Header">-->
-<header>
-    <nav class="navbar navegador">
-        <div class="container-fluid">
-            <div>
-                <p><a href="/" target="_blank"><img src="/img/roskagram.png" alt="" height="43" width="180" class="footer__logo"></a></p>
-            </div>
-            <div class="nav navbar-nav1 btn-5">
-                <a href="/login"
-                   class="btn">Login</a>
-                <a href="/registro" class="btn btn1">Sign-up</a>
+<header style="position: relative;  top: 0; ">
+    <div class="navbar navbar-dark bg-dark shadow-sm navegador" style="background-color: #1d75bc !important;">
+        <div class="container">
+
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <img class="mt-1 rotate footer__logo" th:src="@{/img/roshka.jpg}" alt="" width="40" height="40"
+                     style="border-radius: 30px; margin-right: 3px !important; "/>
+                <strong class="titulo-2">Roshkagram</strong>
+            </a>
+
+
+            <div class="text-end">
+                <div sec:authorize="!isAuthenticated()">
+                    <a href="/login">
+                        <button type="button" class="btn btn-outline-light me-2">Login</button>
+                    </a>
+                    <a href="/registro">
+                        <button type="button" class="btn btn-warning" style="background-color: #FFFFFF !important; ">
+                            Sign-up
+                        </button>
+                    </a>
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                    <a href="/logout">
+                        <button type="button" class="btn btn-outline-light me-2">Logout</button>
+                    </a>
+                    <a href="/albumes">
+                        <button type="button" class="btn btn-warning" style="background-color: #FFFFFF !important; ">
+                            Album
+                        </button>
+                    </a>
+                </div>
             </div>
         </div>
-    </nav>
+    </div>
 </header>
 
 <body>
@@ -103,7 +126,7 @@
                                             <video autoplay="" class="content-centering c3" loop="" muted="" playsinline="" poster="https://lh3.googleusercontent.com/vdAi4ggQ-kW4LhwQw4lN9z1Go09gvJKnvZwHjvJygyrRc6qbeQHQ1CCGTg2xI5EE5K3c26wZTSxKgIxATgdD7_oJwcCtr0W2D9x18G8" role="tab" width="100%"><source src="https://kstatic.googleusercontent.com/files/9d95deb4a50cfe478f85134619179770aede09907068d2a5dc367a6fb1f1ee9b05cb2850761bff5f1056cd085f388367ad83f5611b1487518fe2f0c90168db55" type="video/mp4"><source src="https://kstatic.googleusercontent.com/files/2ae1cd4b84a1f389d2183cb79a55e779d33f34c26d2ff3a067d5959f0a86d502a987816df37cc52d477ad2dba1a463e4d2dc9ad039d34c6c2d89cc80719ce65b" type="video/webm"></video>
                                             <div class="card-body">
                                                 <h5 class="card-title text-center">Cuenta</h5>
-                                                <p class="card-text text-cente h-220 d-inline-block"
+                                                <p class="card-text text-center h-220 d-inline-block"
                                                    style="height: 108px;">Registra de forma segura tu cuenta Email para acceder a la plataforma Roshkagram</p>
                                             </div>
                                         </div>
@@ -161,7 +184,6 @@
 
                         <p class="mchimp-errmessage" style="display: none;"></p>
                         <p class="mchimp-sucmessage" style="display: none;"></p>
-                        </form>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -169,6 +191,9 @@
                          style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
                         <h3 class="f-title f_600 t_color f_size_18">Contacto</h3>
                         <ul class="list-unstyled f_list">
+                            <li class=" Send Email"><a style="padding-left: 5px;">Send Email</a><a href="mailto:info@rohska.com" target="_blank"><img src="/img/Email-icono.png" alt="" height="22" width="22" class="footer__logo" style="color: #white;"></a></li>
+                            <li class=" Send Email"><a style="padding-left: 5px; padding-bottom: 20px;">Make a Call</a><a href="tel:59521204252" target="_blank"><img src="/img/telefono-icono.png" alt="" height="19" width="19" class="footer__logo" style="color: #white;"></a></li>
+                            <li><a></a></li>
                             <li><a>+ 595 21 204 252</a></li>
                             <li><a>+ 595 21 214 884</a></li>
                         </ul>
@@ -189,23 +214,23 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s"
                          style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
-                        <h3 class="f-title f_600 t_color f_size_18 text-center">Redes</h3>
+                        <h3 class="f-title f_600 t_color f_size_18 ">Redes</h3>
                         <div class="f_social_icon">
-                            <a href="https://www.facebook.com/roshkadev/" target="_blank">
+                            <a class="icon-1" href="https://www.facebook.com/roshkadev/" target="_blank">
                                 <img src="/img/social-fb.svg" alt="" height="25" width="35">
                             </a>
 
-                            <a href="https://twitter.com/roshkadev" target="_blank">
+                            <a class="icon-1" href="https://twitter.com/roshkadev" target="_blank">
                                 <img src="/img/social-twitter.svg" alt="" height="25" width="35">
 
-                                <a href="https://www.instagram.com/roshkapy" target="_blank">
+                                <a class="icon-1" href="https://www.instagram.com/roshkapy" target="_blank">
                                     <img src="/img/social-ig.svg" alt="" height="25" width="35">
                                 </a>
 
-                                <a href="https://www.linkedin.com/company/roshka/" target="_blank">
+                                <a class="icon-1" href="https://www.linkedin.com/company/roshka/" target="_blank">
                                     <img src="/img/social-linkedin.svg" alt="" height="25" width="35">
                                 </a>
-                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -223,7 +248,7 @@
                                                                                   target="_blank"><img src="/img/roshkaicon.ico" alt="" height="18" width="18" class="footer__logo"></a></p>
                 </div>
                 <div class="col-lg-6 col-sm-4 text-right">
-                    <p>Promocion Maquina <i class="icon_heart"></i> <a href="https://www.youtube.com/watch?v=OK4RJA78E9Q"target="_blank">🐱‍🏍</a></p>
+                    <p>Promocion Maquina <i class="icon_heart"></i> <a class="footer_logo" href="https://www.youtube.com/watch?v=OK4RJA78E9Q"target="_blank">🐱‍🏍</a></p>
                 </div>
             </div>
         </div>
