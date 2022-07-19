@@ -79,7 +79,7 @@
             </div>
         </div>
     </div>
-    <div class="row" style="position: sticky;  top: 10; background-color: white; ">
+    <div class="row align-items-center" style="position: sticky;  top: 10; background-color: white; ">
         <nav aria-label="breadcrumb"  style="margin-left: 8%; margin-top : 1%;">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Inicio</a></li>
@@ -101,7 +101,8 @@
             <div class="row altura">
                 <div class="col-sm-6 col-md-4" th:each="foto : ${fotos}">
                     <a class="lightbox" th:href="@{/foto-comentario/}+${foto.id_foto}+@{?pageAnt=}+${pageAnt}">
-                        <img class="img-thumbnail" th:src="@{/} + ${foto.getRuta()}" alt="imagen">
+                        <img class="img-thumbnail" th:src="@{/} + ${foto.getRuta()}" alt="imagen" style = "z-position : 2;">
+
                     </a>
 
                 </div>
