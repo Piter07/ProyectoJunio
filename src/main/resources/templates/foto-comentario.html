@@ -89,11 +89,9 @@
 
 </header>
 <div class="row">
-    <!--breadcrumb-->
-        <div class="row">
             <div class="col-md-1"></div>
             <div class="col-sm-12 col-md-6 contenedor-imagen">
-                <img class="img-thumbnail" th:src="${foto.getRuta()}" alt="imagen">
+                <img class="img-thumbnail" th:src="@{/} + ${foto.getRuta()}" alt="imagen">
             </div>
             <div class="col-sm-12 col-md-4 contenedor-comentarios">
                 <div class="comentarios">

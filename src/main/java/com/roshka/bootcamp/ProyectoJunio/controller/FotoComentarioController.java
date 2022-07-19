@@ -43,7 +43,7 @@ public class FotoComentarioController {
             model.addAttribute("pageAnt", pageNo);
             model.addAttribute("comentarios", foto.get().getListaComentarios());
             model.addAttribute("id_Foto", id);
-            model.addAttribute("album",foto.get().getAlbum().getTitulo());
+            model.addAttribute("titulo",foto.get().getAlbum().getTitulo());
         }
         return "foto-comentario";
     }
