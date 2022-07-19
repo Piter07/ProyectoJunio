@@ -103,16 +103,23 @@
                 for(let i=0; i<arrImages.length; i++) {
                     let imgData = new FormData();
                     imgData.append('file', arrImages[i]);
-
-                    fetch('/album/' + idAlbum + '/subir-fotos', {
+                    if(i === arrImages.length -1) {
+                        fetch('/album/' + idAlbum + '/subir-fotos', {
+                        method:'POST',
+                        body:imgData,
+                        }).then(res => {
+                            console.log(res)
+                            window.location.replace("/album/"+ idAlbum )
+                        });
+                    } else {
+                        fetch('/album/' + idAlbum + '/subir-fotos', {
                         method:'POST',
                         body:imgData
-                    }).then(res => {
-                        console.log(res)
-                        if(i === arrImages.length -1) {
-                            window.location.href = "/album/" + idAlbum;
-                        }
-                    });
+                        }).then(res => {
+                            console.log(res)
+                        });
+                    }
+
                 }
             })
         </script>
