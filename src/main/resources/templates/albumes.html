@@ -1,5 +1,7 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,7 +53,7 @@
                 </a>
             </div>
             <div class="btn-group">
-                <div class="dropdown">
+                <div class="dropdown" sec:authorize="hasAuthority('crear_album')">
                     <button type="button" class="btn btn-outline-light me-2" data-toggle="modal"
                             data-target="#staticBackdrop" onclick="restaurarValores()">
                         <i class="fas fa-plus fa-lg"></i>Crear Álbum
@@ -108,6 +110,14 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row"  style =" position: sticky;  top: 10; background-color: white; " >
+        <nav aria-label="breadcrumb" style="margin-left: 8%; margin-top : 1%;">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="#">Albumes</a></li>
+            </ol>
+        </nav>
     </div>
 
 </header>
@@ -187,14 +197,7 @@
     <!--Contendor de la vista albumes-->
     <div class="album py-5 bg-light">
         <!--breadcrumb-->
-        <div class="container">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
-                    <li class="breadcrumb-item"><a href="#">Albumes</a></li>
-                </ol>
-            </nav>
-        </div>
+
         <div class="container">
             <!--Verificacion de la lista de albumes, si no esta vacio mostrara todos los albumes -->
             <div th:if="${!albumLista.isEmpty()}" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -217,7 +220,7 @@
                                         <p th:text="${album.usuario.getNombre()}"></p>
                             </a>
                                     <!-- Boton para agregar mas fotos -->
-                                    <a class="edit" th:href="@{/albumes}" onMouseover="this.style.color='black'" style="margin-bottom: -5px;">
+                                    <a class="edit" th:href="@{/albumes}"  sec:authorize="hasAuthority('crear_album')" onMouseover="this.style.color='black'" style="margin-bottom: -5px;">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
                                             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
@@ -231,7 +234,7 @@
                                 <div class="prueba">
                                     <!--  -->
                                     <img th:if="${!album.fotos.isEmpty()}" class="img-fluid"
-                                         th:src="${album.fotos.stream().findFirst().get().ruta}"
+                                         th:src="@{/}+${album.fotos.stream().findFirst().get().ruta}"
                                          alt="imagen">
                                 </div>
                                 </a>

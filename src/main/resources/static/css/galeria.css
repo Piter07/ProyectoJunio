@@ -2,10 +2,7 @@
   padding: 0 !important;
 }
 
-.row{
-  margin-left: 0;
-  margin-right: 0;
-}
+
 .body {
     background-image: linear-gradient(to top, #ecedee 0%, #eceeef 75%, #e7e8e9 100%);
     min-height: 90vh;

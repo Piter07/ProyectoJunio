@@ -21,7 +21,7 @@ public class FotoComentarioController {
         Optional<Foto> foto = fotoService.findById(id);
         if(foto.isPresent()){
             model.addAttribute("foto", foto.get());
-            model.addAttribute("nroAlbum", id);
+            model.addAttribute("nroAlbum", foto.get().getAlbum().getId_album());
             model.addAttribute("pageAnt", pageNo);
             model.addAttribute("comentarios",foto.get().getListaComentarios());
             model.addAttribute("titulo", foto.get().getAlbum().getTitulo());
