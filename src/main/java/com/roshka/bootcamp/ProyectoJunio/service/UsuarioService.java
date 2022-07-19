@@ -1,4 +1,6 @@
 package com.roshka.bootcamp.ProyectoJunio.service;
+
+import com.roshka.bootcamp.ProyectoJunio.ValidarCorreo.CorreoService;
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.UsuarioRegistroDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Permiso;
 import com.roshka.bootcamp.ProyectoJunio.model.Rol;
@@ -16,12 +18,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class UsuarioService implements UsuarioServiceInterface {
@@ -57,12 +54,20 @@ public class UsuarioService implements UsuarioServiceInterface {
         String estado = "I";
 
         /* enviar mensaje al correo registrado en el formulario para activar la cuenta */
+        // generacio de link de activacion
         String text = "http://localhost:8080/verificacion?token=" + tokenVerificacion +
                 "&correo=" + registroDTO.getEmail();
-
-        correoService.sendEmail(registroDTO.getEmail(),
-                "Correo de verificación Roshkagram",
-                text);
+        String text2 = "\"" + text + "\""; // para los href
+        // parametros para el correo
+        String name = registroDTO.getNombre() + " " + registroDTO.getApellido();
+        Map<String, Object> parametros = new HashMap<>();
+        parametros.put("text", text);
+        parametros.put("name", name);
+        parametros.put("text2", text2);
+        // titulo del correo
+        String titulo = "Correo de verificación Roshkagram";
+        //enviar correo
+        correoService.sendEmailWithHTML(registroDTO.getEmail(), titulo, parametros);
 
         /* genera un objeto del tipo Usuario para guardarlo en la
         *  base de datos

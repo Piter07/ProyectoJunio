@@ -1,7 +1,7 @@
 package com.roshka.bootcamp.ProyectoJunio.controller;
 
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.UsuarioRegistroDTO;
-import com.roshka.bootcamp.ProyectoJunio.service.CorreoService;
+import com.roshka.bootcamp.ProyectoJunio.ValidarCorreo.CorreoService;
 import com.roshka.bootcamp.ProyectoJunio.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,13 +51,13 @@ public class RegistroUsuarioControlador {
             /* validar correo */
             String correo = registroDTO.getEmail();
             //Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+@roshka.com$");
-            //Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+@gmail.com$");
-            //Matcher matcher = pattern.matcher(correo);
+            Pattern pattern = Pattern.compile("^[a-zA-Z0-9._%+-]+@gmail.com$");
+            Matcher matcher = pattern.matcher(correo);
 
-            /*if(!matcher.matches()) {
-                /* verifica que sea @roshka.com
+            if(!matcher.matches()) {
+                /* verifica que sea @roshka.com */
                 return "redirect:/registro?err001";
-            }*/
+            }
 
             if( !(registroDTO.getPassword().equals(registroDTO.getClaveConfirmar()) )) {
                 //verifica que las contraseñas sean iguales
