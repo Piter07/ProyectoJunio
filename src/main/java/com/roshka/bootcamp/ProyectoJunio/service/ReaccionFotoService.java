@@ -1,7 +1,7 @@
 package com.roshka.bootcamp.ProyectoJunio.service;
 
 import com.roshka.bootcamp.ProyectoJunio.model.ReaccionFoto;
-import com.roshka.bootcamp.ProyectoJunio.repository.ReaccionFotoRepository;
+import com.roshka.bootcamp.ProyectoJunio.controller.repository.ReaccionFotoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

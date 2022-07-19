@@ -15,15 +15,22 @@ public class Comentario {
     private String descripcion;
     private Date fechaPublicacion;
 
-    @ManyToOne
-    @JoinColumn(name = "foto_id", referencedColumnName = "id_foto")
-    private Foto foto;
-
     @OneToMany(mappedBy = "comentario")
     private Set<ReaccionComentario> reaciones;
+
+
+    /*@ManyToOne
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
+    private Usuario usuario;*/
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
     private Usuario comentarioUsuario;
+
+    @ManyToOne
+    @JoinColumn(name = "foto_id", referencedColumnName = "id_foto")
+    private Foto foto;
+
+
 
 }

@@ -3,14 +3,14 @@ package com.roshka.bootcamp.ProyectoJunio.service;
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.AlbumDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Album;
 import com.roshka.bootcamp.ProyectoJunio.model.Categoria;
-import com.roshka.bootcamp.ProyectoJunio.repository.AlbumRepository;
+import com.roshka.bootcamp.ProyectoJunio.controller.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
