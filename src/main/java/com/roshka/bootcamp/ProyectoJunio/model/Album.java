@@ -35,10 +35,12 @@ public class Album {
     @JsonIgnore
     private Set<Foto> fotos = new HashSet<>();
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
     private Usuario usuario;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="categoria_id", referencedColumnName = "id_categoria")
     private Categoria categoria;
