@@ -2,6 +2,7 @@ package com.roshka.bootcamp.ProyectoJunio.controller;
 
 
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.AlbumDTO;
+import com.roshka.bootcamp.ProyectoJunio.controller.dto.ComentarioDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Album;
 import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
 import com.roshka.bootcamp.ProyectoJunio.model.Foto;
@@ -73,5 +74,9 @@ public class AlbumController {
 ////        }
         return "formulario-fotos";
     }
-
+    @PostMapping("foto-borrar")
+    public String eliminarFoto(@RequestParam("idFoto") long idFoto, @RequestParam("idAlbum") long album_id){
+        fotoService.delete(idFoto);
+        return "redirect:/album/" + album_id;
+    }
 }
