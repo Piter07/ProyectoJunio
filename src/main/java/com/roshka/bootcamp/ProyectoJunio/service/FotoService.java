@@ -33,4 +33,8 @@ public class FotoService implements FotoServicioInterface{
         Foto fotoGuardada= fotoRepository.save(foto);
         return fotoGuardada;
     }
+
+    public void delete(long id) {
+        fotoRepository.deleteById(id);
+    }
 }
