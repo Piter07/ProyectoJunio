@@ -66,7 +66,7 @@
             Dropzone.autoDiscover = false;
             let myDropzone = new Dropzone('.dropzone', {
                 url:'/album/' + idAlbum + '/subir-fotos',
-                maxFilesize:2,
+                maxFilesize:10485760,
                 acceptedFiles:'image/jpeg, image/png, image/jpg',
                 addRemoveLinks:true,
                 dictRemoveFile:'Quitar',
@@ -111,7 +111,7 @@
                         console.log(res)
                     });
                 }
-                window.location.href = "/album/" + idAlbum;
+                // window.location.href = "/album/" + idAlbum;
             })
         </script>
 <!--	scripts -->

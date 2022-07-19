@@ -22,12 +22,12 @@
     margin: 2rem auto;
     height: auto;
 }
-#contededorAlbum{
+#contededorAlbum,#contededorAlbum2{
     border: 2px dashed purple;
     margin: 1rem auto;
     height: auto;
 }
-#album_contenido{
+#album_contenido,#album_contenido2{
     padding: 1rem;
 }
 hr {
@@ -168,13 +168,13 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
     display: none;
 }
 
-#fecha{
+#fecha,#fecha2{
     width: 200px;
     font-family: 'poppins', sans-serif;
     font-size: 1rem;
     margin-right: 10px;
 }
-#botones,#tituloModal{
+#botones,#tituloModal,#botones2{
     margin: auto;
 }
 i{
@@ -189,8 +189,11 @@ i:hover{
 .modal-header{
     font-family: 'poppins', sans-serif;
 }
-#staticBackdropLabel,#prueba34{
+#staticBackdropLabel,#prueba34,#prueba35,#staticBackdropLabel2{
     font-family: 'poppins', sans-serif;
     font-size: 2rem;
+}
+.bi-calendar3:hover{
+    cursor: pointer;
 }
 /*aqui termina la configuracion para el formulario de fotos con dropzone*/

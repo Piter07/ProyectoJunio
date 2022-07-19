@@ -1,6 +1,7 @@
 package com.roshka.bootcamp.ProyectoJunio.controller;
 
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.AlbumDTO;
+import com.roshka.bootcamp.ProyectoJunio.controller.dto.UsuarioRegistroDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Album;
 import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
 import com.roshka.bootcamp.ProyectoJunio.service.AlbumService;
@@ -34,7 +35,7 @@ public class ControladorCrearAlbum {
     public String mostrarVista(){
         return "PruebaCrearAlbum";
     }
-    @PostMapping("crearAlbum")
+    @PostMapping("/crearAlbum")
     public String crearAlbum(@ModelAttribute("objAlbum") AlbumDTO albumDTO){
         final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
         Usuario usuario = usuarioService.existeUsuario(currentUserName);
@@ -43,11 +44,6 @@ public class ControladorCrearAlbum {
         albumDTO.setId_album(albumGuardado.getId_album());
         System.out.println("Creamos un album exitosamente");
         return "redirect:/album/" + albumGuardado.getId_album() + "/subir-fotos";
-    }
-
-    @PatchMapping("crearAlbum/{id}")
-    public String editarAlbum(@PathVariable long id, Model model) throws Exception {
-        return "album";
     }
 
     @GetMapping("/album/{id}/subir-fotos")
@@ -80,6 +76,18 @@ public class ControladorCrearAlbum {
             }
         }
         return "redirect:/album/" + id ;
+    }
+
+    @PatchMapping("EditarAlbum/{id}")
+    public String editarAlbum(@PathVariable long id, @ModelAttribute("AlbumEditar") AlbumDTO albumDTO) throws Exception {
+
+
+        return "redirect:/albumes" ;
+    }
+
+    @ModelAttribute("usuario")
+    public UsuarioRegistroDTO retornaNuevoUsuarioRegistroDTO() {
+        return new UsuarioRegistroDTO();
     }
 
 }

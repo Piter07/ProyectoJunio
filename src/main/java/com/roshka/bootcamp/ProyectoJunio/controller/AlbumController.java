@@ -12,6 +12,7 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.roshka.bootcamp.ProyectoJunio.service.FotoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,9 +30,11 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
+
 @Controller
 public class AlbumController {
 
+    @Autowired
     private AlbumService albumService;
     @Autowired
     private FotoService fotoService;

@@ -97,7 +97,7 @@
 
 </header>
 <body>
-<!-- Modal -->
+<!-- Modal para crear -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -116,7 +116,7 @@
                                     </h4>
                                 </label>
                                 <div class="col-llx-7 col-sm-12 col-md-12">
-                                    <input type="text" class="form-control h3" id="nombre_album" name="titulo" required/>
+                                    <input type="text" class="form-control h3" id="nombre_album" name="titulo"  required/>
                                 </div>
                             </div>
 
@@ -166,7 +166,78 @@
         </div>
     </div>
 </div>
-<!--    fin Modal-->
+<!--    fin Modal para crear -->
+
+<!-- Modal para editar -->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="#"  method="patch" class="">
+                <div class="modal-header">
+                    <h1 class="modal-title" id="staticBackdropLabel2"><strong id="prueba35">Editar Álbum</strong></h1>
+                    <button type="button" class="btn-close" onclick="restaurarValores()" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row shadow-lg p-1 rounded" id="contededorAlbum2">
+                        <div class="col-12" id="album_contenido2">
+                            <div class="mb-3">
+                                <label for="nombre_album" class="form-label">
+                                    <h4>
+                                        Título del álbum
+                                    </h4>
+                                </label>
+                                <div class="col-llx-7 col-sm-12 col-md-12">
+                                    <input type="text" class="form-control h3" id="nombre_album2" name="titulo"  required/>
+                                </div>
+                            </div>
+
+                            <div class="col-llx-7 col-sm-12 col-md-12">
+                                <div class="mb-3">
+                                    <label for="descripcion" class="form-label">
+                                        <h4>
+                                            Descripción
+                                        </h4>
+                                    </label>
+                                    <textarea class="form-control" id="descripcion2" name="descripcion" rows="3" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-llx-4 col-sm-10 col-md-7 mb-3">
+                                <div class="hijo1">
+                                    <label for="fecha" class="form-label">
+                                        <h4>
+                                            Fecha evento
+                                        </h4>
+                                    </label>
+                                </div>
+                                <div class="hijo2">
+                                    <input class="from-control text-center" placeholder="Calendario" type="datetime-local" id="fecha2" name="fechaEvento" /><label for="fecha" >
+<!--                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">-->
+<!--                                        <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>-->
+<!--                                        <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>-->
+<!--                                    </svg>-->
+                                </label>
+                                </div>
+                            </div>
+                            <select id="inpuntSelect2" name="idCategoria" class="form-select p-1  border border-1 border-dark  " aria-label="Default select example" style="width: 200px; text-align-last: center;">
+                                <a th:each="cat: ${categorias}">
+                                    <option  th:value="${cat.id_categoria}" th:text ="${cat.nombre}"></option>
+                                </a>
+                                <option  hidden="true" value="Categoria" selected>Categorias</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div id="botones2">
+                        <button type="submit" class="btn btn-primary" id="editar">Editar Album</button>
+                        <button type="button" onclick="restaurarValores()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--    fin Modal para editar -->
 
 <main>
     <!--Contendor de la vista albumes-->
@@ -196,19 +267,20 @@
                                             <div>
                                                 <p th:text="${album.titulo}">
                                                 </p>
-                                                <span th:text="${album.fechaEvento}"></span>
+                                                <span th:text="${#dates.format(album.fechaEvento, 'dd/MM/yyyy')}"></span>
                                             </div>
                                         </div>
-                                        <p th:text="${album.usuario.getNombre()}"></p>
+                                        <p class="text-muted" th:text="${album.usuario.getNombre()}"></p>
                             </a>
                                     <!-- Boton para agregar mas fotos -->
-                                    <a class="edit" th:href="@{/albumes}" onMouseover="this.style.color='black'" style="margin-bottom: -5px;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+
+                                    <a class="edit" href="#" onMouseover="this.style.color='black'" style="margin-bottom: -5px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" data-toggle="modal" data-target="#staticBackdrop2" viewBox="0 0 16 16" th:onclick="'javascript:editarAlbum(\'' + ${album.id_album} + '\');'">
                                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
                                             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
                                         </svg>
-
                                     </a>
+
                                 </div>
                                 <!-- Primera imagen del album -->
                                 <a class="link" th:href="@{/album/}+${album.id_album}+@{?pageAnt=}+${pageNo}"
@@ -216,7 +288,7 @@
                                 <div class="prueba">
                                     <!--  -->
                                     <img th:if="${!album.fotos.isEmpty()}" class="img-fluid"
-                                         th:src="${album.fotos.stream().findFirst().get().ruta}"
+                                         th:src="@{/} + ${album.fotos.stream().findFirst().get().ruta}"
                                          alt="imagen">
                                 </div>
                                 </a>
@@ -322,6 +394,30 @@
             document.querySelector('#select [value="' + selectedValue + '"]').selected = true;
         }
 	</script>
+
+<!--intento para editar album-->
+    <script>
+        config = {
+            enableTime: false,
+            dateFormat: "d/m/Y",
+        }
+        flatpickr("input[type=datetime-local]", config);
+        function editarAlbum(idAlbum){
+            fetch('/album-json/' + idAlbum)
+                .then(response => response.json())
+                .then(data => {
+                    if(data) {
+                        console.log(data)
+                        document.getElementById("nombre_album2").value = data.titulo;
+                        document.getElementById("descripcion2").value = data.descripcion;
+                        let calendar = flatpickr("#fecha2", config);
+                        calendar.setDate(data.fechaEvento, true, "Y-m-d H:i:s");
+                        document.getElementById("inpuntSelect2").value = data.idCategoria;
+                    }
+                });
+        }
+
+    </script>
 <!--fin de scripts-->
 
 </body>
