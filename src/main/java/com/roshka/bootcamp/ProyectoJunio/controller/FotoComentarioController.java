@@ -1,12 +1,14 @@
 package com.roshka.bootcamp.ProyectoJunio.controller;
 
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.ComentarioDTO;
+import com.roshka.bootcamp.ProyectoJunio.controller.dto.ReaccionDTO;
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.UsuarioRegistroDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Comentario;
 import com.roshka.bootcamp.ProyectoJunio.model.Foto;
 import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
 import com.roshka.bootcamp.ProyectoJunio.service.ComentarioService;
 import com.roshka.bootcamp.ProyectoJunio.service.FotoService;
+import com.roshka.bootcamp.ProyectoJunio.service.ReaccionService;
 import com.roshka.bootcamp.ProyectoJunio.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -34,6 +36,9 @@ public class FotoComentarioController {
     @Autowired
     private UsuarioService usuarioService;
 
+    @Autowired
+    private ReaccionService reaccionService;
+
     @GetMapping("/foto-comentario/{id}")
     public String getFotoComentarioById(@RequestParam(name = "pageNo", required = false, defaultValue = "0") int pageNo, @PathVariable long id, Model model) throws Exception {
         Optional<Foto> foto = fotoService.findById(id);
@@ -44,6 +49,9 @@ public class FotoComentarioController {
             model.addAttribute("comentarios", foto.get().getListaComentarios());
             model.addAttribute("id_Foto", id);
             model.addAttribute("album",foto.get().getAlbum().getTitulo());
+            model.addAttribute("reacciones", reaccionService.list());
+            /* -- ENVIO DE LOS EMOJIS A LOS COMENTARIOS -- */
+
         }
         return "foto-comentario";
     }
@@ -51,6 +59,11 @@ public class FotoComentarioController {
     @ModelAttribute("comentario")
     public ComentarioDTO retornaUnComentario() {
         return new ComentarioDTO();
+    }
+
+    @ModelAttribute("reaccion")
+    public ReaccionDTO retornaUnaReaccion() {
+        return new ReaccionDTO();
     }
 
     @PostMapping("foto-comentario")
@@ -86,6 +99,7 @@ public class FotoComentarioController {
         } catch (Exception e) {
             System.out.println("error");
         }
+
         return "redirect:/foto-comentario/" + comentarioDTO.getIdFoto();
     }
 }

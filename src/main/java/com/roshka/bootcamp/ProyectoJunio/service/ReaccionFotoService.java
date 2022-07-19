@@ -20,4 +20,9 @@ public class ReaccionFotoService {
     public Optional<ReaccionFoto> findById(Long id) {
         return reaccionFotoRepository.findById(id);
     }
+
+    public ReaccionFoto guardar(ReaccionFoto reaccionFoto) {
+        return reaccionFotoRepository.save(reaccionFoto);
+    }
+
 }

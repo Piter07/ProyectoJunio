@@ -126,6 +126,132 @@
                                 </div>
                         </div>
                     </div>
+                        <!-- se agrega reacciones -->
+                        <!-- Sample text input -->
+                        <div id="target" class="emojis">
+                            <!-- aqui van todos los iconos de las fotos -->
+                            <span class="emojiFrame" >
+                                <div type="button" onclick="mostrarIconos()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg>
+                                </div>
+                            </span>
+                        </div>
+                        <!-- tablero de emojin -->
+                        <div id="con" class="con">
+                            <!-- Component -->
+                            <div class="emojiPicker">
+                            <div class="emojis" th:each="rcc : ${reacciones}">
+                                <form th:action="@{/foto-reaccion}" method="post" th:object="${reaccion}">
+                                    <input type="hidden" th:value="${id_Foto}" th:attr="name='foto'"> <!-- para saber el id de la foto a reaccionar -->
+                                    <input type="hidden" th:value="${rcc.getId_reaccion()}" id="reaccion" th:attr="name='reaccion'">
+                                    <input type="hidden" th:value="${pageAnt}" th:attr="name='pageAnt'">
+                                    <!-- se muestran todas las reacciones que existen -->
+                                    <button type="submit">
+                                        <div class="emojiFrame"><span class="emoji" th:text="${rcc.getIcono()}"></span></div> <!-- th:id="${rcc.getIcono()} -->
+                                        <!--input type="hidden" th:value="${rcc}" th:attr="name='reaccion'"--> <!-- para saber el icono de la foto a reaccionar -->
+                                    </button>
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+
+                        <style>
+                            #target {
+                                /*position: absolute;*/
+                            }
+                            .con{
+                            
+                            /*centrar*/
+                            position: absolute;/*
+                            top: 50%;
+                            left: 50%;
+                            -ms-transform: translate(-50%, -50%);
+                            transform: translate(-50%, -50%);*/
+                            background-color: white;
+                                display: none;
+                                z-index: 100;
+                                /*position: relative;*/
+                            }
+
+                            /* component */
+                            .emojiPicker{
+                            /* 5 emojis in row */
+                            /* width: 212px;  */
+
+                            /* 6 emojis in row */
+                            /* width: 254px; */
+
+                            /* 7 emojis in row */
+                            width: 19rem;/*296px;*/
+
+                            border: none; /*1px solid #0d8cfc;*/
+                            /*background-color: aliceblue;*/
+                            border-radius: 5px;
+
+                            -webkit-box-shadow: 1px 1px 5px -1px rgba(0,0,0,0.75);
+                            -moz-box-shadow: 1px 1px 5px -1px rgba(0,0,0,0.75);
+                            box-shadow: 1px 1px 5px -1px rgba(0,0,0,0.75);
+                            }.emojis{
+                            width: 100%;
+                            display: flex;
+                            flex-wrap: wrap;
+                            }.emojiFrame{
+                            border-radius: 20%;
+                            box-sizing: content-box;
+                            user-select: none;
+                            text-align: center;
+                            cursor: pointer;
+                            width: auto;
+                            min-width: none;
+                            font-size: 21px;
+                            padding: 3px;
+                            margin: 3px;
+                            background-color: transparent;
+                            /*transform: scale(0.9);*/
+
+                            transition: background-color 0.2s, transform 0.1s;
+                            }.emojiFrame:hover{
+                            background-color: #0d8cfc;
+                            }.emojiFrame:active{
+                            /*background-color: #4babff;*/
+                            transform: scale(0.95);
+                            }
+                            .emojiFrame label {
+                                font-size: 1rem;
+                            }
+                        </style>
+                        <script>
+                            var cant = 1;
+                            function mostrar(id, icon) {
+                                console.log(icon)
+                                console.log(id)
+                                /* imprime el icono seleccionado y cierra el tablero de iconos */
+                                /*text = document.getElementById("target");
+                                text.innerHTML = "<div class='emojiFrame'><span>"+icon+"</span><label>"+cant+"</label></div> " + text.innerHTML;
+                                */
+                                text = document.getElementById("con");
+                                text.style.display = "none";
+
+                                text = document.getElementById("reaccion");
+                                text.value = id;
+
+                            }
+
+                            function mostrarIconos() {
+
+                                /* abre o cierra el tablero de iconos */
+                                text = document.getElementById("con");
+                                if(text.style.display == "none" || text.style.display == "") {
+                                    text.style.display = "block";
+                                } else {
+                                    text.style.display = "none";
+                                }
+                            }
+                        </script>
+                        <!-- fin -->
                     <form th:action="@{/foto-comentario}" method="post" class="form_comentarios d-flex justify-content-end flex-wrap" th:object="${comentario}">
                         <textarea id="descripcion"th:field="*{descripcion}"></textarea>
 
