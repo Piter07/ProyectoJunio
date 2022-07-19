@@ -53,25 +53,6 @@ public class FotoComentarioController {
                 }
             }
         }
-        /*Optional<Foto> f;
-
-        try {
-            f = fotoService.findById(id+1);
-            if(album.get().getId_album() == f.get().getAlbum().getId_album()){
-                next = f.get().getId_foto();
-            }
-        }catch (Exception e){
-
-        }
-        try {
-            f = fotoService.findById(id-1);
-            if(album.get().getId_album() == f.get().getAlbum().getId_album()){
-                prev = f.get().getId_foto();
-            }
-        }catch (Exception e){
-
-        }
-         */
         if (foto.isPresent()) {
             System.out.println(album);
             model.addAttribute("foto", foto.get());
