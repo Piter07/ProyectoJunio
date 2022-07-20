@@ -32,6 +32,7 @@
         }
 
 
+
     </style>
 </head>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -108,7 +109,8 @@
 
 <div class="row">
     <!--breadcrumb-->
-    <div class="container gallery-container">
+    <div class="col-md-1"></div>
+    <div class="container gallery-container col-md-10">
         <h1 th:text="${titulo}"></h1>
         <p class="page-description text-center" th:text="${descripcion}"></p>
         <div class="tz-gallery">
@@ -132,13 +134,11 @@
                             <img class="img-thumbnail" th:src="@{/} + ${foto.getRuta()}" alt="imagen">
                         </a>
                     </div>
-
                 </div>
-
             </div>
         </div>
-
     </div>
+    <div class="col-md-1"></div>
 </div>
 
 </body>
