@@ -1,11 +1,14 @@
 package com.roshka.bootcamp.ProyectoJunio.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
 @Entity
 public class ReaccionFoto implements Serializable {
     @Id

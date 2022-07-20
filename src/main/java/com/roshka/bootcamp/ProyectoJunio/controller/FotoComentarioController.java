@@ -1,13 +1,11 @@
 package com.roshka.bootcamp.ProyectoJunio.controller;
 
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.ComentarioDTO;
-import com.roshka.bootcamp.ProyectoJunio.model.Album;
-import com.roshka.bootcamp.ProyectoJunio.model.Foto;
-import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
-import com.roshka.bootcamp.ProyectoJunio.service.AlbumService;
-import com.roshka.bootcamp.ProyectoJunio.service.ComentarioService;
-import com.roshka.bootcamp.ProyectoJunio.service.FotoService;
-import com.roshka.bootcamp.ProyectoJunio.service.UsuarioService;
+import com.roshka.bootcamp.ProyectoJunio.controller.dto.FotoReaccionAux;
+import com.roshka.bootcamp.ProyectoJunio.controller.dto.ReaccionDTO;
+import com.roshka.bootcamp.ProyectoJunio.controller.dto.UsuarioRegistroDTO;
+import com.roshka.bootcamp.ProyectoJunio.model.*;
+import com.roshka.bootcamp.ProyectoJunio.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -18,8 +16,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 public class FotoComentarioController {
@@ -35,6 +35,12 @@ public class FotoComentarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private ReaccionService reaccionService;
+
+    @Autowired
+    private ReaccionFotoService reaccionFotoService;
 
     @GetMapping("/foto-comentario/{id}")
     public String getFotoComentarioById(@RequestParam(name = "pageNo", required = false, defaultValue = "0") int pageNo, @PathVariable long id, Model model) throws Exception {
@@ -63,6 +69,10 @@ public class FotoComentarioController {
             model.addAttribute("titulo",foto.get().getAlbum().getTitulo());
             model.addAttribute("next",next);
             model.addAttribute("prev",prev);
+            model.addAttribute("reacciones", reaccionService.list());
+            /* -- ENVIO DE LOS EMOJIS A LOS COMENTARIOS -- */
+            model.addAttribute("reaccionesFoto", reaccionFotoService.obtenerReaccionesFoto(id));
+
         }
         return "foto-comentario";
     }
@@ -70,6 +80,11 @@ public class FotoComentarioController {
     @ModelAttribute("comentario")
     public ComentarioDTO retornaUnComentario() {
         return new ComentarioDTO();
+    }
+
+    @ModelAttribute("reaccion")
+    public ReaccionDTO retornaUnaReaccion() {
+        return new ReaccionDTO();
     }
 
     @PostMapping("foto-comentario")
@@ -106,6 +121,7 @@ public class FotoComentarioController {
         } catch (Exception e) {
             System.out.println("error");
         }
+
         return "redirect:/foto-comentario/" + comentarioDTO.getIdFoto();
     }
 }

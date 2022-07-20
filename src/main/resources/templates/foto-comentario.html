@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="css/home/home_head.css">
     <link th:href="@{/css/galeria.css}" rel="stylesheet">
     <link th:href="@{/css/foto-comentarios.css}" rel="stylesheet">
+    <!-- para las reacciones -->
+    <link th:href="@{/css/reaccion.css}" rel="stylesheet">
+    <script th:src="@{/js/reaccion.js}"></script>
+
     <!--style para el breadcrumb-->
     <style>
           .breadcrumb {
@@ -131,7 +135,49 @@
                                     </div>
                                 </div>
                         </div>
-                    </div>
+                    </div> <!-- ZONA DE EMOJIS PARA LA FOTO -->
+                        <!-- Boton para el tablero de iconos -->
+                        <div id="target" class="emojis">
+                            <!-- reacciones existentes para la foto -->
+                            <div th:each="reaccionFoto : ${reaccionesFoto}">
+                                <!-- formulario para añadir icono a la foto desde los iconos ya existentes -->
+                                <form th:action="@{/foto-reaccion}" method="post" th:object="${reaccion}">
+                                    <input type="hidden" th:value="${id_Foto}" th:attr="name='foto'"> <!-- para saber el id de la foto a reaccionar -->
+                                    <input type="hidden" th:value="${reaccionFoto.getReaccion().getId_reaccion()}" th:attr="name='reaccion'">
+                                    <input type="hidden" th:value="${pageAnt}" th:attr="name='pageAnt'">
+                                    <button type="submit" class="botonIcon">
+                                        <div class='emojiFrame'><span th:text="${reaccionFoto.getReaccion().getIcono()}" ></span><span id="cant_reaccion" th:text="${reaccionFoto.getUsuario().toArray().length}" ></span></div>
+                                    </button>
+                                </form>
+                            </div>
+                            <span class="emojiFrame" >
+                                <div type="button" onclick="mostrarIconos()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg>
+                                </div>
+                            </span>
+                        </div>
+                        <!-- TABLERO DE EMOJIS -->
+                        <div id="con" class="con">
+                            <div class="emojiPicker">
+                                <div class="emojis">
+                                    <div th:each="rcc : ${reacciones}">
+                                        <!-- formulario para añadir el icono a la foto -->
+                                        <form th:action="@{/foto-reaccion}" method="post" th:object="${reaccion}">
+                                            <input type="hidden" th:value="${id_Foto}" th:attr="name='foto'"> <!-- para saber el id de la foto a reaccionar -->
+                                            <input type="hidden" th:value="${rcc.getId_reaccion()}" th:attr="name='reaccion'">
+                                            <input type="hidden" th:value="${pageAnt}" th:attr="name='pageAnt'">
+                                            <button type="submit" class="botonIcon">
+                                                <div class="emojiFrame"><span class="emoji" th:text="${rcc.getIcono()}"></span></div>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- formulario para realizar un comentario -->
                     <form th:action="@{/foto-comentario}" method="post" class="form_comentarios d-flex justify-content-end flex-wrap" th:object="${comentario}">
                         <textarea id="descripcion"th:field="*{descripcion}"></textarea>
 
