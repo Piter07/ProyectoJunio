@@ -57,3 +57,17 @@
                                 margin: 0%;
                                 padding: 0%;
                             }
+                              /****** hover rotar *****/
+                            .rotate {
+                                  position: relative;
+                                  animation: rotation 3s infinite linear;
+                            }
+
+                            @keyframes rotation {
+                                from {
+                                    transform: rotate(0deg);
+                                }
+                                to {
+                                    transform: rotate(359deg);
+                                }
+                            }
