@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <!-- Sample text input -->
+    <div id="target" class="emojis">
+        <!-- aqui van todos los iconos de las fotos -->
+        <span class="emojiFrame" >
+            <div onclick="mostrarIconos()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                </svg>
+            </div>
+        </span>
+    </div>
+    <!-- tablero de emojin -->
+    <div id="con" class="con">
+        <!-- Component -->
+        <div class="emojiPicker">
+          <div class="emojis">
+            <div class="emojiFrame" onclick="mostrar('&#128513;')"><span class="emoji">&#128513;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128514;')"><span class="emoji">&#128514;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128515;')"><span class="emoji">&#128515;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128516;')"><span class="emoji">&#128516;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128517;')"><span class="emoji">&#128517;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128518;')"><span class="emoji">&#128518;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128519;')"><span class="emoji">&#128519;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128521;')"><span class="emoji">&#128521;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128522;')"><span class="emoji">&#128522;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128523;')"><span class="emoji">&#128523;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128524;')"><span class="emoji">&#128524;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128525;')"><span class="emoji">&#128525;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128526;')"><span class="emoji">&#128526;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128527;')"><span class="emoji">&#128527;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128528;')"><span class="emoji">&#128528;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128529;')"><span class="emoji">&#128529;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128530;')"><span class="emoji">&#128530;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128531;')"><span class="emoji">&#128531;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128532;')"><span class="emoji">&#128532;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128533;')"><span class="emoji">&#128533;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128534;')"><span class="emoji">&#128534;</span></div>     
+            <div class="emojiFrame" onclick="mostrar('&#128545;')"><span class="emoji">&#128545;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128536;')"><span class="emoji">&#128536;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128537;')"><span class="emoji">&#128537;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128538;')"><span class="emoji">&#128538;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128539;')"><span class="emoji">&#128539;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128546;')"><span class="emoji">&#128546;</span></div>
+            <div class="emojiFrame" onclick="mostrar('&#128547;')"><span class="emoji">&#128547;</span></div>
+          </div>
+        </div>
+    </div>
+    <div id="prueba">
+        hola como estas
+    </div>
+
+    <style>
+        
+        #prueba{
+            z-index: 0;
+            background-color: aqua;
+            height: 100vh;
+        }
+        #target {
+            /*position: absolute;*/
+        }
+        .con{
+        
+        /*centrar*/
+        position: absolute;/*
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);*/
+        background-color: white;
+            display: none;
+            z-index: 100;
+            /*position: relative;*/
+        }
+
+        /* component */
+        .emojiPicker{
+        /* 5 emojis in row */
+        /* width: 212px;  */
+
+        /* 6 emojis in row */
+        /* width: 254px; */
+
+        /* 7 emojis in row */
+        width: 19rem;/*296px;*/
+
+        border: none; /*1px solid #0d8cfc;*/
+        /*background-color: aliceblue;*/
+        border-radius: 5px;
+
+        -webkit-box-shadow: 1px 1px 5px -1px rgba(0,0,0,0.75);
+        -moz-box-shadow: 1px 1px 5px -1px rgba(0,0,0,0.75);
+        box-shadow: 1px 1px 5px -1px rgba(0,0,0,0.75);
+        }.emojis{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        }.emojiFrame{
+        border-radius: 20%;
+        box-sizing: content-box;
+        user-select: none;
+        text-align: center;
+        cursor: pointer;
+        width: auto;
+        min-width: none;
+        font-size: 21px;
+        padding: 3px;
+        margin: 3px;
+        background-color: transparent;
+        /*transform: scale(0.9);*/
+
+        transition: background-color 0.2s, transform 0.1s;
+        }.emojiFrame:hover{
+        background-color: #0d8cfc;
+        }.emojiFrame:active{
+        /*background-color: #4babff;*/
+        transform: scale(0.95);
+        }
+        .emojiFrame label {
+            font-size: 1rem;
+        }
+    </style>
+    <script>
+        var cant = 1;
+        function mostrar(icon) {
+            /* imprime el icono seleccionado y cierra el tablero de iconos */
+            text = document.getElementById("target");
+            text.innerHTML = "<div class='emojiFrame'><span>"+icon+"</span><label>"+cant+"</label></div> " + text.innerHTML;
+            
+            text = document.getElementById("con");
+            text.style.display = "none";
+        }
+
+        function mostrarIconos() {
+            /* abre o cierra el tablero de iconos */
+            text = document.getElementById("con");
+
+            if(text.style.display == "none") {
+                text.style.display = "block";
+            } else {
+                text.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

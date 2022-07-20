@@ -1,4 +1,4 @@
-package com.roshka.bootcamp.ProyectoJunio.repository;
+package com.roshka.bootcamp.ProyectoJunio.controller.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
