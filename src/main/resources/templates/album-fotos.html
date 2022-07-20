@@ -116,7 +116,7 @@
         <div class="tz-gallery">
             <div class="row altura">
                 <div class="col-sm-6 col-md-4" th:each="foto : ${fotos}">
-                    <div class="row" style="  display: flex; justify-content: center;">
+                    <div class="row" style="  display: flex; justify-content: center;" sec:authorize="hasAuthority('crear_album')">
                         <form th:action="@{/foto-borrar}" method="post">
                             <input type="hidden" name="idFoto" th:value="${foto.id_foto}">
                             <input type="hidden" name="idAlbum" th:value="${foto.getAlbum().getId_album()}">
