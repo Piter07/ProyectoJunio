@@ -271,6 +271,7 @@
                 </div>
                 <div class="modal-footer">
                     <div id="botones2">
+                        <span id="identificadorAlbum" style="display: none;" ></span>
                         <button type="submit" class="btn btn-primary" id="editar">Editar Album</button>
                         <button type="button" onclick="restaurarValores()" class="btn btn-secondary"
                                 data-dismiss="modal">Cerrar
@@ -428,12 +429,6 @@
          document.getElementById("nombre_album").value ="";
             document.getElementById("descripcion").value ="";
             document.getElementById("fecha").value ="";
-
-            const select = document.querySelector('#select');
-            const opciones = document.querySelector('#opciones');
-            const contenidoSelect = document.querySelector('#select .contenido-select');
-            const hiddenInput = document.querySelector('#inputSelect');
-
             const selectedValue = 'Categoria';
             document.querySelector('#select [value="' + selectedValue + '"]').selected = true;
         }
@@ -460,6 +455,9 @@
                         document.getElementById("inpuntSelect2").value = data.idCategoria;
                         document.getElementById("identificadorAlbum").innerHTML = data.id_album;
                         document.getElementById("formulario_editar").action = "/editar-album/" + data.id_album
+
+                        console.log(document.getElementById("formulario_editar").action);
+                        console.log("holaaaa");
                     }
                 });
         }

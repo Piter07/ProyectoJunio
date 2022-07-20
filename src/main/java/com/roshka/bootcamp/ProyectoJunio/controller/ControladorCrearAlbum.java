@@ -92,7 +92,7 @@ public class ControladorCrearAlbum {
 
     @PostMapping("editar-album/{id}")
     public String editarAlbum(@PathVariable long id, @ModelAttribute("editar") AlbumDTOeditar editar) throws Exception {
-
+        System.out.println("hola, estamos en el editar");
         Optional<Album> albumActual = albumService.findById(id);
         Date date_auxiliar;
         Album albumAuxilar=albumActual.get();
