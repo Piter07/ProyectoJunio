@@ -12,6 +12,7 @@ import com.roshka.bootcamp.ProyectoJunio.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -33,7 +34,7 @@ public class FotoReaccionController {
     ReaccionFotoService reaccionFotoService;
 
     @PostMapping("foto-reaccion")
-    public String saveFotoReaccion(@ModelAttribute("reaccion")ReaccionDTO reaccionDTO) {
+    public String saveFotoReaccion(@ModelAttribute("reaccion")ReaccionDTO reaccionDTO, Model model) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
 
         Usuario usuario = usuarioService.existeUsuario(username);
@@ -52,9 +53,16 @@ public class FotoReaccionController {
         reaccionFoto.setFoto(foto1);
         reaccionFoto.setUsuario(usuario);
 
-        reaccionFotoService.guardar(reaccionFoto);
+        try {
+            reaccionFotoService.guardar(reaccionFoto);
 
-        return "redirect:/foto-comentario/" + reaccionDTO.getFoto() + "?pageAnt=" + reaccionDTO.getPageAnt();
+            /* -- ENVIO DE LOS EMOJIS A LOS COMENTARIOS -- */
+            model.addAttribute("reaccionesFoto", reaccionFotoService.obtenerReaccionesFoto(Long.parseLong(reaccionDTO.getFoto())));
+
+            return "redirect:/foto-comentario/" + reaccionDTO.getFoto() + "?pageAnt=" + reaccionDTO.getPageAnt();
+        } catch (Exception e) {
+            return "redirect:/error";
+        }
     }
 
 }

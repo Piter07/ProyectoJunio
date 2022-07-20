@@ -53,7 +53,7 @@
             <div class="emojiFrame" onclick="mostrar('&#128538;')"><span class="emoji"><span>&#128538;</span></span></div>
             <div class="emojiFrame" onclick="mostrar('&#128539;')"><span class="emoji"><span>&#128539;</span></span></div>
             <div class="emojiFrame" onclick="mostrar('&#128546;')"><span class="emoji"><span>&#128546;</span></span></div>
-            <div class="emojiFrame" onclick="mostrar('&#128547;')"><span class="emoji"><span>&#128547;</span></span></div>
+            <button class="boton"><div class="emojiFrame" onclick="mostrar('&#128547;')"><span class="emoji"><span>&#128547;</span></span></div></button>
           </div>
         </div>
     </div>
@@ -80,7 +80,7 @@
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);*/
         background-color: white;
-            display: none;
+            /*display: none;*/
             z-index: 100;
             /*position: relative;*/
         }
@@ -130,6 +130,12 @@
         }
         .emojiFrame label {
             font-size: 1rem;
+        }
+        .boton {
+            border: none;
+            background: transparent;
+            margin: 0%;
+            padding: 0%;
         }
     </style>
     <script>
