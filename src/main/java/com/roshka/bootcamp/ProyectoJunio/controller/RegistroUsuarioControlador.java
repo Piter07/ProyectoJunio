@@ -50,8 +50,8 @@ public class RegistroUsuarioControlador {
         try {
             /* validar correo */
             String correo = registroDTO.getEmail();
-            //Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+@roshka.com$");
-            Pattern pattern = Pattern.compile("^[a-zA-Z0-9._%+-]+@gmail.com$");
+            Pattern pattern = Pattern.compile("^[a-zA-Z0-9._%+-]+@roshka.com$");
+            //Pattern pattern = Pattern.compile("^[a-zA-Z0-9._%+-]+@gmail.com$");
             Matcher matcher = pattern.matcher(correo);
 
             if(!matcher.matches()) {

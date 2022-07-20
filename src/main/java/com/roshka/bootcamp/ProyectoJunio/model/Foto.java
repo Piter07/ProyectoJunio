@@ -18,10 +18,10 @@ public class Foto {
     private String ruta;
     private String descripcion;
 
-    @OneToMany(mappedBy = "foto")
+    @OneToMany(mappedBy = "foto", cascade = CascadeType.ALL)
     private Set<Comentario> comentarios = new HashSet<>();
 
-    @OneToMany(mappedBy = "foto")
+    @OneToMany(mappedBy = "foto", cascade = CascadeType.ALL)
     private Set<ReaccionFoto> reacciones = new HashSet<>();
 
     @ManyToOne
