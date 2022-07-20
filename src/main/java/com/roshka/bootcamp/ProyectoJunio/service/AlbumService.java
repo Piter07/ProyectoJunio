@@ -57,7 +57,7 @@ public class AlbumService implements IAlbumService,AlbumServiceInterface  {
 
     public Page<Album> findPaginated(int pageNo, int pageSize) {
 
-        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by("fechaCreacion").descending());
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by("fechaEvento").descending());
         Page<Album> pagedResult = albumRepository.findAll(paging);
 
         return pagedResult;

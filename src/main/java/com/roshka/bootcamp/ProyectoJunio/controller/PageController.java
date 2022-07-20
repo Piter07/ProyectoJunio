@@ -29,7 +29,7 @@ public class PageController {
     @GetMapping("/albumes")
     public String getPaginatedAlbums (@RequestParam(name="pageNo", required=false,defaultValue= "0") int pageNo,
              @RequestParam(name="categ", required=false ,defaultValue= "0") long categ ,Model model) {
-        int pageSize = 9;
+        int pageSize = 6;
         Page<Album> albumes;
         String pages[];
         List<Album> auxiliar = albumService2.list();
