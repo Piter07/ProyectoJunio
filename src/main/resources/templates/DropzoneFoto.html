@@ -11,8 +11,7 @@
 <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
 <!-- MDB -->
-        <link
-            href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.3.0/mdb.min.css" rel="stylesheet"/>
+
 <!--	Calendario-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <!--        dropzone-->
@@ -21,20 +20,73 @@
 <!--	CSS's-->
         <link th:href="@{/css/formulario_fotos.css}" rel = "stylesheet">
         <link th:href="@{/css/estilos_select.css}" rel = "stylesheet">
+        <link rel="stylesheet" href="css/home/home_head.css">
+        <style>
+        .breadcrumb {
+            list-style: none;
+            white-space: nowrap;
+            overflow: hidden;
+            border-radius: 0;
+            text-decoration: underline;
+            color: #0d6efd;
+            font-size: var(--bs-breadcrumb-font-size);
+        }
+        .breadcrumb-item {
+            text-decoration: underline;
+        }
+    </style>
 <!--	fin de CSS's-->
     </head>
-    <header  class="p-3 mb-2 bg-primary text-white no-margin-top" style="background-color: #1d75bc !important;">
-        <img class="mb-2"  th:src="@{/img/roshka.jpg}" alt="" width="40" height="40" style="border-radius: 30px; float: left;"/>
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            </a>
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            </ul>
-            <div class="text-end">
-                <a href="/login"><button type="button" class="btn btn-outline-light me-2" >Login</button></a>
-                <button type="button" class="btn btn-warning" style="background-color: #FFFFFF !important; border-color : #000000 !important; ">Sign-up</button>
+    <header style="position: sticky;  top: 0; z-index: 2;">
+        <div class="navbar navbar-dark bg-dark shadow-sm" style="background-color: #1d75bc !important;">
+            <div class="container">
+                <!--Titulo Roskagram-->
+                <div class="col-6">
+                    <div class="btn-group">
+                        <a href="/" class="navbar-brand d-flex align-items-center">
+                            <img class="mt-1" th:src="@{/img/roshka.jpg}" alt="" width="40" height="40"
+                                 style="border-radius: 30px; margin-right: 3px !important; "/>
+                            <strong>Roshkagram</strong>
+                        </a>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <!--Dropdown Logout y otros-->
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light me-2" type="button" data-toggle="dropdown">
+                    <span class="caret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
+  <path fill-rule="evenodd"
+        d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+</svg></span></button>
+                        <div class="dropdown-menu" style="right: 15%;">
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/logout">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"></path>
+                                    <path fill-rule="evenodd"
+                                          d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"></path>
+                                </svg>
+                                Log out
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <div style =" position: sticky;  top: 10; background-color: white; " >
+            <nav aria-label="breadcrumb" style="margin-left: 8%; padding-top : 1%;">
+                <ol class="breadcrumb" >
+                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                    <li class="breadcrumb-item"><a th:href="@{/albumes}">Albumes</a></li>
+                    <li class="breadcrumb-item"><a th:href="@{/album/}+${idAlbum}" th:text="${album.titulo}"></a></li>
+                    <li class="breadcrumb-item"><a href="#">Subir Fotos</a></li>
+                </ol>
+            </nav>
+        </div>
+
     </header>
     <body>
         <span id="idAlbum" style="display: none;" th:text="${idAlbum}"></span>
@@ -66,7 +118,7 @@
             Dropzone.autoDiscover = false;
             let myDropzone = new Dropzone('.dropzone', {
                 url:'/album/' + idAlbum + '/subir-fotos',
-                maxFilesize:2,
+                maxFilesize:10485760,
                 acceptedFiles:'image/jpeg, image/png, image/jpg',
                 addRemoveLinks:true,
                 dictRemoveFile:'Quitar',
@@ -103,15 +155,24 @@
                 for(let i=0; i<arrImages.length; i++) {
                     let imgData = new FormData();
                     imgData.append('file', arrImages[i]);
-
-                    fetch('/album/' + idAlbum + '/subir-fotos', {
+                    if(i === arrImages.length -1) {
+                        fetch('/album/' + idAlbum + '/subir-fotos', {
+                        method:'POST',
+                        body:imgData,
+                        }).then(res => {
+                            console.log(res)
+                            window.location.replace("/album/"+ idAlbum )
+                        });
+                    } else {
+                        fetch('/album/' + idAlbum + '/subir-fotos', {
                         method:'POST',
                         body:imgData
-                    }).then(res => {
-                        console.log(res)
-                    });
+                        }).then(res => {
+                            console.log(res)
+                        });
+                    }
+
                 }
-               // window.location.href = "/album/" + idAlbum;
             })
         </script>
 <!--	scripts -->

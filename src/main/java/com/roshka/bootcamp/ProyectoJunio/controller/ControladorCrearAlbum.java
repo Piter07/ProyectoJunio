@@ -1,11 +1,13 @@
 package com.roshka.bootcamp.ProyectoJunio.controller;
 
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.AlbumDTO;
+import com.roshka.bootcamp.ProyectoJunio.controller.dto.UsuarioRegistroDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Album;
 import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
 import com.roshka.bootcamp.ProyectoJunio.service.AlbumService;
 import com.roshka.bootcamp.ProyectoJunio.service.FotoService;
 import com.roshka.bootcamp.ProyectoJunio.service.UsuarioService;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -34,7 +36,7 @@ public class ControladorCrearAlbum {
     public String mostrarVista(){
         return "PruebaCrearAlbum";
     }
-    @PostMapping("crearAlbum")
+    @PostMapping("/crearAlbum")
     public String crearAlbum(@ModelAttribute("objAlbum") AlbumDTO albumDTO){
         final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
         Usuario usuario = usuarioService.existeUsuario(currentUserName);
@@ -43,11 +45,6 @@ public class ControladorCrearAlbum {
         albumDTO.setId_album(albumGuardado.getId_album());
         System.out.println("Creamos un album exitosamente");
         return "redirect:/album/" + albumGuardado.getId_album() + "/subir-fotos";
-    }
-
-    @PatchMapping("crearAlbum/{id}")
-    public String editarAlbum(@PathVariable long id, Model model) throws Exception {
-        return "album";
     }
 
     @GetMapping("/album/{id}/subir-fotos")
@@ -62,24 +59,37 @@ public class ControladorCrearAlbum {
 
     @PostMapping("/album/{id}/subir-fotos")
     public String postFormFoto(@RequestParam("file") MultipartFile file, @PathVariable long id, Model model){
+        final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
         Optional<Album> albumActual = albumService.findById(id);
         model.addAttribute("idAlbum", id);
         if (albumActual.isPresent()) {
             if(!file.isEmpty()){
-                Path directorioImagenes= Paths.get("src/main/resources/public/"+  file.getOriginalFilename());
+                Path directorioImagenes= Paths.get("src/main/resources/public/"+ DigestUtils.md5Hex(file.getOriginalFilename()));
                 String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
                 try {
                     byte[] bytesImg=file.getBytes();
                     Path rutaCompleta=Paths.get(rutaAbsoluta);
                     Files.write(rutaCompleta, bytesImg);
 //                     si todo salio bien guardamos la foto en la base de datos
-                    fotoService.guardarFoto(albumActual.get(), file.getOriginalFilename());
+                    fotoService.guardarFoto(albumActual.get(), DigestUtils.md5Hex(file.getOriginalFilename()));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
         }
         return "redirect:/album/" + id ;
+    }
+
+    @PatchMapping("EditarAlbum/{id}")
+    public String editarAlbum(@PathVariable long id, @ModelAttribute("AlbumEditar") AlbumDTO albumDTO) throws Exception {
+
+
+        return "redirect:/albumes" ;
+    }
+
+    @ModelAttribute("usuario")
+    public UsuarioRegistroDTO retornaNuevoUsuarioRegistroDTO() {
+        return new UsuarioRegistroDTO();
     }
 
 }

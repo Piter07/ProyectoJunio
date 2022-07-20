@@ -6,6 +6,24 @@
     align-items: center;
     height: 76vh;
     background-color: #e1e1e1;
+    position: relative;
+}
+/*Botones next y prev*/
+.next{
+    position: absolute;
+    right: 93%;
+    color: black;
+}
+.next:hover{
+    color: white;
+}
+.prev{
+    position: absolute;
+    left: 93%;
+    color: black;
+}
+.prev:hover{
+    color: white;
 }
 .contenedor-imagen img{
     max-height: 76vh;

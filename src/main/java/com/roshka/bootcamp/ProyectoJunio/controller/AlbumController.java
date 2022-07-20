@@ -2,6 +2,7 @@ package com.roshka.bootcamp.ProyectoJunio.controller;
 
 
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.AlbumDTO;
+import com.roshka.bootcamp.ProyectoJunio.controller.dto.ComentarioDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Album;
 import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
 import com.roshka.bootcamp.ProyectoJunio.model.Foto;
@@ -13,6 +14,7 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.roshka.bootcamp.ProyectoJunio.service.FotoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,9 +32,11 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
+
 @Controller
 public class AlbumController {
 
+    @Autowired
     private AlbumService albumService;
     @Autowired
     private FotoService fotoService;
@@ -73,5 +77,9 @@ public class AlbumController {
 ////        }
         return "formulario-fotos";
     }
-
+    @PostMapping("foto-borrar")
+    public String eliminarFoto(@RequestParam("idFoto") long idFoto, @RequestParam("idAlbum") long album_id){
+        fotoService.delete(idFoto);
+        return "redirect:/album/" + album_id;
+    }
 }
