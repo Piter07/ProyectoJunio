@@ -65,7 +65,7 @@ public class Usuario {
     )
     private Set<Rol> roles = new HashSet<>();
 
-    /* Relaciona que a un usuario le pertenece una reaccion de una foto
+    /*// Relaciona que a un usuario le pertenece una reaccion de una foto
     @OneToOne(mappedBy = "usuario")
     private ReaccionFoto reaccionFoto;
 
@@ -79,8 +79,8 @@ public class Usuario {
 
     // Un usuario puede tener varios albums
     @OneToMany(mappedBy = "usuario")
-    private Set<Album> albums = new HashSet<>();
-    */
+    private Set<Album> albums = new HashSet<>();*/
+
 
 
 }

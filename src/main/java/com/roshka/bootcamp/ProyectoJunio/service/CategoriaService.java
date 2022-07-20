@@ -1,7 +1,7 @@
 package com.roshka.bootcamp.ProyectoJunio.service;
 
 import com.roshka.bootcamp.ProyectoJunio.model.Categoria;
-import com.roshka.bootcamp.ProyectoJunio.repository.CategoriaRepository;
+import com.roshka.bootcamp.ProyectoJunio.controller.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

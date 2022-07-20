@@ -5,6 +5,8 @@ import com.roshka.bootcamp.ProyectoJunio.service.AlbumService;
 import com.roshka.bootcamp.ProyectoJunio.service.CategoriaService;
 import com.roshka.bootcamp.ProyectoJunio.service.IAlbumService;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +29,7 @@ public class PageController {
     @GetMapping("/albumes")
     public String getPaginatedAlbums (@RequestParam(name="pageNo", required=false,defaultValue= "0") int pageNo,
              @RequestParam(name="categ", required=false ,defaultValue= "0") long categ ,Model model) {
-        int pageSize = 3;
+        int pageSize = 6;
         Page<Album> albumes;
         String pages[];
         List<Album> auxiliar = albumService2.list();
@@ -52,6 +54,11 @@ public class PageController {
             prev = 0;
         if(next > pages.length - 1)
             next = pages.length - 1;
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        auth.getName();
+
 
         model.addAttribute("albumLista", albumes);
         model.addAttribute("categorias", categorias);

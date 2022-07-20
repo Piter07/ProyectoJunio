@@ -2,8 +2,8 @@ package com.roshka.bootcamp.ProyectoJunio.service;
 
 import com.roshka.bootcamp.ProyectoJunio.model.Permiso;
 import com.roshka.bootcamp.ProyectoJunio.model.Rol;
-import com.roshka.bootcamp.ProyectoJunio.repository.PermisoRepository;
-import com.roshka.bootcamp.ProyectoJunio.repository.RolRepository;
+import com.roshka.bootcamp.ProyectoJunio.controller.repository.PermisoRepository;
+import com.roshka.bootcamp.ProyectoJunio.controller.repository.RolRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
