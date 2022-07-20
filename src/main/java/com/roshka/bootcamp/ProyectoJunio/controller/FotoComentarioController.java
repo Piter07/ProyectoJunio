@@ -40,24 +40,18 @@ public class FotoComentarioController {
     public String getFotoComentarioById(@RequestParam(name = "pageNo", required = false, defaultValue = "0") int pageNo, @PathVariable long id, Model model) throws Exception {
         Optional<Foto> foto = fotoService.findById(id);
         Optional<Album> album = albumService.findById(foto.get().getAlbum().getId_album());
-        Optional<Foto> f;
+        List<Foto> fotos = fotoService.getFotos(foto.get().getAlbum().getId_album());
         Long next=null;
         Long prev=null;
-        try {
-            f = fotoService.findById(id+1);
-            if(album.get().getId_album() == f.get().getAlbum().getId_album()){
-                next = f.get().getId_foto();
+        for(int i = 0; i<fotos.size(); i++){
+            if(id == fotos.get(i).getId_foto()){
+                if(i < fotos.size()-1) {
+                    next = fotos.get(i + 1).getId_foto();
+                }
+                if(i !=0){
+                    prev = fotos.get(i - 1).getId_foto();
+                }
             }
-        }catch (Exception e){
-
-        }
-        try {
-            f = fotoService.findById(id-1);
-            if(album.get().getId_album() == f.get().getAlbum().getId_album()){
-                prev = f.get().getId_foto();
-            }
-        }catch (Exception e){
-
         }
         if (foto.isPresent()) {
             System.out.println(album);
