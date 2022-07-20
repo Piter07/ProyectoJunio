@@ -172,7 +172,7 @@
 <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="#"  method="patch" class="">
+            <form action="#" id="formulario_editar" method="post" class="">
                 <div class="modal-header">
                     <h1 class="modal-title" id="staticBackdropLabel2"><strong id="prueba35">Editar Álbum</strong></h1>
                     <button type="button" class="btn-close" onclick="restaurarValores()" data-dismiss="modal" aria-label="Close"></button>
@@ -181,36 +181,36 @@
                     <div class="row shadow-lg p-1 rounded" id="contededorAlbum2">
                         <div class="col-12" id="album_contenido2">
                             <div class="mb-3">
-                                <label for="nombre_album" class="form-label">
+                                <label for="nombre_album2" class="form-label">
                                     <h4>
                                         Título del álbum
                                     </h4>
                                 </label>
                                 <div class="col-llx-7 col-sm-12 col-md-12">
-                                    <input type="text" class="form-control h3" id="nombre_album2" name="titulo"  required/>
+                                    <input type="text" class="form-control h3" id="nombre_album2" name="titulo2" required/>
                                 </div>
                             </div>
 
                             <div class="col-llx-7 col-sm-12 col-md-12">
                                 <div class="mb-3">
-                                    <label for="descripcion" class="form-label">
+                                    <label for="descripcion2" class="form-label">
                                         <h4>
                                             Descripción
                                         </h4>
                                     </label>
-                                    <textarea class="form-control" id="descripcion2" name="descripcion" rows="3" required></textarea>
+                                    <textarea class="form-control" id="descripcion2" name="descripcion2" rows="3" required></textarea>
                                 </div>
                             </div>
                             <div class="col-llx-4 col-sm-10 col-md-7 mb-3">
                                 <div class="hijo1">
-                                    <label for="fecha" class="form-label">
+                                    <label for="fecha2" class="form-label">
                                         <h4>
                                             Fecha evento
                                         </h4>
                                     </label>
                                 </div>
                                 <div class="hijo2">
-                                    <input class="from-control text-center" placeholder="Calendario" type="datetime-local" id="fecha2" name="fechaEvento" /><label for="fecha" >
+                                    <input class="from-control text-center" placeholder="Calendario" type="datetime-local" id="fecha2" name="fechaEvento2" /><label for="fecha2" >
 <!--                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">-->
 <!--                                        <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>-->
 <!--                                        <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>-->
@@ -218,7 +218,7 @@
                                 </label>
                                 </div>
                             </div>
-                            <select id="inpuntSelect2" name="idCategoria" class="form-select p-1  border border-1 border-dark  " aria-label="Default select example" style="width: 200px; text-align-last: center;">
+                            <select id="inpuntSelect2" name="idCategoria2" class="form-select p-1  border border-1 border-dark  " aria-label="Default select example" style="width: 200px; text-align-last: center;" >
                                 <a th:each="cat: ${categorias}">
                                     <option  th:value="${cat.id_categoria}" th:text ="${cat.nombre}"></option>
                                 </a>
@@ -229,6 +229,8 @@
                 </div>
                 <div class="modal-footer">
                     <div id="botones2">
+<!--                        th:text="${idAlbum}"-->
+                        <span id="identificadorAlbum" style="display: none;" ></span>
                         <button type="submit" class="btn btn-primary" id="editar">Editar Album</button>
                         <button type="button" onclick="restaurarValores()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     </div>
@@ -378,7 +380,7 @@
 	        dateFormat: "d/m/Y",
 	    }
 	    flatpickr("input[type=datetime-local]", config);
-	</script>
+</script>
 <script>
         function restaurarValores(){
          document.getElementById("nombre_album").value ="";
@@ -393,9 +395,9 @@
             const selectedValue = 'Categoria';
             document.querySelector('#select [value="' + selectedValue + '"]').selected = true;
         }
-	</script>
+</script>
 
-<!--intento para editar album-->
+<!--script editar album-->
     <script>
         config = {
             enableTime: false,
@@ -408,16 +410,20 @@
                 .then(data => {
                     if(data) {
                         console.log(data)
+                        //let identificadorAlbum = document.getElementById("identificadorAlbum").innerHTML;
                         document.getElementById("nombre_album2").value = data.titulo;
                         document.getElementById("descripcion2").value = data.descripcion;
                         let calendar = flatpickr("#fecha2", config);
                         calendar.setDate(data.fechaEvento, true, "Y-m-d H:i:s");
                         document.getElementById("inpuntSelect2").value = data.idCategoria;
+                        document.getElementById("identificadorAlbum").innerHTML = data.id_album;
+                        document.getElementById("formulario_editar").action = "/editar-album/" + data.id_album
                     }
                 });
         }
 
     </script>
+
 <!--fin de scripts-->
 
 </body>

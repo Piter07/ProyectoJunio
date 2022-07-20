@@ -82,5 +82,9 @@ public class AlbumService implements IAlbumService,AlbumServiceInterface  {
         return pagedResult;
     }
 
-
+    @Override
+    public Album editar(Album album) {
+        Album albumEditado=albumRepository.save(album);
+        return albumEditado;
+    }
 }

@@ -30,7 +30,7 @@ public class FotoService implements FotoServicioInterface{
         foto.setRuta(pathRelativo);
         foto.setDescripcion("");
         foto.setAlbum(album);
-        Foto fotoGuardada= fotoRepository.save(foto);
+        Foto fotoGuardada = fotoRepository.save(foto);
         return fotoGuardada;
     }
 }

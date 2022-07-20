@@ -1,10 +1,13 @@
 package com.roshka.bootcamp.ProyectoJunio.controller;
 
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.AlbumDTO;
+import com.roshka.bootcamp.ProyectoJunio.controller.dto.AlbumDTOeditar;
 import com.roshka.bootcamp.ProyectoJunio.controller.dto.UsuarioRegistroDTO;
 import com.roshka.bootcamp.ProyectoJunio.model.Album;
+import com.roshka.bootcamp.ProyectoJunio.model.Categoria;
 import com.roshka.bootcamp.ProyectoJunio.model.Usuario;
 import com.roshka.bootcamp.ProyectoJunio.service.AlbumService;
+import com.roshka.bootcamp.ProyectoJunio.service.CategoriaService;
 import com.roshka.bootcamp.ProyectoJunio.service.FotoService;
 import com.roshka.bootcamp.ProyectoJunio.service.UsuarioService;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -19,6 +22,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Optional;
 
 @Controller
@@ -32,12 +38,16 @@ public class ControladorCrearAlbum {
     @Autowired
     private FotoService fotoService;
 
+    @Autowired
+    private CategoriaService categoriaService;
+
     @GetMapping("mostrarVista")
     public String mostrarVista(){
         return "PruebaCrearAlbum";
     }
+
     @PostMapping("/crearAlbum")
-    public String crearAlbum(@ModelAttribute("objAlbum") AlbumDTO albumDTO){
+    public String crearAlbum(@ModelAttribute() AlbumDTO albumDTO){
         final String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
         Usuario usuario = usuarioService.existeUsuario(currentUserName);
         albumDTO.setUsuario(usuario);
@@ -80,16 +90,25 @@ public class ControladorCrearAlbum {
         return "redirect:/album/" + id ;
     }
 
-    @PatchMapping("EditarAlbum/{id}")
-    public String editarAlbum(@PathVariable long id, @ModelAttribute("AlbumEditar") AlbumDTO albumDTO) throws Exception {
+    @PostMapping("editar-album/{id}")
+    public String editarAlbum(@PathVariable long id, @ModelAttribute("editar") AlbumDTOeditar editar) throws Exception {
 
-
-        return "redirect:/albumes" ;
+        Optional<Album> albumActual = albumService.findById(id);
+        Date date_auxiliar;
+        Album albumAuxilar=albumActual.get();
+        albumAuxilar.setTitulo(editar.getTitulo2());
+        albumAuxilar.setDescripcion(editar.getDescripcion2());
+        Optional<Categoria> cat=categoriaService.findById(editar.getIdCategoria2());
+        albumAuxilar.setCategoria(cat.get());
+        try {
+            date_auxiliar=new SimpleDateFormat("dd/MM/yyyy").parse(editar.getFechaEvento2());
+        } catch (ParseException e) {
+            date_auxiliar=new Date();
+        }
+        albumAuxilar.setFechaEvento(date_auxiliar);
+        Album albumEditado=albumService.editar(albumAuxilar);
+        return "redirect:/album/" + id ;
     }
 
-    @ModelAttribute("usuario")
-    public UsuarioRegistroDTO retornaNuevoUsuarioRegistroDTO() {
-        return new UsuarioRegistroDTO();
-    }
 
 }

@@ -15,4 +15,6 @@ public interface AlbumServiceInterface {
 
     public Album guardar(AlbumDTO albumDTO);
 
+    public Album editar(Album album);
+
 }
