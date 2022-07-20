@@ -261,6 +261,9 @@ h6 {
         left: 100%;
     }
 }
+.textoEnviarMail:hover{
+    cursor: pointer;
+}
 
 /*************footer End*****************/
 
