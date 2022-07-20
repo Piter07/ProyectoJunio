@@ -311,7 +311,7 @@
                                 <!-- Boton para agregar mas fotos -->
 
                                 <a class="edit" href="#" onMouseover="this.style.color='black'"
-                                   style="margin-bottom: -5px;">
+                                   style="margin-bottom: -5px;" sec:authorize="hasAuthority('crear_album')">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                          class="bi bi-pencil-square" data-toggle="modal" data-target="#staticBackdrop2"
                                          viewBox="0 0 16 16"
