@@ -74,14 +74,14 @@ public class ControladorCrearAlbum {
         model.addAttribute("idAlbum", id);
         if (albumActual.isPresent()) {
             if(!file.isEmpty()){
-                Path directorioImagenes= Paths.get("src/main/resources/public/"+ DigestUtils.md5Hex(file.getOriginalFilename()));
+                Path directorioImagenes= Paths.get("images/"+ DigestUtils.md5Hex(file.getOriginalFilename()));
                 String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
                 try {
                     byte[] bytesImg=file.getBytes();
                     Path rutaCompleta=Paths.get(rutaAbsoluta);
                     Files.write(rutaCompleta, bytesImg);
 //                     si todo salio bien guardamos la foto en la base de datos
-                    fotoService.guardarFoto(albumActual.get(), DigestUtils.md5Hex(file.getOriginalFilename()));
+                    fotoService.guardarFoto(albumActual.get(),"images/"+ DigestUtils.md5Hex(file.getOriginalFilename()));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
