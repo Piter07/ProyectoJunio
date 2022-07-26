@@ -22,7 +22,7 @@ public class CorreoService {
     @Autowired
     private Configuration config;
 
-    private String from = "roshkaprueba@gmail.com";
+    private String from = "roshkagram@roshka.com";
 
     public void sendEmailWithHTML(String to, String subject, Map<String, Object> model) {
         MimeMessage message = mailSender.createMimeMessage();
