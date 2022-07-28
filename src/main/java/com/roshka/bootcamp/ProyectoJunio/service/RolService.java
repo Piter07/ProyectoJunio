@@ -29,7 +29,7 @@ public class RolService {
 
     public Rol getDefaultRol() {
 
-        String nombre = "user";
+        String nombre = "admin";
         Rol rol = rolRepository.findByNombre(nombre);
 
         /* si el rol por defecto no existe se crea */
