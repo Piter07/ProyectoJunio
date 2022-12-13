@@ -1,0 +1,73 @@
+                            .con{
+                            position: absolute;
+                            background-color: white;
+                                display: none;
+                                z-index: 100;
+                            }
+
+                            /* component */
+                            .emojiPicker{
+                            /* 5 emojis in row */
+                            /* width: 212px;  */
+
+                            /* 6 emojis in row */
+                            /* width: 254px; */
+
+                            /* 7 emojis in row */
+                            width: 19rem;/*296px;*/
+
+                            border: none; /*1px solid #0d8cfc;*/
+                            /*background-color: aliceblue;*/
+                            border-radius: 5px;
+
+                            -webkit-box-shadow: 1px 1px 5px -1px rgba(0,0,0,0.75);
+                            -moz-box-shadow: 1px 1px 5px -1px rgba(0,0,0,0.75);
+                            box-shadow: 1px 1px 5px -1px rgba(0,0,0,0.75);
+                            }.emojis{
+                            width: 100%;
+                            display: flex;
+                            flex-wrap: wrap;
+                            }.emojiFrame{
+                            border-radius: 20%;
+                            box-sizing: content-box;
+                            user-select: none;
+                            text-align: center;
+                            cursor: pointer;
+                            width: auto;
+                            min-width: none;
+                            font-size: 21px;
+                            padding: 3px;
+                            margin: 3px;
+                            background-color: transparent;
+                            /*transform: scale(0.9);*/
+
+                            transition: background-color 0.2s, transform 0.1s;
+                            }.emojiFrame:hover{
+                            background-color: #0d8cfc;
+                            }.emojiFrame:active{
+                            /*background-color: #4babff;*/
+                            transform: scale(0.95);
+                            }
+                            #cant_reaccion {
+                                font-size: 1rem;
+                            }
+                            .botonIcon {
+                                border: none;
+                                background: transparent;
+                                margin: 0%;
+                                padding: 0%;
+                            }
+                              /****** hover rotar *****/
+                            .rotate {
+                                  position: relative;
+                                  animation: rotation 3s infinite linear;
+                            }
+
+                            @keyframes rotation {
+                                from {
+                                    transform: rotate(0deg);
+                                }
+                                to {
+                                    transform: rotate(359deg);
+                                }
+                            }
